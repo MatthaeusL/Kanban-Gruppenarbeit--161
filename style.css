@@ -1,0 +1,12 @@
+:root{
+    --bgStandard: blue;
+
+}
+
+.header{
+    background-color: var(--bgStandard);
+    padding: 1rem;
+    padding: 
+    clamp()
+}
+

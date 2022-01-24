@@ -18,3 +18,7 @@ function deleteUser(name) {
     backend.deleteItem('users')
     users = [];
 }
+
+/**
+ * 
+ */
