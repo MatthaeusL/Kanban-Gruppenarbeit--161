@@ -1,6 +1,19 @@
+body {
+    margin: 0px;
+    height: 100vh;
+}
+
+.marginTop {
+    margin-top: 0rem;
+}
+
+
+
 :root{
     --bgStandard: blue;
-
+    --bgWhite: white;
+    --bgGray: #eeeeee;
+    --bgchevron:#aeaeae;
 }
 
 .header{
@@ -9,4 +22,128 @@
     padding: 
     clamp()
 }
+/* -----------------------------------------------------------Navbar Container------------------------------------------ */
+.mainContainer {
+    display: flex;
+    height: 100vh;
+}
 
+.navBar {
+    background-color: var(--bgStandard);
+    color: var(--bgWhite);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 10rem;
+}
+
+.hover {
+    padding-left: 2.5rem;
+    border-left-width: 0.4rem;
+    border-left-style: solid;
+    border-color: var(--bgStandard);
+}
+
+.hover:hover {
+    cursor: pointer;
+    border-left-style: solid;
+    border-width: 0.4rem;
+    transition: all 225ms ease-in-out;
+    border-color: var(--bgWhite);
+}
+
+
+.logoContainer {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.imgContainer {
+    margin-bottom: 2rem;
+}
+
+.imgAvatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    border-color: white;
+    border-style: solid;
+}
+
+/* -----------------------------------------------------------Content Container----------------------------------------- */
+.mainContent {
+    height: 100vh;
+    padding-left: 1rem;
+    padding-top: 2.5rem;
+}
+
+.content {
+    background-color: var(--bgGray);
+    padding: 2rem;
+    margin-top: 2.5rem;
+    display: flex;
+}
+
+.span {
+    margin-bottom: 0.8rem;
+    color: var(--bgStandard);
+}
+
+.textfield {
+    width: 18rem;
+    height: 2rem;
+}
+
+.chevron {
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-color: var(--bgchevron);
+    border-width: 0.1rem;
+}
+
+.imgContainer2 {
+    display: flex;
+    align-items: center;
+}
+
+.imgAvatar2 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+}
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    padding-left: 0.5rem;
+}
+
+.btnContainer {
+    margin-top: 1rem;
+    padding-left: 4rem;
+}
+
+.btn {
+    width: 8rem;
+    height: 3rem;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    color: var(--bgStandard);
+    background-color: var(--bgGray);
+    cursor: pointer;
+    border-style: hidden;
+}
+
+.btn:hover {
+    color: var(--bgWhite);
+    background-color: var(--bgStandard);
+}

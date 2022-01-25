@@ -16,30 +16,107 @@
     <div class="mainContainer">
         <div class="navBar">
             <div>
-                <div>
-                    <img src="./">
+                <div class="logoContainer">
+                    <img src="./logo/logo.png">
                 </div>
-                <div>
-                    <div>
+                <div style="width: 10rem;">
+                    <div class="hover" onclick="">
                         <h3>Board</h3>
                     </div>
-                    <div>
+
+                    <div class="hover" onclick="">
                         <h3>Backlog</h3>
                     </div>
-                    <div>
-                        <h3>Ass Task</h3>
+
+                    <div class="hover" onclick="">
+                        <h3>Add Task</h3>
                     </div>
-                    <div>
+
+                    <div class="hover" onclick="">
                         <h3>Help</h3>
                     </div>
                 </div>
             </div>
-            <div>
-                <img src="./">
+            <div class="imgContainer">
+                <img class="imgAvatar" src="./img/avatar.jpg">
             </div>
         </div>
-        <div class="mainContent"></div>
-    </div>
+
+
+        <div class="mainContent">
+            <div id="board_container"></div>
+
+            <div id="backlog_container"></div>
+
+            <div id="addTask_container">
+                <div>
+                    <h2 style="margin-bottom: 1rem;">Add Task</h2>
+                    <span style="color: var(--bgStandard);">Learning Management System Project</span>
+                </div>
+
+                <div class="content">
+                    <div class="left" style="margin-right: 3rem;">
+                        <div>
+                            <h4 class="span marginTop">TITEL</h4>
+                            <input type="text" style="width: 20rem;height: 2rem;">
+                        </div>
+
+                        <div>
+                            <h4 class="span">CATEGORY</h4>
+                            <div style="display: flex;">
+                                <input type="text" class="textfield">
+                                <div class="chevron">
+                                    <img src="./logo/chevron .png" style="width: 1rem;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="span">DESCRIPTION</h4>
+                            <input type="text" style="width: 20rem; height: 9rem;">
+                        </div>
+
+                    </div>
+
+                    <div class="right">
+                        <div>
+                            <h4 class="span marginTop">DUE DATE</h4>
+                            <div style="display: flex;">
+                                <input type="date" class="textfield">
+                                <div class="chevron">
+                                    <img src="./logo/icons8-calendar-150.png" style="width: 1rem;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="span">URGENCY</h4>
+                                <div style="display: flex;">
+                                    <input type="text" class="textfield">
+                                    <div class="chevron">
+                                        <img src="./logo/chevron .png" style="width: 1rem;">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 style="margin-bottom: 2.5rem;" class="span">ASSIGNED TO</h4>
+                                    <div class="imgContainer2">
+                                        <img class="imgAvatar2" src="./img/avatar.jpg">
+                                        <img class="logo" src="./logo/icon plus.png">
+                                    </div>
+                                </div>
+
+                                <div class="btnContainer">
+                                    <button class="btn">CANCEL</button>
+                                    <button class="btn">CREATE TASK</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="help_container"></div>
+                </div>
+            </div>
 
 
 
@@ -47,7 +124,7 @@
 
 
 
-    <!-- <button onclick="addUser('John')">John</button>
+            <!-- <button onclick="addUser('John')">John</button>
     <button onclick="addUser('Marie')">Marie</button>
     <button onclick="deleteUser(name)">Löschen</button>
     <span>spass</span>
