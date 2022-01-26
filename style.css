@@ -3,6 +3,10 @@ body {
     height: 100vh;
 }
 
+.d-none {
+    display: none;
+}
+
 .marginTop {
     margin-top: 0rem;
 }
@@ -14,6 +18,7 @@ body {
     --bgWhite: white;
     --bgGray: #eeeeee;
     --bgchevron:#aeaeae;
+    --bgAqua: aqua;
 }
 
 .header{
@@ -73,7 +78,7 @@ body {
     border-style: solid;
 }
 
-/* -----------------------------------------------------------Content Container----------------------------------------- */
+/* -----------------------------------------------------------Content Container Add Task-------------------------------- */
 .mainContent {
     height: 100vh;
     padding-left: 1rem;
@@ -119,6 +124,7 @@ body {
     width: 4rem;
     height: 4rem;
     border-radius: 180px;
+    object-fit: cover;
 }
 
 .logo {
@@ -146,4 +152,48 @@ body {
 .btn:hover {
     color: var(--bgWhite);
     background-color: var(--bgStandard);
+}
+
+/* -------------------------------------------------------Content Container Backlog------------------------------------- */
+.contentBacklog {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: var(--bgStandard);
+    width: 73rem;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 73rem;
+    margin-top: 1rem;
+    background-color: var(--bgGray);
+    padding: 1rem;
+    border-radius: 1rem;
+    border-left-width: 0.75rem;
+    border-left-style: solid;
+    border-left-color: var(--bgAqua);
+    margin-bottom: 0.75rem;
+}
+
+.imgContainer3 {
+    display: flex;
+    align-items: center;
+    width: 21.3rem;
+}
+
+.department {
+    width: 34.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details {
+    width: 22.3rem;
+    text-align: start;
+    display: flex;
+    align-items: center;
 }
