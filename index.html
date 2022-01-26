@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">  
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -41,21 +42,51 @@
                 <img class="imgAvatar" src="./img/avatar.jpg">
             </div>
         </div>
-
-
+    
+        <!-- -----------------------------------------------------Board Container---------------------------------------------- -->
         <div class="mainContent">
-            <div id="board_container"></div>
+            <div id="board_container" class="d-none">
+                <div class="mainBoardContainer">
+                    <div>
+                        <h2 class="marginBottom ptSansBold">TO DO</h2>
+                        <div class="boardContainer">
 
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="marginBottom ptSansBold">IN PROGRESS</h2>
+                        <div class="boardContainer">
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="marginBottom ptSansBold">TESTING</h2>
+                        <div class="boardContainer">
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="marginBottom ptSansBold">DONE</h2>
+                        <div class="boardContainer">    
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
 
             <!-- -----------------------------------------------------Backlog Container-------------------------------------------- -->
-            <div id="backlog_container" class="d-none">
+            <div id="backlog_container" >
                 <div>
-                    <h2 style="margin-bottom: 1rem;">Backlog</h2>
+                    <h2 class="ptSansBold" style="margin-bottom: 0.5rem;">Backlog</h2>
                     <span style="color: var(--bgStandard);">Learning Management System Project</span>
                 </div>
 
                 <div>
-                    <div class="contentBacklog">
+                    <div class="contentBacklog ptSansBold">
                         <span>ASSIGNED TO</span>
                         <span>CATEGORY</span>
                         <span>DETAILS</span>
@@ -85,19 +116,19 @@
             <!-- ------------------------------------------------------Add Task Container------------------------------------------- -->
             <div id="addTask_container" class="d-none">
                 <div>
-                    <h2 style="margin-bottom: 1rem;">Add Task</h2>
+                    <h2 class="ptSansBold" style="margin-bottom: 0.5rem;">Add Task</h2>
                     <span style="color: var(--bgStandard);">Learning Management System Project</span>
                 </div>
 
                 <div class="content">
                     <div class="left" style="margin-right: 3rem;">
                         <div>
-                            <h4 class="span marginTop">TITEL</h4>
+                            <h4 class="span marginTop ptSansBold">TITEL</h4>
                             <input type="text" style="width: 20rem;height: 2rem;">
                         </div>
 
                         <div>
-                            <h4 class="span">CATEGORY</h4>
+                            <h4 class="span ptSansBold">CATEGORY</h4>
                             <div style="display: flex;">
                                 <input type="text" class="textfield">
                                 <div class="chevron">
@@ -107,7 +138,7 @@
                         </div>
 
                         <div>
-                            <h4 class="span">DESCRIPTION</h4>
+                            <h4 class="span ptSansBold">DESCRIPTION</h4>
                             <input type="text" style="width: 20rem; height: 9rem;">
                         </div>
 
@@ -115,7 +146,7 @@
 
                     <div class="right">
                         <div>
-                            <h4 class="span marginTop">DUE DATE</h4>
+                            <h4 class="span marginTop ptSansBold">DUE DATE</h4>
                             <div style="display: flex;">
                                 <input type="date" class="textfield">
                                 <div class="chevron">
@@ -124,7 +155,7 @@
                             </div>
 
                             <div>
-                                <h4 class="span">URGENCY</h4>
+                                <h4 class="span ptSansBold">URGENCY</h4>
                                 <div style="display: flex;">
                                     <input type="text" class="textfield">
                                     <div class="chevron">
@@ -133,7 +164,7 @@
                                 </div>
 
                                 <div>
-                                    <h4 style="margin-bottom: 2.5rem;" class="span">ASSIGNED TO</h4>
+                                    <h4 style="margin-bottom: 2.5rem;" class="span ptSansBold">ASSIGNED TO</h4>
                                     <div class="imgContainer2">
                                         <img class="imgAvatar2" src="./img/avatar.jpg">
                                         <img class="logo" src="./logo/icon plus.png">
@@ -144,16 +175,15 @@
                                     <button class="btn">CANCEL</button>
                                     <button class="btn">CREATE TASK</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- ---------------------------------------------------------Help Container-------------------------------------------- -->
-                    <div id="help_container"></div>
-                </div>
-            </div>
+              
+            <!-- ---------------------------------------------------------Help Container-------------------------------------------- -->
+            <div id="help_container"></div>
+        </div>    
+    </div>
 
 
 
