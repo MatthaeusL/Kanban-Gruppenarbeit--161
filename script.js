@@ -57,13 +57,8 @@ let kanbanArray = [{
     ],
     'users': [{
         'userid': 'userid_0',
-<<<<<<< HEAD
         'username': 'Klaus Meier',
         'email': 'Klaus_Meier@web.de',
-=======
-        'username': 'Leon',
-        'email': 'email',
->>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face1.jpg',
         'cathegory': 'Marketing',
@@ -72,13 +67,8 @@ let kanbanArray = [{
 
     }, {
         'userid': 'userid_1',
-<<<<<<< HEAD
         'username': 'Inav Bolski',
         'email': 'InavBolski@Yahoo.de',
-=======
-        'username': 'Viktor',
-        'email': 'email',
->>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face3.jpg',
         'cathegory': 'Sale',
@@ -87,13 +77,8 @@ let kanbanArray = [{
 
     }, {
         'userid': 'userid_2',
-<<<<<<< HEAD
         'username': 'Laura Trautmann',
         'email': 'Laura-Trautmann@t-online.de',
-=======
-        'username': 'Matthäus',
-        'email': 'email',
->>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face5.jpg',
         'cathegory': 'Design',
