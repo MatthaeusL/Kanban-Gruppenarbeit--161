@@ -1,19 +1,69 @@
 let kanbanArray = [{
     'tasks': [{
-        'taskid': 'taskid_0',
-        'title': 'title',
-        'cathegory': 'cathegory',
-        'description': 'description',
-        'duedate': 'duedate',
-        'urgency': 'urgency',
-        'assignedTo': 'assignedTo',
-        'status': 'status',
+            'taskid': 'taskid_0',
+            'title': 'title',
+            'cathegory': 'cathegory',
+            'description': 'description',
+            'duedate': 'duedate',
+            'urgency': 'urgency',
+            'assignedTo': 'assignedTo',
+            'status': 'todo',
 
-    }],
+        },
+        {
+            'taskid': 'taskid_1',
+            'title': 'title',
+            'cathegory': 'cathegory',
+            'description': 'description',
+            'duedate': 'duedate',
+            'urgency': 'urgency',
+            'assignedTo': 'assignedTo',
+            'status': 'inprogress',
+
+        },
+        {
+            'taskid': 'taskid_0',
+            'title': 'title',
+            'cathegory': 'cathegory',
+            'description': 'description',
+            'duedate': 'duedate',
+            'urgency': 'urgency',
+            'assignedTo': 'assignedTo',
+            'status': 'testing',
+
+        },
+        {
+            'taskid': 'taskid_2',
+            'title': 'title',
+            'cathegory': 'cathegory',
+            'description': 'description',
+            'duedate': 'duedate',
+            'urgency': 'urgency',
+            'assignedTo': 'assignedTo',
+            'status': 'done',
+
+        },
+        {
+            'taskid': 'taskid_3',
+            'title': 'title',
+            'cathegory': '',
+            'description': 'description',
+            'duedate': 'duedate',
+            'urgency': 'urgency',
+            'assignedTo': 'assignedTo',
+            'status': 'todo',
+
+        }
+    ],
     'users': [{
         'userid': 'userid_0',
+<<<<<<< HEAD
         'username': 'Klaus Meier',
         'email': 'Klaus_Meier@web.de',
+=======
+        'username': 'Leon',
+        'email': 'email',
+>>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face1.jpg',
         'cathegory': 'Marketing',
@@ -22,8 +72,13 @@ let kanbanArray = [{
 
     }, {
         'userid': 'userid_1',
+<<<<<<< HEAD
         'username': 'Inav Bolski',
         'email': 'InavBolski@Yahoo.de',
+=======
+        'username': 'Viktor',
+        'email': 'email',
+>>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face3.jpg',
         'cathegory': 'Sale',
@@ -32,8 +87,13 @@ let kanbanArray = [{
 
     }, {
         'userid': 'userid_2',
+<<<<<<< HEAD
         'username': 'Laura Trautmann',
         'email': 'Laura-Trautmann@t-online.de',
+=======
+        'username': 'Matthäus',
+        'email': 'email',
+>>>>>>> cd51d9a2b801fdaf81d7acb39b35562ca59440df
         'key': 'key',
         'img': 'face5.jpg',
         'cathegory': 'Design',
@@ -78,7 +138,32 @@ let users = {
 let usersInArray = kanbanArray[0]["users"];
 let tasksInArray = kanbanArray[0]["tasks"];
 let findUser = usersInArray.find((usersInArray) => usersInArray.userid = 'userid_1');
-let filterUser = usersInArray.filter((usersInArray) => usersInArray.username = 'username');
+let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 'username');
+
+
+function renderBoard() {
+    let filterStatusTodo = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'todo');
+    for (let i = 0; i < filterStatusTodo.length; i++) {
+        let statusTodoi = filterStatusTodo[i];
+        console.table(statusTodoi)
+    }
+    let filterStatusInProgress = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'inprogress');
+    for (let j = 0; j < filterStatusInProgress.length; j++) {
+        let statusInprogress = filterStatusInProgress[j];
+        console.table(statusInprogress)
+    }
+    let filterStatusTesting = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'testing');
+    for (let k = 0; k < filterStatusTesting.length; k++) {
+        let statusTesting = filterStatusTesting[k];
+        console.table(statusTesting)
+    }
+
+    let filterStatusdone = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'done');
+    for (let m = 0; m < filterStatusdone.length; m++) {
+        let statusdone = filterStatusdone[m];
+        console.table(statusdone)
+    }
+}
 
 
 
@@ -117,9 +202,6 @@ function click_nav_board() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
-
-
-
 }
 
 function click_nav_backlog() {
@@ -144,8 +226,6 @@ function click_nav_addtask() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = '';
     document.getElementById('help_container').style.display = 'none';
-
-
 }
 
 function click_help() {
@@ -158,7 +238,6 @@ function click_help() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = '';
-
 }
 
 
