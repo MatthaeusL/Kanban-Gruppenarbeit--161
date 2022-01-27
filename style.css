@@ -20,23 +20,23 @@ body {
     margin-bottom: 0rem;
 }
 
-
-
-:root{
+:root {
     --bgStandard: blue;
     --bgWhite: white;
     --bgGray: #eeeeee;
-    --bgchevron:#aeaeae;
+    --bgchevron: #aeaeae;
     --bgAqua: aqua;
 }
 
-.header{
+.header {
     background-color: var(--bgStandard);
     padding: 1rem;
-    padding: 
-    clamp()
+    padding: clamp()
 }
+
+
 /* -----------------------------------------------------------Navbar Container------------------------------------------ */
+
 .mainContainer {
     display: flex;
     height: 100vh;
@@ -67,7 +67,6 @@ body {
     border-color: var(--bgWhite);
 }
 
-
 .logoContainer {
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -87,7 +86,9 @@ body {
     border-style: solid;
 }
 
+
 /* -----------------------------------------------------------Content Container Add Task-------------------------------- */
+
 .mainContent {
     height: 100vh;
     padding-left: 1rem;
@@ -165,7 +166,9 @@ body {
     background-color: var(--bgStandard);
 }
 
+
 /* -------------------------------------------------------Content Container Backlog------------------------------------- */
+
 .contentBacklog {
     margin-top: 3rem;
     display: flex;
@@ -209,7 +212,9 @@ body {
     align-items: center;
 }
 
+
 /* -------------------------------------------------------Content Container Board------------------------------------- */
+
 .mainBoardContainer {
     display: flex;
     justify-content: space-between;

@@ -60,6 +60,7 @@ async function addUser(name) {
 async function init() {
     // await downloadFromServer();
     // users = JSON.parse(backend.getItem('users')) || [];
+    click_nav_board()
 }
 
 function deleteUser(name) {
@@ -68,5 +69,61 @@ function deleteUser(name) {
 }
 
 /**
- * 
+ * ************************ navigation to divs ******************************************
  */
+
+function click_nav_board() {
+    document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_backlog').style = '';
+    document.getElementById('nav_addtask').style = '';
+    document.getElementById('nav_help').style = '';
+
+    document.getElementById('board_container').style.display = '';
+    document.getElementById('backlog_container').style.display = 'none';
+    document.getElementById('addTask_container').style.display = 'none';
+    document.getElementById('help_container').style.display = 'none';
+
+
+
+}
+
+function click_nav_backlog() {
+    document.getElementById('nav_board').style = '';
+    document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_addtask').style = '';
+    document.getElementById('nav_help').style = '';
+
+    document.getElementById('board_container').style.display = 'none';
+    document.getElementById('backlog_container').style.display = '';
+    document.getElementById('addTask_container').style.display = 'none';
+    document.getElementById('help_container').style.display = 'none';
+}
+
+function click_nav_addtask() {
+    document.getElementById('nav_board').style = '';
+    document.getElementById('nav_backlog').style = '';
+    document.getElementById('nav_addtask').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_help').style = '';
+
+    document.getElementById('board_container').style.display = 'none';
+    document.getElementById('backlog_container').style.display = 'none';
+    document.getElementById('addTask_container').style.display = '';
+    document.getElementById('help_container').style.display = 'none';
+
+
+}
+
+function click_help() {
+    document.getElementById('nav_board').style = '';
+    document.getElementById('nav_backlog').style = '';
+    document.getElementById('nav_addtask').style = '';
+    document.getElementById('nav_help').style = 'border-left : solid var(--bgWhite) .4rem;';
+
+    document.getElementById('board_container').style.display = 'none';
+    document.getElementById('backlog_container').style.display = 'none';
+    document.getElementById('addTask_container').style.display = 'none';
+    document.getElementById('help_container').style.display = '';
+
+
+
+}
