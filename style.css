@@ -25,7 +25,11 @@ body {
     --bgWhite: white;
     --bgGray: #eeeeee;
     --bgchevron: #aeaeae;
-    --bgAqua: aqua;
+    --bgMarketing: aqua;
+    --bgSale: #08ff00;
+    --bgProduct: #fff300;
+    --bgService: #ff0000;
+    --bgDesign: #aa00ff;
 }
 
 .header {
@@ -191,7 +195,7 @@ body {
     border-radius: 1rem;
     border-left-width: 0.75rem;
     border-left-style: solid;
-    border-left-color: var(--bgAqua);
+    border-left-color: var(--bgMarketing);
     margin-bottom: 0.75rem;
 }
 
@@ -199,6 +203,12 @@ body {
     display: flex;
     align-items: center;
     width: 24.3rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
 }
 
 .department {
