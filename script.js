@@ -63,7 +63,7 @@ let kanbanArray = [{
         'img': 'face1.jpg',
         'cathegory': 'Marketing',
         'color': '--bgMarketing',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod, placeat eius maxime quibusdam? Laudantium quam vel aperiam placeat.',
+        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
     }, {
         'userid': 'userid_1',
@@ -73,7 +73,7 @@ let kanbanArray = [{
         'img': 'face3.jpg',
         'cathegory': 'Sale',
         'color': '--bgSale',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod, placeat eius maxime quibusdam? Laudantium quam vel aperiam placeat.',
+        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
     }, {
         'userid': 'userid_2',
@@ -83,7 +83,7 @@ let kanbanArray = [{
         'img': 'face5.jpg',
         'cathegory': 'Design',
         'color': '--bgDesign',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod, placeat eius maxime quibusdam? Laudantium quam vel aperiam placeat.',
+        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
     }, {
         'userid': 'userid_3',
@@ -93,7 +93,7 @@ let kanbanArray = [{
         'img': 'face2.jpg',
         'cathegory': 'Sale',
         'color': '--bgSale',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod, placeat eius maxime quibusdam? Laudantium quam vel aperiam placeat.',
+        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
     }, {
         'userid': 'userid_4',
@@ -103,7 +103,7 @@ let kanbanArray = [{
         'img': 'face4.jpg',
         'cathegory': 'Service',
         'color': '--bgService',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod, placeat eius maxime quibusdam? Laudantium quam vel aperiam placeat.',
+        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
     }]
 }]
