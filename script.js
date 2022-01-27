@@ -2,7 +2,7 @@ let kanbanArray = [{
     'tasks': [{
             'taskid': 'taskid_0',
             'title': 'title',
-            'cathegory': 'cathegory',
+            'category': 'category',
             'description': 'description',
             'duedate': 'duedate',
             'urgency': 'urgency',
@@ -13,7 +13,7 @@ let kanbanArray = [{
         {
             'taskid': 'taskid_1',
             'title': 'title',
-            'cathegory': 'cathegory',
+            'category': 'category',
             'description': 'description',
             'duedate': 'duedate',
             'urgency': 'urgency',
@@ -24,7 +24,7 @@ let kanbanArray = [{
         {
             'taskid': 'taskid_0',
             'title': 'title',
-            'cathegory': 'cathegory',
+            'category': 'category',
             'description': 'description',
             'duedate': 'duedate',
             'urgency': 'urgency',
@@ -35,7 +35,7 @@ let kanbanArray = [{
         {
             'taskid': 'taskid_2',
             'title': 'title',
-            'cathegory': 'cathegory',
+            'category': 'category',
             'description': 'description',
             'duedate': 'duedate',
             'urgency': 'urgency',
@@ -46,13 +46,12 @@ let kanbanArray = [{
         {
             'taskid': 'taskid_3',
             'title': 'title',
-            'cathegory': '',
+            'category': '',
             'description': 'description',
             'duedate': 'duedate',
             'urgency': 'urgency',
             'assignedTo': 'assignedTo',
             'status': 'todo',
-
         }
     ],
     'users': [{
@@ -61,7 +60,7 @@ let kanbanArray = [{
         'email': 'Klaus_Meier@web.de',
         'key': 'key',
         'img': 'face1.jpg',
-        'cathegory': 'Marketing',
+        'category': 'Marketing',
         'color': '--bgMarketing',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
@@ -71,7 +70,7 @@ let kanbanArray = [{
         'email': 'InavBolski@Yahoo.de',
         'key': 'key',
         'img': 'face3.jpg',
-        'cathegory': 'Sale',
+        'category': 'Sale',
         'color': '--bgSale',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
@@ -81,7 +80,7 @@ let kanbanArray = [{
         'email': 'Laura-Trautmann@t-online.de',
         'key': 'key',
         'img': 'face5.jpg',
-        'cathegory': 'Design',
+        'category': 'Design',
         'color': '--bgDesign',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
@@ -91,7 +90,7 @@ let kanbanArray = [{
         'email': 'MüllerTom@GMX.de',
         'key': 'key',
         'img': 'face2.jpg',
-        'cathegory': 'Sale',
+        'category': 'Sale',
         'color': '--bgSale',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
@@ -101,7 +100,7 @@ let kanbanArray = [{
         'email': 'Schneider@web.de',
         'key': 'key',
         'img': 'face4.jpg',
-        'cathegory': 'Service',
+        'category': 'Service',
         'color': '--bgService',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
 
@@ -115,7 +114,7 @@ let users = {
     'email': 'email',
     'key': 'key',
     'img': 'img',
-    'cathegory': 'cathegory',
+    'category': 'category',
     'color': 'color',
 
 };
@@ -149,9 +148,6 @@ function renderBoard() {
         console.table(statusdone)
     }
 }
-
-
-
 
 // function addUser() {
 //     users.push('John');
@@ -246,7 +242,7 @@ async function backlogUsers() {
             </div>
 
             <div class="department">
-                <span>${usersInArray[i]['cathegory']}</span>
+                <span>${usersInArray[i]['category']}</span>
             </div>
 
             <div class="details">
@@ -256,3 +252,30 @@ async function backlogUsers() {
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[i]['color']})`;
     }
 }
+
+/**
+ * Adding a new Task. First: Get all input information, second: push in Kanbanarray
+ */
+function addNewTask () {
+    // optional: check if all Information are made completely
+     let taskid = 'taskid'+kanbanArray.length+1;
+     let title = document.getElementById('title').value;
+     let category = document.getElementsByName('category').value;
+     let description =document.getElementById('description').value;
+     let duedate = document.getElementById('duedate').value;
+     let urgency = document.getElementById('urgency').value;
+     let assignedTo = "Frau mit Brille";
+     let status = 'todo';
+     let newTask = {
+        'taskid': taskid,
+        'title': title,
+        'category': category,
+        'description': description,
+        'duedate': duedate,
+        'urgency': urgency,
+        'assignedTo': assignedTo,
+        'status': status,
+    }
+    kanbanArray[0]['tasks'].push(newTask);
+    console.table(kanbanArray[0]['tasks'])
+     }

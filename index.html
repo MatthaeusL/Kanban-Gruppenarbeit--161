@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -105,7 +106,8 @@
                             </div>
 
                             <div class="details">
-                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cupiditate numqua</span>
+                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cupiditate
+                                    numqua</span>
                             </div>
                         </div>
 
@@ -124,10 +126,11 @@
                             </div>
 
                             <div class="details">
-                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cupiditate numqua</span>
+                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cupiditate
+                                    numqua</span>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
             <!-- ------------------------------------------------------Add Task Container------------------------------------------- -->
@@ -140,12 +143,19 @@
                 <div class="content ">
                     <div class="left " style="margin-right: 3rem; ">
                         <div>
-                            <h4 class="span marginTop ptSansBold ">TITEL</h4>
-                            <input type="text " style="width: 20rem;height: 2rem; ">
+                            <h4 class="span marginTop ptSansBold ">TITLE</h4>
+                            <input type="text " id="title" style="width: 20rem;height: 2rem; ">
                         </div>
 
                         <div>
                             <h4 class="span ptSansBold ">CATEGORY</h4>
+                            <!-- *****************Dropdown Menu Cattegory: to be styled -->
+                            <select name="category" class="textfield ">
+                                <option value="marketing">Marketing</option>
+                                <option value="sales">Sales</option>
+                                <option value="design">Design</option>
+                                <option value="service">Service</option>
+                            </select>
                             <div style="display: flex; ">
                                 <input type="text " class="textfield ">
                                 <div class="chevron ">
@@ -156,7 +166,7 @@
 
                         <div>
                             <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                            <input type="text " style="width: 20rem; height: 9rem; ">
+                            <input type="text " id="description" style="width: 20rem; height: 9rem; ">
                         </div>
 
                     </div>
@@ -165,7 +175,7 @@
                         <div>
                             <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                             <div style="display: flex; ">
-                                <input type="date " class="textfield ">
+                                <input type="date " class="textfield " id="duedate">
                                 <div class="chevron ">
                                     <img src="./logo/icons8-calendar-150.png " style="width: 1rem; ">
                                 </div>
@@ -173,6 +183,12 @@
 
                             <div>
                                 <h4 class="span ptSansBold ">URGENCY</h4>
+                      <!-- *****************Dropdown Menu Urgency: to be styled -->
+                                <select  id="urgency" class="textfield ">
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low ">Low</option>
+                                </select>
                                 <div style="display: flex; ">
                                     <input type="text " class="textfield ">
                                     <div class="chevron ">
@@ -190,7 +206,7 @@
 
                                 <div class="btnContainer ">
                                     <button class="btn ">CANCEL</button>
-                                    <button class="btn ">CREATE TASK</button>
+                                    <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
                                 </div>
                             </div>
                         </div>
