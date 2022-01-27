@@ -260,7 +260,7 @@ function addNewTask () {
     // optional: check if all Information are made completely
      let taskid = 'taskid'+kanbanArray.length+1;
      let title = document.getElementById('title').value;
-     let category = document.getElementsByName('category').value;
+     let category = document.getElementById('category').value;
      let description =document.getElementById('description').value;
      let duedate = document.getElementById('duedate').value;
      let urgency = document.getElementById('urgency').value;
