@@ -50,6 +50,8 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 10rem;
+    position: fixed;
+    height: 100vh;
 }
 
 .hover {
@@ -93,6 +95,7 @@ body {
     height: 100vh;
     padding-left: 1rem;
     padding-top: 2.5rem;
+    margin-left: 10rem;
 }
 
 .content {
