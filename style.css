@@ -119,6 +119,19 @@ body {
     height: 2rem;
 }
 
+select {
+    -moz-appearance: none;
+    width: 20.6rem;
+    height: 2.5rem;
+    background-color: var(--bgWhite);
+    background-image:url(./logo/chevron\ .png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position-x: 18.8rem;
+}
+
+
 .chevron {
     width: 2rem;
     display: flex;
@@ -241,3 +254,4 @@ body {
     height: 60rem;
     background-color: var(--bgGray);
 }
+
