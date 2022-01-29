@@ -1,6 +1,6 @@
 let kanbanArray = [{
     'tasks': [{
-            'taskid': 'taskid_0',
+            'taskid': 0,
             'title': 'title',
             'category': 'category',
             'description': 'description',
@@ -11,7 +11,7 @@ let kanbanArray = [{
 
         },
         {
-            'taskid': 'taskid_1',
+            'taskid': 1,
             'title': 'title',
             'category': 'category',
             'description': 'description',
@@ -22,7 +22,7 @@ let kanbanArray = [{
 
         },
         {
-            'taskid': 'taskid_0',
+            'taskid': 2,
             'title': 'title',
             'category': 'category',
             'description': 'description',
@@ -33,7 +33,7 @@ let kanbanArray = [{
 
         },
         {
-            'taskid': 'taskid_2',
+            'taskid': 3,
             'title': 'title',
             'category': 'category',
             'description': 'description',
@@ -44,7 +44,7 @@ let kanbanArray = [{
 
         },
         {
-            'taskid': 'taskid_3',
+            'taskid': 4,
             'title': 'title',
             'category': '',
             'description': 'description',
@@ -129,30 +129,72 @@ let tasksInArray = kanbanArray[0]["tasks"];
 let findUser = usersInArray.find((usersInArray) => usersInArray.userid = 'userid_1');
 let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 'username');
 
+let currentDragged;
+
 
 function renderBoard() {
     let filterStatusTodo = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'todo');
+    let boardTodo = document.getElementById('board_todo');
+    boardTodo.innerHTML = '';
     for (let i = 0; i < filterStatusTodo.length; i++) {
-        let statusTodoi = filterStatusTodo[i];
-        console.table(statusTodoi)
+        let status = filterStatusTodo[i];
+        boardTodo.innerHTML += generateHTML(status);
+
+        console.table(status)
     }
     let filterStatusInProgress = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'inprogress');
+    let boardInprogress = document.getElementById('board_inprogress');
+    boardInprogress.innerHTML = '';
     for (let j = 0; j < filterStatusInProgress.length; j++) {
-        let statusInprogress = filterStatusInProgress[j];
-        console.table(statusInprogress)
+        let status = filterStatusInProgress[j];
+
+        boardInprogress.innerHTML += generateHTML(status);
+        console.table(status);
     }
     let filterStatusTesting = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'testing');
+    let boardTesting = document.getElementById('board_testing');
+    boardTesting.innerHTML = '';
     for (let k = 0; k < filterStatusTesting.length; k++) {
-        let statusTesting = filterStatusTesting[k];
-        console.table(statusTesting)
+        let status = filterStatusTesting[k];
+
+        boardTesting.innerHTML += generateHTML(status);
+        console.table(status)
     }
 
     let filterStatusdone = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'done');
+    let boardDone = document.getElementById('board_done');
+    boardDone.innerHTML = '';
     for (let m = 0; m < filterStatusdone.length; m++) {
-        let statusdone = filterStatusdone[m];
-        console.table(statusdone)
+        let status = filterStatusdone[m];
+        boardDone.innerHTML += generateHTML(status);
+
+        console.table(status)
     }
 }
+
+function startDragging(id) {
+    currentDragged = id;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(status) {
+    tasksInArray[currentDragged]['status'] = status;
+    renderBoard()
+}
+
+function generateHTML(status) {
+    return `        
+            <div class="task" draggable="true" ondragstart="startDragging(${status['taskid']})">
+                taskid = ${status['taskid']} </br>
+                status = ${status['status']}
+            </div>       
+        `;
+}
+
+
 
 // function addUser() {
 //     users.push('John');
@@ -166,8 +208,9 @@ function renderBoard() {
 async function init() {
     // await downloadFromServer();
     // users = JSON.parse(backend.getItem('users')) || [];
-    click_nav_board()
-    backlogUsers()
+    // click_nav_board()
+    // backlogUsers()
+    renderBoard()
 }
 
 /*function deleteUser() {
