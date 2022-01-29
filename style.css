@@ -255,3 +255,31 @@ select {
     background-color: var(--bgGray);
 }
 
+.boardColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 16rem;
+}
+
+.leisten {
+    background-color: blue;
+    width: 16rem;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainconntainer {
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task {
+    background-color: beige;
+    height: 100px;
+    margin: 5px;
+}

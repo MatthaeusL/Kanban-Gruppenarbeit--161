@@ -131,8 +131,8 @@ let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 
 
 let currentDragged;
 
-
-function renderBoard() {
+// Fun
+async function renderBoard() {
     let filterStatusTodo = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'todo');
     let boardTodo = document.getElementById('board_todo');
     boardTodo.innerHTML = '';
@@ -210,7 +210,7 @@ async function init() {
     // users = JSON.parse(backend.getItem('users')) || [];
     // click_nav_board()
     // backlogUsers()
-    renderBoard()
+   await renderBoard();
 }
 
 /*function deleteUser() {
