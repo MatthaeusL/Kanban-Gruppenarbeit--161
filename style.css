@@ -263,10 +263,10 @@ select {
   width: 16rem;
 }
 
-.leisten {
-    background-color: blue;
+.singleCard {
     width: 16rem;
-    margin-left: 50px;
+    min-height: 50vh;
+    /* margin-left: 50px; */
     display: flex;
     flex-direction: column;
 }
@@ -280,6 +280,8 @@ select {
 
 .task {
     background-color: beige;
-    height: 100px;
-    margin: 5px;
+    height: 15rem;
+    margin: .5rem 0 .5rem 0;
+
 }
+

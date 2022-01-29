@@ -1,54 +1,50 @@
 let kanbanArray = [{
     'tasks': [{
         'taskid': '0',
-        'title': 'title',
+        'title': 'Code some',
         'category': 'Development',
         'description': 'A Task for Inav: Code 10000 Rows',
-        'duedate': 'duedate',
+        'duedate': '30th Feb. 2022',
         'urgency': 'urgency',
         'assignedTo': 'Inav Bolski',
         'status': 'todo',
-
     },
     {
         'taskid': '1',
-        'title': 'title',
+        'title': 'Check Data',
         'category': 'Management',
         'description': 'A task for Klaus. Check Business Data for next trades.',
-        'duedate': 'duedate',
+        'duedate': 'yesterday',
         'urgency': 'urgency',
         'assignedTo': 'Klaus Meier',
         'status': 'inprogress',
-
     },
     {
         'taskid': '2',
-        'title': 'title',
+        'title': 'Party',
         'category': 'Inhouse',
         'description': 'A task for Laura: Organise a massive carnival Party',
-        'duedate': 'duedate',
+        'duedate': 'tomorrow',
         'urgency': 'urgency',
         'assignedTo': 'Laura Trautmann',
         'status': 'testing',
-
     },
     {
         'taskid': '3',
-        'title': 'title',
+        'title': 'Aquise',
         'category': 'Sales',
         'description': 'A Task for Tom: Get more clients by end of the day',
-        'duedate': 'duedate',
+        'duedate': '+3d',
         'urgency': 'urgency',
         'assignedTo': 'Tom Müller',
         'status': 'done',
-
     },
     {
         'taskid': '4',
-        'title': 'title',
+        'title': 'Hire people',
         'category': 'Human ressources',
         'description': 'A task for Karin: Hire some rocket scientists',
-        'duedate': 'duedate',
+        'duedate': '31th Feb. 22',
         'urgency': 'urgency',
         'assignedTo': 'Karin Schneider',
         'status': 'todo',
@@ -63,7 +59,6 @@ let kanbanArray = [{
         'category': 'Marketing',
         'color': '--bgMarketing',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-
     },
     {
         'userid': 'userid_1',
@@ -74,7 +69,6 @@ let kanbanArray = [{
         'category': 'Sale',
         'color': '--bgSale',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-
     },
     {
         'userid': 'userid_2',
@@ -85,7 +79,6 @@ let kanbanArray = [{
         'category': 'Design',
         'color': '--bgDesign',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-
     },
     {
         'userid': 'userid_3',
@@ -96,7 +89,6 @@ let kanbanArray = [{
         'category': 'Sale',
         'color': '--bgSale',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-
     },
     {
         'userid': 'userid_4',
@@ -107,11 +99,9 @@ let kanbanArray = [{
         'category': 'Service',
         'color': '--bgService',
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-
     }
     ]
 }]
-
 
 let users = {
     'userid_1': 'userid_12',
@@ -121,7 +111,6 @@ let users = {
     'img': 'img',
     'category': 'category',
     'color': 'color',
-
 };
 
 let usersInArray = kanbanArray[0]["users"];
@@ -131,43 +120,53 @@ let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 
 
 let currentDragged;
 
-// Fun
-async function renderBoard() {
+function renderBoard() {
+    renderBoardTodo();
+    renderBoardInprogress();
+    renderBoardTesting();
+    renderBoardDone();
+}
+
+function renderBoardTodo() {
     let filterStatusTodo = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'todo');
     let boardTodo = document.getElementById('board_todo');
-    boardTodo.innerHTML = '';
+    boardTodo.innerHTML = "";
     for (let i = 0; i < filterStatusTodo.length; i++) {
         let status = filterStatusTodo[i];
-        boardTodo.innerHTML += generateHTML(status);
-
+        boardTodo.innerHTML += generateBoardHTML(status);
         console.table(status)
     }
+}
+
+function renderBoardInprogress() {
     let filterStatusInProgress = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'inprogress');
     let boardInprogress = document.getElementById('board_inprogress');
     boardInprogress.innerHTML = '';
     for (let j = 0; j < filterStatusInProgress.length; j++) {
         let status = filterStatusInProgress[j];
-
-        boardInprogress.innerHTML += generateHTML(status);
+        boardInprogress.innerHTML += generateBoardHTML(status);
         console.table(status);
     }
+}
+
+function renderBoardTesting() {
     let filterStatusTesting = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'testing');
     let boardTesting = document.getElementById('board_testing');
     boardTesting.innerHTML = '';
     for (let k = 0; k < filterStatusTesting.length; k++) {
         let status = filterStatusTesting[k];
-
-        boardTesting.innerHTML += generateHTML(status);
+        boardTesting.innerHTML += generateBoardHTML(status);
         console.table(status)
     }
+}
 
+function renderBoardDone() {
     let filterStatusdone = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'done');
     let boardDone = document.getElementById('board_done');
     boardDone.innerHTML = '';
     for (let m = 0; m < filterStatusdone.length; m++) {
         let status = filterStatusdone[m];
-        boardDone.innerHTML += generateHTML(status);
-
+        boardDone.innerHTML += generateBoardHTML(status);
         console.table(status)
     }
 }
@@ -185,15 +184,38 @@ function moveTo(status) {
     renderBoard()
 }
 
-function generateHTML(status) {
-    return `        
-            <div class="task" draggable="true" ondragstart="startDragging(${status['taskid']})">
-                taskid = ${status['taskid']} </br>
-                status = ${status['status']}
-            </div>       
+function getProfilePic(currentUser) {
+    for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
+        if (kanbanArray[0]['users'][i]['username'] == currentUser) {
+            return i;
+        }
+    }
+}
+
+function generateBoardHTML(status) {
+let currentUserTest = status['assignedTo'];
+console.table('Status: '+status); 
+console.log(currentUserTest);
+let profilePicID =  getProfilePic(currentUserTest); 
+console.log(profilePicID);
+    return `  <div class="task" draggable="true" ondragstart="startDragging(${status['taskid']})">
+                date = ${status['duedate']} </br>
+                title = ${status['title']} </br>
+                dec = ${status['description']} </br>
+                status = ${status['status']} </br>
+                category = ${status['category']}
+                <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
+
         `;
 }
 
+async function getTaskID(currentUser) {
+    for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
+        if (kanbanArray[0]['tasks'][i]['taskid'] == currentUser) {
+            return i;
+        }
+    }
+}
 
 
 // function addUser() {
@@ -210,7 +232,7 @@ async function init() {
     // users = JSON.parse(backend.getItem('users')) || [];
     // click_nav_board()
     // backlogUsers()
-   await renderBoard();
+    await renderBoard();
 }
 
 /*function deleteUser() {
@@ -244,7 +266,6 @@ async function click_nav_backlog() {
     document.getElementById('backlog_container').style.display = '';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
-    await backlogTasks();
 }
 
 function click_nav_addtask() {
@@ -290,7 +311,7 @@ function click_help() {
 //                     <a href="mailto:${usersInArray[i]['email']}">${usersInArray[i]['email']}</a>
 //                 </div>
 //             </div>
-            
+
 //             <div class="department">
 //                 <span>${usersInArray[i]['category']}</span>
 //             </div>
@@ -339,7 +360,7 @@ async function backlogTasks() {
 
 async function getUserID(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
-        if (kanbanArray[0]['users'][i]['username'] == currentUser){
+        if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
         }
     }
@@ -350,14 +371,14 @@ async function getUserID(currentUser) {
  */
 function addNewTask() {
     // optional: check if all Information are made completely
-    let taskid = 'taskid' + kanbanArray.length + 1;
+    let taskid = 'taskid' + tasksInArray.length + 1;
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
     let duedate = document.getElementById('duedate').value;
     let urgency = document.getElementById('urgency').value;
     let assignedTo = "Laura Trautmann";
-    let status = 'todo';
+    let status = 'backlog';
     let newTask = {
         'taskid': taskid,
         'title': title,
@@ -368,6 +389,7 @@ function addNewTask() {
         'assignedTo': assignedTo,
         'status': status,
     }
-    kanbanArray[0]['tasks'].push(newTask);
-    console.table(kanbanArray[0]['tasks'])
+    tasksInArray.push(newTask);
+    click_nav_backlog();
+    backlogTasks();
 }
