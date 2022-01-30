@@ -51,7 +51,7 @@ let kanbanArray = [{
     }
     ],
     'users': [{
-        'userid': '5',
+        'userid': '0',
         'username': 'Klaus Meier',
         'email': 'Klaus_Meier@web.de',
         'key': 'key',
@@ -61,7 +61,7 @@ let kanbanArray = [{
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
     },
     {
-        'userid': 'userid_1',
+        'userid': '1',
         'username': 'Inav Bolski',
         'email': 'InavBolski@Yahoo.de',
         'key': 'key',
@@ -71,7 +71,7 @@ let kanbanArray = [{
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
     },
     {
-        'userid': 'userid_2',
+        'userid': '2',
         'username': 'Laura Trautmann',
         'email': 'Laura-Trautmann@t-online.de',
         'key': 'key',
@@ -81,7 +81,7 @@ let kanbanArray = [{
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
     },
     {
-        'userid': 'userid_3',
+        'userid': '3',
         'username': 'Tom Müller',
         'email': 'MüllerTom@GMX.de',
         'key': 'key',
@@ -91,7 +91,7 @@ let kanbanArray = [{
         'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
     },
     {
-        'userid': 'userid_4',
+        'userid': '4',
         'username': 'Karin Schneider',
         'email': 'Schneider@web.de',
         'key': 'key',
@@ -159,7 +159,6 @@ function renderBoardTodo() {
     for (let i = 0; i < filterStatusTodo.length; i++) {
         let status = filterStatusTodo[i];
         boardTodo.innerHTML += generateBoardHTML(status);
-        console.table(status)
     }
 }
 
@@ -170,7 +169,6 @@ function renderBoardInprogress() {
     for (let j = 0; j < filterStatusInProgress.length; j++) {
         let status = filterStatusInProgress[j];
         boardInprogress.innerHTML += generateBoardHTML(status);
-        console.table(status);
     }
 }
 
@@ -181,7 +179,6 @@ function renderBoardTesting() {
     for (let k = 0; k < filterStatusTesting.length; k++) {
         let status = filterStatusTesting[k];
         boardTesting.innerHTML += generateBoardHTML(status);
-        console.table(status)
     }
 }
 
@@ -192,7 +189,6 @@ function renderBoardDone() {
     for (let m = 0; m < filterStatusdone.length; m++) {
         let status = filterStatusdone[m];
         boardDone.innerHTML += generateBoardHTML(status);
-        console.table(status)
     }
 }
 
@@ -209,7 +205,7 @@ function moveTo(status) {
     renderBoard()
 }
 
-function getProfilePic(currentUser) {
+ function getProfilePic(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
@@ -217,12 +213,12 @@ function getProfilePic(currentUser) {
     }
 }
 
-function generateBoardHTML(status) {
+ function generateBoardHTML(status) {
 let currentUserTest = status['assignedTo'];
-console.table('Status: '+status); 
-console.log(currentUserTest);
-let profilePicID =  getProfilePic(currentUserTest); 
-console.log(profilePicID);
+// console.table('Status: '+status); 
+// console.log(currentUserTest);
+let profilePicID =   getProfilePic(currentUserTest); 
+// console.log(profilePicID);
     return `  <div class="task" draggable="true" ondragstart="startDragging(${status['taskid']})">
                 date = ${status['duedate']} </br>
                 title = ${status['title']} </br>
@@ -233,7 +229,7 @@ console.log(profilePicID);
         `;
 }
 
-async function getTaskID(currentUser) {
+function getTaskID(currentUser) {
     for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
         if (kanbanArray[0]['tasks'][i]['taskid'] == currentUser) {
             return i;
@@ -258,7 +254,7 @@ async function click_nav_board() {
     // await renderBoard();
 }
 
-function click_nav_backlog() {
+async function click_nav_backlog() {
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem;';
     document.getElementById('nav_addtask').style = '';
@@ -268,6 +264,7 @@ function click_nav_backlog() {
     document.getElementById('backlog_container').style.display = '';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
+    await backlogTasks();
 }
 
 function click_nav_addtask() {
@@ -342,28 +339,33 @@ async function backlogTasks() {
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
     for (let i = 0; i < tasksInArray.length; i++) {
+        console.log(i);
         let currentUser = tasksInArray[i]['assignedTo'];
         let currentUserID = await getUserID(currentUser);
-        userContainer.innerHTML += `
-        <div id="backlog_user${i}" class="infoContainer">
-            <div class="imgContainer3">
-                <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
-                <div class="row">
-                    <span>${usersInArray[currentUserID]['username']}</span>
-                    <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
-                </div>
-            </div>
-            
-            <div class="department">
-                <span>${tasksInArray[i]['category']}</span>
-            </div>
-
-            <div class="details">
-                <span>${tasksInArray[i]['description']}</span>
-            </div>
-        </div>`;
-        document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[i]['color']})`;
+        userContainer.innerHTML += await generateBacklogHTML(i, currentUserID);
+        document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[currentUserID]['color']})`;
     }
+}
+
+async function generateBacklogHTML(i, currentUserID){
+    return `
+    <div id="backlog_user${i}" class="infoContainer">
+        <div class="imgContainer3">
+            <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
+            <div class="row">
+                <span>${usersInArray[currentUserID]['username']}</span>
+                <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
+            </div>
+        </div>
+        
+        <div class="department">
+            <span>${tasksInArray[i]['category']}</span>
+        </div>
+
+        <div class="details">
+            <span>${tasksInArray[i]['description']}</span>
+        </div>
+    </div>`;
 }
 
 async function getUserID(currentUser) {
@@ -379,7 +381,7 @@ async function getUserID(currentUser) {
 /**
  * Adding a new Task. First: Get all input information, second: push in Kanbanarray
  */
-function addNewTask() {
+async function addNewTask() {
     // optional: check if all Information are made completely
     let taskid = 'taskid' + tasksInArray.length + 1;
     let title = document.getElementById('title').value;
@@ -399,7 +401,7 @@ function addNewTask() {
         'assignedTo': assignedTo,
         'status': status,
     }
-    tasksInArray.push(newTask);
+    await tasksInArray.push(newTask);
     click_nav_backlog();
-    backlogTasks();
+    await backlogTasks();
 }
