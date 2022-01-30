@@ -24,6 +24,7 @@ body {
     --bgStandard: blue;
     --bgWhite: white;
     --bgGray: #eeeeee;
+    --bgLightBlue: #f4f3fb;
     --bgchevron: #aeaeae;
     --bgMarketing: aqua;
     --bgSale: #08ff00;
@@ -103,7 +104,7 @@ body {
 }
 
 .content {
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     padding: 2rem;
     margin-top: 2.5rem;
     display: flex;
@@ -130,7 +131,6 @@ select {
     background-size: 1rem;
     background-position-x: 18.8rem;
 }
-
 
 .chevron {
     width: 2rem;
@@ -176,7 +176,7 @@ select {
     border-radius: 0.7rem;
     font-weight: bold;
     color: var(--bgStandard);
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     cursor: pointer;
     border-style: hidden;
 }
@@ -184,6 +184,30 @@ select {
 .btn:hover {
     color: var(--bgWhite);
     background-color: var(--bgStandard);
+}
+
+.drpDown {
+    appearance: none;
+    padding-left: 1rem;
+    border-radius: .2rem;
+}
+
+.textarea {
+    padding: 1rem;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.borderRadius {
+    border-radius: .2rem;
+}
+
+.borderRadiusLeft {
+    border-bottom-left-radius: .2rem;
+    border-top-left-radius: .2rem;
+}
+
+.borderGrey {
+    border: solid .12rem #d8d8d8;
 }
 
 
@@ -203,7 +227,7 @@ select {
     justify-content: space-between;
     width: 72rem;
     margin-top: 1rem;
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     padding: 1rem;
     border-radius: 1rem;
     border-left-width: 0.75rem;
@@ -264,7 +288,7 @@ select {
     align-items: center;
     min-height: 80vh;
     width: 16rem;
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
 }
 
 .singleCard {
@@ -323,6 +347,6 @@ h3 {
     padding-top: 1.7rem;
 }
 
-.singleCardDescription{
-color: var(--bgchevron);
+.singleCardDescription {
+    color: var(--bgchevron);
 }
