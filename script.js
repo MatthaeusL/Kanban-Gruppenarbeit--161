@@ -113,12 +113,37 @@ let users = {
     'color': 'color',
 };
 
+
+// function addUser() {
+//     users.push('John');
+//     backend.setItem('users', JSON.stringify(users));
+// }
+/*async function addUser(name) {
+    users.push(name);
+    await backend.setItem('users', JSON.stringify(users));
+
+}*/
+async function init() {
+    // await downloadFromServer();
+    // users = JSON.parse(backend.getItem('users')) || [];
+    // click_nav_board()
+    // backlogUsers()
+    await renderBoard();
+}
+
+/*function deleteUser() {
+    backend.deleteItem(kanbanArray);
+}
+*/
+
 let usersInArray = kanbanArray[0]["users"];
 let tasksInArray = kanbanArray[0]["tasks"];
 let findUser = usersInArray.find((usersInArray) => usersInArray.userid = 'userid_1');
 let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 'username');
 
 let currentDragged;
+
+// -----------------------------------------------Board Script--------------------------------------------------------------------------
 
 function renderBoard() {
     renderBoardTodo();
@@ -205,7 +230,6 @@ console.log(profilePicID);
                 status = ${status['status']} </br>
                 category = ${status['category']}
                 <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
-
         `;
 }
 
@@ -217,30 +241,8 @@ async function getTaskID(currentUser) {
     }
 }
 
-
-// function addUser() {
-//     users.push('John');
-//     backend.setItem('users', JSON.stringify(users));
-// }
-/*async function addUser(name) {
-    users.push(name);
-    await backend.setItem('users', JSON.stringify(users));
-
-}*/
-async function init() {
-    // await downloadFromServer();
-    // users = JSON.parse(backend.getItem('users')) || [];
-    // click_nav_board()
-    // backlogUsers()
-    await renderBoard();
-}
-
-/*function deleteUser() {
-    backend.deleteItem(kanbanArray);
-}
-
 /**
- * ************************ navigation to divs ******************************************
+ * ************************ ******************************navigation to divs ******************************************
  */
 
 async function click_nav_board() {
@@ -256,7 +258,7 @@ async function click_nav_board() {
     // await renderBoard();
 }
 
-async function click_nav_backlog() {
+function click_nav_backlog() {
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem;';
     document.getElementById('nav_addtask').style = '';
@@ -297,6 +299,9 @@ function click_help() {
  *  ***************User Einfügen*****************
  * Durch neue Funktion ersetzt
  */
+
+/**----------------------------------------------------Backlog Script--------------------------------------------------------- */
+
 // async function backlogUsers() {
 //     let userContainer = document.getElementById('backlog_users');
 //     userContainer.innerHTML = '';
@@ -323,6 +328,9 @@ function click_help() {
 //         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[i]['color']})`;
 //     }
 // }
+
+
+
 
 /**
  * Render Backlog by Task
@@ -365,6 +373,8 @@ async function getUserID(currentUser) {
         }
     }
 }
+
+// -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
 /**
  * Adding a new Task. First: Get all input information, second: push in Kanbanarray
