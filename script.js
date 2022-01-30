@@ -1,105 +1,105 @@
 let kanbanArray = [{
     'tasks': [{
-        'taskid': '0',
-        'title': 'Code some',
-        'category': 'Development',
-        'description': 'A Task for Inav: Code 10000 Rows',
-        'duedate': '30th Feb. 2022',
-        'urgency': 'urgency',
-        'assignedTo': 'Inav Bolski',
-        'status': 'todo',
-    },
-    {
-        'taskid': '1',
-        'title': 'Check Data',
-        'category': 'Management',
-        'description': 'A task for Klaus. Check Business Data for next trades.',
-        'duedate': 'yesterday',
-        'urgency': 'urgency',
-        'assignedTo': 'Klaus Meier',
-        'status': 'inprogress',
-    },
-    {
-        'taskid': '2',
-        'title': 'Party',
-        'category': 'Inhouse',
-        'description': 'A task for Laura: Organise a massive carnival Party',
-        'duedate': 'tomorrow',
-        'urgency': 'urgency',
-        'assignedTo': 'Laura Trautmann',
-        'status': 'testing',
-    },
-    {
-        'taskid': '3',
-        'title': 'Aquise',
-        'category': 'Sales',
-        'description': 'A Task for Tom: Get more clients by end of the day',
-        'duedate': '+3d',
-        'urgency': 'urgency',
-        'assignedTo': 'Tom Müller',
-        'status': 'done',
-    },
-    {
-        'taskid': '4',
-        'title': 'Hire people',
-        'category': 'Human ressources',
-        'description': 'A task for Karin: Hire some rocket scientists',
-        'duedate': '31th Feb. 22',
-        'urgency': 'urgency',
-        'assignedTo': 'Karin Schneider',
-        'status': 'todo',
-    }
+            'taskid': '0',
+            'title': 'Code some',
+            'category': 'Development',
+            'description': 'A Task for Inav: Code 10000 Rows',
+            'duedate': '30th Feb. 2022',
+            'urgency': 'urgency',
+            'assignedTo': 'Inav Bolski',
+            'status': 'todo',
+        },
+        {
+            'taskid': '1',
+            'title': 'Check Data',
+            'category': 'Management',
+            'description': 'A task for Klaus. Check Business Data for next trades.',
+            'duedate': 'yesterday',
+            'urgency': 'urgency',
+            'assignedTo': 'Klaus Meier',
+            'status': 'inprogress',
+        },
+        {
+            'taskid': '2',
+            'title': 'Party',
+            'category': 'Inhouse',
+            'description': 'A task for Laura: Organise a massive carnival Party',
+            'duedate': 'tomorrow',
+            'urgency': 'urgency',
+            'assignedTo': 'Laura Trautmann',
+            'status': 'testing',
+        },
+        {
+            'taskid': '3',
+            'title': 'Aquise',
+            'category': 'Sales',
+            'description': 'A Task for Tom: Get more clients by end of the day',
+            'duedate': '+3d',
+            'urgency': 'urgency',
+            'assignedTo': 'Tom Müller',
+            'status': 'done',
+        },
+        {
+            'taskid': '4',
+            'title': 'Hire people',
+            'category': 'Human ressources',
+            'description': 'A task for Karin: Hire some rocket scientists',
+            'duedate': '31th Feb. 22',
+            'urgency': 'urgency',
+            'assignedTo': 'Karin Schneider',
+            'status': 'todo',
+        }
     ],
     'users': [{
-        'userid': '0',
-        'username': 'Klaus Meier',
-        'email': 'Klaus_Meier@web.de',
-        'key': 'key',
-        'img': 'face1.jpg',
-        'category': 'Marketing',
-        'color': '--bgMarketing',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-    },
-    {
-        'userid': '1',
-        'username': 'Inav Bolski',
-        'email': 'InavBolski@Yahoo.de',
-        'key': 'key',
-        'img': 'face3.jpg',
-        'category': 'Sale',
-        'color': '--bgSale',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-    },
-    {
-        'userid': '2',
-        'username': 'Laura Trautmann',
-        'email': 'Laura-Trautmann@t-online.de',
-        'key': 'key',
-        'img': 'face5.jpg',
-        'category': 'Design',
-        'color': '--bgDesign',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-    },
-    {
-        'userid': '3',
-        'username': 'Tom Müller',
-        'email': 'MüllerTom@GMX.de',
-        'key': 'key',
-        'img': 'face2.jpg',
-        'category': 'Sale',
-        'color': '--bgSale',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-    },
-    {
-        'userid': '4',
-        'username': 'Karin Schneider',
-        'email': 'Schneider@web.de',
-        'key': 'key',
-        'img': 'face4.jpg',
-        'category': 'Service',
-        'color': '--bgService',
-        'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
-    }
+            'userid': '0',
+            'username': 'Klaus Meier',
+            'email': 'Klaus_Meier@web.de',
+            'key': 'key',
+            'img': 'face1.jpg',
+            'category': 'Marketing',
+            'color': '--bgMarketing',
+            'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
+        },
+        {
+            'userid': '1',
+            'username': 'Inav Bolski',
+            'email': 'InavBolski@Yahoo.de',
+            'key': 'key',
+            'img': 'face3.jpg',
+            'category': 'Sale',
+            'color': '--bgSale',
+            'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
+        },
+        {
+            'userid': '2',
+            'username': 'Laura Trautmann',
+            'email': 'Laura-Trautmann@t-online.de',
+            'key': 'key',
+            'img': 'face5.jpg',
+            'category': 'Design',
+            'color': '--bgDesign',
+            'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
+        },
+        {
+            'userid': '3',
+            'username': 'Tom Müller',
+            'email': 'MüllerTom@GMX.de',
+            'key': 'key',
+            'img': 'face2.jpg',
+            'category': 'Sale',
+            'color': '--bgSale',
+            'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
+        },
+        {
+            'userid': '4',
+            'username': 'Karin Schneider',
+            'email': 'Schneider@web.de',
+            'key': 'key',
+            'img': 'face4.jpg',
+            'category': 'Service',
+            'color': '--bgService',
+            'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
+        }
     ]
 }]
 
@@ -126,8 +126,8 @@ let users = {
 async function init() {
     // await downloadFromServer();
     // users = JSON.parse(backend.getItem('users')) || [];
-    // click_nav_board()
-    // backlogUsers()
+    click_nav_board()
+        // backlogUsers()
     await renderBoard();
 }
 
@@ -191,6 +191,9 @@ function renderBoardDone() {
         boardDone.innerHTML += generateBoardHTML(status);
     }
 }
+
+// -----------------------------------------------Drag n´Drop functions--------------------------------------------------------------------------
+
 
 function startDragging(id) {
     currentDragged = id;
@@ -263,7 +266,7 @@ async function click_nav_backlog() {
     document.getElementById('backlog_container').style.display = '';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
-    await backlogTasks();
+    // await backlogTasks();
 }
 
 function click_nav_addtask() {
