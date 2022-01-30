@@ -165,7 +165,7 @@ function renderBoardTodo() {
 function renderBoardInprogress() {
     let filterStatusInProgress = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'inprogress');
     let boardInprogress = document.getElementById('board_inprogress');
-    boardInprogress.innerHTML = '';
+    boardInprogress.innerHTML = "";
     for (let j = 0; j < filterStatusInProgress.length; j++) {
         let status = filterStatusInProgress[j];
         boardInprogress.innerHTML += generateBoardHTML(status);
@@ -205,7 +205,7 @@ function moveTo(status) {
     renderBoard()
 }
 
- function getProfilePic(currentUser) {
+function getProfilePic(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
@@ -213,19 +213,18 @@ function moveTo(status) {
     }
 }
 
- function generateBoardHTML(status) {
-let currentUserTest = status['assignedTo'];
-// console.table('Status: '+status); 
-// console.log(currentUserTest);
-let profilePicID =   getProfilePic(currentUserTest); 
-// console.log(profilePicID);
-    return `  <div class="task" draggable="true" ondragstart="startDragging(${status['taskid']})">
-                date = ${status['duedate']} </br>
-                title = ${status['title']} </br>
-                dec = ${status['description']} </br>
-                status = ${status['status']} </br>
-                category = ${status['category']}
-                <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
+function generateBoardHTML(status) {
+    let currentUserTest = status['assignedTo'];
+    let profilePicID = getProfilePic(currentUserTest);
+    return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
+                        <span class="singleCardDate">${status['duedate']}</span> 
+                        <h3>${status['title']}</h3> 
+                        <span class="singleCardDescription">${status['description']}</span>
+                    <div class="categoryAndImg">
+                        <span class="singleCardCategory">${status['category']}</span>
+                        <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
+                    </div>
+                </div>
         `;
 }
 
@@ -327,8 +326,6 @@ function click_help() {
 // }
 
 
-
-
 /**
  * Render Backlog by Task
  * Usercontainer entspricht Taskcontainer. Function wurde von der ursprünglichen Anzeige der User in Anzeige der offenen Tasks umgewandelt.
@@ -347,7 +344,7 @@ async function backlogTasks() {
     }
 }
 
-async function generateBacklogHTML(i, currentUserID){
+async function generateBacklogHTML(i, currentUserID) {
     return `
     <div id="backlog_user${i}" class="infoContainer">
         <div class="imgContainer3">

@@ -124,7 +124,7 @@ select {
     width: 20.6rem;
     height: 2.5rem;
     background-color: var(--bgWhite);
-    background-image:url(./logo/chevron\ .png);
+    background-image: url(./logo/chevron\ .png);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 1rem;
@@ -241,34 +241,39 @@ select {
 
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
-.mainBoardContainer {
+.boardContainer {
+    height: 60rem;
+    background-color: blue;
     display: flex;
-    justify-content: space-between;
-    width: 73rem;
-    text-align: center;
-    padding-left: 2rem;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.boardContainer {
+.mainBoardContainer {
+    display: flex;
+    text-align: center;
+    padding-left: 2rem;
+    background-color: yellowgreen;
+}
+
+.boardColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    min-height: 80vh;
     width: 16rem;
-    height: 60rem;
     background-color: var(--bgGray);
 }
 
-.boardColumn{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 16rem;
-}
-
 .singleCard {
-    width: 16rem;
-    min-height: 50vh;
-    /* margin-left: 50px; */
-    display: flex;
-    flex-direction: column;
+    width: 15rem;
+    background-color: var(--bgWhite);
+    box-shadow: var(--bgchevron) 1px 2px 5px;
+    margin: 1rem 0rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
 }
 
 .mainconntainer {
@@ -278,10 +283,46 @@ select {
     justify-content: space-between;
 }
 
-.task {
-    background-color: beige;
-    height: 15rem;
-    margin: .5rem 0 .5rem 0;
-
+.singleCardWrapper {
+    position: relative;
 }
 
+.singleCardDate {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    color: var(--bgchevron);
+    font-size: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.categoryAndImg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+}
+
+.categoryAndImg img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.singleCardCategory {
+    border: var(--bgWhite) 1px;
+    background-color: var(--bgStandard);
+    color: var(--bgWhite);
+    padding: .3rem 1rem;
+    border-radius: .5rem;
+}
+
+h3 {
+    text-align: start;
+    margin: .3rem 0 0 1rem;
+    padding-top: 1.7rem;
+}
+
+.singleCardDescription{
+color: var(--bgchevron);
+}
