@@ -127,8 +127,8 @@ async function init() {
     // await downloadFromServer();
     // users = JSON.parse(backend.getItem('users')) || [];
     click_nav_board()
-        // backlogUsers()
     await renderBoard();
+    backlogTasks()
 }
 
 /*function deleteUser() {
@@ -220,6 +220,7 @@ function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
     return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
+                        
                         <span class="singleCardDate">${status['duedate']}</span> 
                         <h3>${status['title']}</h3> 
                         <span class="singleCardDescription">${status['description']}</span>
