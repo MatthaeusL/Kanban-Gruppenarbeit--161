@@ -125,6 +125,19 @@ select {
     background-position: calc(100% - .7rem);
     background-repeat: no-repeat;
     background-size: 1rem;
+    cursor: pointer;
+}
+
+.calendar{
+    -moz-appearance: none;
+    width: 330px;
+    height: 2.5rem;
+    background-color: var(--bgWhite);
+    background-image: url(logo/icons8-calendar-150.png);
+    background-position: calc(100% - .7rem);
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    cursor: pointer;
 }
 
 .imgContainer2 {
