@@ -405,3 +405,25 @@ async function addNewTask() {
     click_nav_backlog();
     await backlogTasks();
 }
+
+
+function addMembers() {
+    let members = document.getElementById('userContainerHide');
+    /*members.innerHTML = '';*/
+    for (let i = 0; i < usersInArray.length; i++) {
+        let userIDArray = usersInArray[i];
+        members.innerHTML += `
+        <div class="userContainer">
+            <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
+            <input onclick="addMembersImg(${userIDArray})" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+        </div>`; 
+    }
+}
+
+function addMembersImg(userIDArray) {
+    let img = document.getElementById('imgMembers');
+    img.innerHTML = '';
+    img.innerHTML += `
+    <img class="imgAvatar2 " src="./img/${userIDArray['img']}">
+    `;
+}

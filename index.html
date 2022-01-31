@@ -10,6 +10,7 @@
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/gif" href="./logo/logo.png">
 </head>
 
 <body onload="init()">
@@ -160,7 +161,7 @@
                 <div class="left " style="margin-right: 3rem; ">
                     <div>
                         <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title" style="width: 20rem;">
+                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
                     </div>
 
                     <div>
@@ -179,7 +180,7 @@
 
                     <div>
                         <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8" style="width: 18.5rem;"></textarea>
+                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
 
                     </div>
 
@@ -190,9 +191,6 @@
                         <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                         <div style="display: flex; ">
                             <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
-                            <!-- <div class="chevron ">
-                                <img src="./logo/icons8-calendar-150.png " style="width: 1rem; ">
-                            </div> -->
                         </div>
 
                         <div>
@@ -206,15 +204,22 @@
                             <div>
                                 <h4 style="margin-bottom: 2.5rem; " class="span ptSansBold">ASSIGNED TO
                                 </h4>
-                                <div class="imgContainer2 ">
-                                    <img class="imgAvatar2 " src="./img/avatar.jpg ">
-                                    <img class="logo " src="./logo/icon plus.png ">
+                                <div id="imgContainer2" class="imgContainer2 ">
+                                    <img onclick="addMembers()" class="logo" src="./logo/icon plus.png ">
+                                    <div id="imgMembers">
+                                        
+                                    </div>                                                                      
                                 </div>
                             </div>
 
-                            <div class="btnContainer ">
-                                <button class="btn ">CANCEL</button>
-                                <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
+                            <div class="memberBtnContainer">
+                                <div class="chooseMember">
+                                    <div id="userContainerHide" class=""></div>                                     
+                                </div>
+                                <div class="btnContainer ">
+                                    <button class="btn ">CANCEL</button>
+                                    <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
+                                </div>
                             </div>
                         </div>
                     </div>

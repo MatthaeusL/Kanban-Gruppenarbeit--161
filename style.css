@@ -118,7 +118,7 @@ body {
 
 select {
     -moz-appearance: none;
-    width: 330px;
+    width: -moz-available;
     height: 2.5rem;
     background-color: var(--bgWhite);
     background-image: url(logo/chevron\ .png);
@@ -130,7 +130,7 @@ select {
 
 .calendar{
     -moz-appearance: none;
-    width: 330px;
+    width: -moz-available;
     height: 2.5rem;
     background-color: var(--bgWhite);
     background-image: url(logo/icons8-calendar-150.png);
@@ -143,6 +143,8 @@ select {
 .imgContainer2 {
     display: flex;
     align-items: center;
+    height: 4rem;
+    margin-bottom: 0.5rem;
 }
 
 .imgAvatar2 {
@@ -155,13 +157,34 @@ select {
 .logo {
     width: 2rem;
     height: 2rem;
-    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     cursor: pointer;
+}
+
+.memberBtnContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chooseMember {
+    width: 9rem;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .btnContainer {
     margin-top: 1rem;
-    padding-left: 4rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: end;
 }
 
 .btn {
@@ -221,7 +244,7 @@ select {
 
 .right,
 .left {
-    width: 330px;
+    width: 26rem;
 }
 
 
