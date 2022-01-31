@@ -24,6 +24,7 @@ body {
     --bgStandard: blue;
     --bgWhite: white;
     --bgGray: #eeeeee;
+    --bgLightBlue: #f4f3fb;
     --bgchevron: #aeaeae;
     --bgMarketing: aqua;
     --bgSale: #08ff00;
@@ -103,10 +104,11 @@ body {
 }
 
 .content {
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     padding: 2rem;
     margin-top: 2.5rem;
     display: flex;
+    border-radius: .8rem;
 }
 
 .span {
@@ -114,36 +116,15 @@ body {
     color: var(--bgStandard);
 }
 
-.textfield {
-    width: 18rem;
-    height: 2rem;
-}
-
 select {
     -moz-appearance: none;
-    width: 20.6rem;
+    width: 330px;
     height: 2.5rem;
     background-color: var(--bgWhite);
-    background-image:url(./logo/chevron\ .png);
-    background-position: right;
+    background-image: url(logo/chevron\ .png);
+    background-position: calc(100% - .7rem);
     background-repeat: no-repeat;
     background-size: 1rem;
-    background-position-x: 18.8rem;
-}
-
-
-.chevron {
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-color: var(--bgchevron);
-    border-width: 0.1rem;
-    cursor: pointer;
 }
 
 .imgContainer2 {
@@ -176,7 +157,7 @@ select {
     border-radius: 0.7rem;
     font-weight: bold;
     color: var(--bgStandard);
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     cursor: pointer;
     border-style: hidden;
 }
@@ -184,6 +165,50 @@ select {
 .btn:hover {
     color: var(--bgWhite);
     background-color: var(--bgStandard);
+}
+
+.drpDown {
+    appearance: none;
+    padding-left: 1rem;
+    border-radius: .2rem;
+}
+
+.textarea {
+    padding: 1rem;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.borderRadius {
+    border-radius: .2rem;
+}
+
+.borderRadiusLeft {
+    border-bottom-left-radius: .2rem;
+    border-top-left-radius: .2rem;
+}
+
+.borderGrey {
+    border: solid .12rem #d8d8d8;
+}
+
+.hideDateIcon::-webkit-calendar-picker-indicator {
+    position: relative;
+    top: .6rem;
+    right: .2rem;
+    background: url(logo/icons8-calendar-150.png) no-repeat;
+    background-size: 18px 18px;
+    width: 20px;
+    height: 35px;
+}
+
+.inputDimensions {
+    width: 100%;
+    height: 2.5rem;
+}
+
+.right,
+.left {
+    width: 330px;
 }
 
 
@@ -203,7 +228,7 @@ select {
     justify-content: space-between;
     width: 72rem;
     margin-top: 1rem;
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
     padding: 1rem;
     border-radius: 1rem;
     border-left-width: 0.75rem;
@@ -241,17 +266,88 @@ select {
 
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
+.boardContainer {
+    height: 60rem;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .mainBoardContainer {
     display: flex;
-    justify-content: space-between;
-    width: 73rem;
     text-align: center;
     padding-left: 2rem;
+    background-color: yellowgreen;
 }
 
-.boardContainer {
+.boardColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    min-height: 80vh;
     width: 16rem;
-    height: 60rem;
-    background-color: var(--bgGray);
+    background-color: var(--bgLightBlue);
 }
 
+.singleCard {
+    width: 15rem;
+    background-color: var(--bgWhite);
+    box-shadow: var(--bgchevron) 1px 2px 5px;
+    margin: 1rem 0rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.mainconntainer {
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.singleCardWrapper {
+    position: relative;
+}
+
+.singleCardDate {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    color: var(--bgchevron);
+    font-size: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.categoryAndImg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+}
+
+.categoryAndImg img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.singleCardCategory {
+    border: var(--bgWhite) 1px;
+    background-color: var(--bgStandard);
+    color: var(--bgWhite);
+    padding: .3rem 1rem;
+    border-radius: .5rem;
+}
+
+h3 {
+    text-align: start;
+    margin: .3rem 0 0 1rem;
+    padding-top: 1.7rem;
+}
+
+.singleCardDescription {
+    color: var(--bgchevron);
+}
