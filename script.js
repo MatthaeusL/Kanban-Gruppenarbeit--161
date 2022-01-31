@@ -219,6 +219,8 @@ function getProfilePic(currentUser) {
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
+    /*document.getElementsByClassName('imgAvatar3')[i].style.borderColor = `var(${usersInArray[i]['color']})`;*/
+    /*document.getElementsByClassName('singleCardCategory')[i].style.backgroundColor = `var(${usersInArray[i]['color']})`;*/
     return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         
                         <span class="singleCardDate">${status['duedate']}</span> 
@@ -226,10 +228,12 @@ function generateBoardHTML(status) {
                         <span class="singleCardDescription">${status['description']}</span>
                     <div class="categoryAndImg">
                         <span class="singleCardCategory">${status['category']}</span>
-                        <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
+                        <img class="imgAvatar3" src="./img/${usersInArray[profilePicID]['img']}"></img>
                     </div>
                 </div>
         `;
+    
+        
 }
 
 function getTaskID(currentUser) {

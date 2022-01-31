@@ -99,6 +99,7 @@ body {
 .mainContent {
     height: 100vh;
     padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
 }
@@ -152,6 +153,16 @@ select {
     height: 4rem;
     border-radius: 180px;
     object-fit: cover;
+}
+
+.imgAvatar3 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
 }
 
 .logo {
@@ -307,12 +318,14 @@ select {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
 }
 
 .mainBoardContainer {
     display: flex;
     text-align: center;
     padding-left: 2rem;
+    width: 100%;
 }
 
 .boardColumn {
@@ -322,12 +335,12 @@ select {
     text-align: center;
     align-items: center;
     min-height: 80vh;
-    width: 16rem;
+    width: 100%;
     background-color: var(--bgLightBlue);
 }
 
 .singleCard {
-    width: 13rem;
+    width: 80%;
     min-height: 10rem;;
     background-color: var(--bgWhite);
     box-shadow: var(--bgchevron) 1px 2px 5px;
@@ -349,6 +362,10 @@ select {
 
 .singleCardWrapper {
     position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .singleCardDate {
