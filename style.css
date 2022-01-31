@@ -304,7 +304,6 @@ select {
 
 .boardContainer {
     height: 60rem;
-    background-color: blue;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -314,7 +313,6 @@ select {
     display: flex;
     text-align: center;
     padding-left: 2rem;
-    background-color: yellowgreen;
 }
 
 .boardColumn {
@@ -329,12 +327,17 @@ select {
 }
 
 .singleCard {
-    width: 15rem;
+    width: 13rem;
+    min-height: 10rem;;
     background-color: var(--bgWhite);
     box-shadow: var(--bgchevron) 1px 2px 5px;
     margin: 1rem 0rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-evenly;
 }
 
 .mainconntainer {
@@ -349,9 +352,9 @@ select {
 }
 
 .singleCardDate {
-    position: absolute;
+    /* position: absolute;
     left: 1rem;
-    top: 1.2rem;
+    top: 1.2rem; */
     color: var(--bgchevron);
     font-size: 80%;
     display: flex;
@@ -362,7 +365,8 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 1rem;
+    margin-top: 1rem;;
+
 }
 
 .categoryAndImg img {
@@ -380,10 +384,11 @@ select {
 
 h3 {
     text-align: start;
-    margin: .3rem 0 0 1rem;
-    padding-top: 1.7rem;
+    margin: .3rem 0 0 0;
+    /* padding-top: 1.7rem; */
 }
 
 .singleCardDescription {
     color: var(--bgchevron);
+    text-align: start;
 }
