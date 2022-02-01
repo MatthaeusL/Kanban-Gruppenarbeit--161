@@ -21,7 +21,7 @@ body {
 }
 
 :root {
-    --bgStandard: blue;
+    --bgStandard: #1e3190;
     --bgWhite: white;
     --bgGray: #eeeeee;
     --bgLightBlue: #f4f3fb;
@@ -103,6 +103,7 @@ body {
     padding-right: 1rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
+    width: 100%;
 }
 
 .content {
@@ -111,6 +112,7 @@ body {
     margin-top: 2.5rem;
     display: flex;
     border-radius: .8rem;
+    width: fit-content;
 }
 
 .span {

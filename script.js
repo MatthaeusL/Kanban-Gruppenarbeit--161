@@ -221,8 +221,8 @@ function getProfilePic(currentUser) {
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-    /*document.getElementsByClassName('imgAvatar3')[i].style.borderColor = `var(${usersInArray[i]['color']})`;*/
-    /*document.getElementsByClassName('singleCardCategory')[i].style.backgroundColor = `var(${usersInArray[i]['color']})`;*/
+    /*document.getElementsByClassName('imgAvatar3')[profilePicID].style.borderColor = `var(${usersInArray[profilePicID]['color']})`;
+    document.getElementsByClassName('singleCardCategory')[profilePicID].style.backgroundColor = `var(${usersInArray[profilePicID]['color']})`;*/
     return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         
                         <span class="singleCardDate">${status['duedate']}</span> 
@@ -235,7 +235,6 @@ function generateBoardHTML(status) {
                 </div>
         `;
 
-
 }
 
 function getTaskID(currentUser) {
@@ -247,7 +246,7 @@ function getTaskID(currentUser) {
 }
 
 /**
- * ************************ ******************************navigation to divs ******************************************
+ * *******************************************************navigation to divs ******************************************
  */
 
 async function click_nav_board() {
