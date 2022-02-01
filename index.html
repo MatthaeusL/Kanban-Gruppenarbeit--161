@@ -140,7 +140,7 @@
                 <div class="left " style="margin-right: 3rem; ">
                     <div>
                         <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
+                        <input required="true" class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
                     </div>
 
                     <div>
@@ -159,7 +159,7 @@
 
                     <div>
                         <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
+                        <textarea required="true" name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
 
                     </div>
 
@@ -169,7 +169,7 @@
                     <div>
                         <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                         <div style="display: flex; ">
-                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
+                            <input type="date" required="true" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
                         </div>
 
                         <div>
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="btnContainer ">
                                     <button class="btn ">CANCEL</button>
-                                    <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
+                                    <input type="submit" onclick="addNewTask()" class="btn ">CREATE TASK</button>
                                 </div>
                             </div>
                         </div>
