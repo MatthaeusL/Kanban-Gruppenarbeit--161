@@ -269,6 +269,15 @@ select {
     width: 26rem;
 }
 
+.placeholderColor::-webkit-input-placeholder {
+    color: red
+}
+
+.datePlaceholderColor {
+    color: red;
+    font-weight: bold;
+}
+
 
 /* -------------------------------------------------------Content Container Backlog------------------------------------- */
 

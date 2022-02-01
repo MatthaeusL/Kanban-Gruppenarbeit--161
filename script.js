@@ -473,30 +473,45 @@ async function addNewTask() {
     if (urgency == 'low') {
         urgencyColor = '--bgNotSoImportant'
     }
-    let newTask = {
-        'taskid': taskid,
-        'title': title,
-        'category': category,
-        'description': description,
-        'duedate': duedate,
-        'urgency': urgency,
-        'assignedTo': assignedTo,
-        'status': status,
-        'urgencyColor': urgencyColor,
-    }
-    await tasksInArray.push(newTask);
-    clearInput()
 
-    click_nav_backlog();
-    await backlogTasks();
+    if ((title.length == 0 && duedate.length == 0 && description.length == 0) == true) {
+        document.getElementById('title').classList.add('placeholderColor');
+        document.getElementById('duedate').classList.add('datePlaceholderColor');
+        document.getElementById('description').classList.add('placeholderColor');
+
+        // if (title.length == 0) {
+        //     document.getElementById('title').classList.add('placeholderColor');
+
+    } else {
+        let newTask = {
+            'taskid': taskid,
+            'title': title,
+            'category': category,
+            'description': description,
+            'duedate': duedate,
+            'urgency': urgency,
+            'assignedTo': assignedTo,
+            'status': status,
+            'urgencyColor': urgencyColor,
+        }
+        await tasksInArray.push(newTask);
+        clearInput()
+
+        click_nav_backlog();
+        await backlogTasks();
+    }
+
+
 }
 
 function clearInput() {
     document.getElementById('title').value = '';
-    // document.getElementById('category').value = '';
     document.getElementById('description').value = '';
     document.getElementById('duedate').value = '';
-    // document.getElementById('urgency').value = '';
+    document.getElementById('title').classList.remove('placeholderColor');
+    document.getElementById('duedate').classList.remove('datePlaceholderColor');
+    document.getElementById('description').classList.remove('placeholderColor');
+
 }
 
 
