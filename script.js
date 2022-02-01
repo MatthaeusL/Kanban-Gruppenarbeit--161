@@ -458,6 +458,15 @@ async function addNewTask() {
     let urgency = document.getElementById('urgency').value;
     let assignedTo = "Laura Trautmann";
     let status = 'backlog';
+    if (urgency == 'high') {
+        urgencyColor = '--bgVeryImportant'
+    }
+    if (urgency == 'medium') {
+        urgencyColor = '--bgIMportant'
+    }
+    if (urgency == 'low') {
+        urgencyColor = '--bgNotSoImportant'
+    }
     let newTask = {
         'taskid': taskid,
         'title': title,
@@ -467,6 +476,7 @@ async function addNewTask() {
         'urgency': urgency,
         'assignedTo': assignedTo,
         'status': status,
+        'urgencyColor': urgencyColor,
     }
     await tasksInArray.push(newTask);
     clearInput()
