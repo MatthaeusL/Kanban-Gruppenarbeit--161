@@ -473,15 +473,15 @@ function addMembers() {
         members.innerHTML += `
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
-            <input onclick="addMembersImg(${userIDArray})" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+            <input onclick="addMembersImg(${userIDArray['img']})" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
         </div>`;
     }
 }
 
-function addMembersImg(userIDArray) {
+function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
     img.innerHTML = '';
     img.innerHTML += `
-    <img class="imgAvatar2 " src="./img/${userIDArray['img']}">
+    <img class="imgAvatar2" src="./img/${userIDArrayimg}">
     `;
 }
