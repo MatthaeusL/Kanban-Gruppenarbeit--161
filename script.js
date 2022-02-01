@@ -467,21 +467,22 @@ function clearInput() {
 
 function addMembers() {
     let members = document.getElementById('userContainerHide');
-    /*members.innerHTML = '';*/
+    members.classList.remove('d-none');
     for (let i = 0; i < usersInArray.length; i++) {
         let userIDArray = usersInArray[i];
         members.innerHTML += `
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
-            <input onclick="addMembersImg(${userIDArray['img']})" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+            <input onclick="addMembersImg('${userIDArray['img']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
         </div>`;
     }
 }
 
 function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
-    img.innerHTML = '';
     img.innerHTML += `
     <img class="imgAvatar2" src="./img/${userIDArrayimg}">
     `;
+    document.getElementById('userContainerHide').classList.add('d-none');
 }
+
