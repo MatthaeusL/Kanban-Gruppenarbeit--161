@@ -9,6 +9,8 @@ let kanbanArray = [{
             'assignedTo': 'Inav Bolski',
             'status': 'todo',
             'urgencyColor': '--bgVeryImportant',
+            'categoryColor': '--bgDevelopment',
+
         },
         {
             'taskid': 1,
@@ -20,6 +22,7 @@ let kanbanArray = [{
             'assignedTo': 'Klaus Meier',
             'status': 'inprogress',
             'urgencyColor': ' --bgNotSoImportant',
+            'categoryColor': '--bgManagment',
         },
         {
             'taskid': 2,
@@ -32,6 +35,7 @@ let kanbanArray = [{
             // 'status': 'testing',
             'status': 'backlog',
             'urgencyColor': '--bgVeryImportant',
+            'categoryColor': '--bgInhouse',
         },
         {
             'taskid': 3,
@@ -44,6 +48,7 @@ let kanbanArray = [{
             // 'status': 'done',
             'status': 'backlog',
             'urgencyColor': '--bgIMportant: yellow',
+            'categoryColor': '--bgSale',
         },
         {
             'taskid': 4,
@@ -55,6 +60,7 @@ let kanbanArray = [{
             'assignedTo': 'Karin Schneider',
             'status': 'backlog',
             'urgencyColor': ' --bgNotSoImportant',
+            'categoryColor': '--bgHumanRessources',
         }
     ],
     'users': [{
@@ -250,7 +256,7 @@ function generateBoardHTML(status) {
                         <h3>${status['title']}</h3> 
                         <span class="singleCardDescription">${status['description']}</span>
                     <div class="categoryAndImg">
-                        <span class="singleCardCategory" style="background-color: var(${usersInArray[profilePicID]['color']})">${status['category']}</span>
+                        <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
                         <img class="imgAvatar3" src="./img/${usersInArray[profilePicID]['img']}" style="border-color: var(${usersInArray[profilePicID]['color']})"></img>
                     </div>
                 </div>
