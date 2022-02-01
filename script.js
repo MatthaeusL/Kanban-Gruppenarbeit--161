@@ -166,7 +166,10 @@ function renderBoardTodo() {
     for (let i = 0; i < filterStatusTodo.length; i++) {
         let status = filterStatusTodo[i];
         boardTodo.innerHTML += generateBoardHTML(status);
+
     }
+
+
 }
 
 function renderBoardInprogress() {
@@ -177,6 +180,7 @@ function renderBoardInprogress() {
         let status = filterStatusInProgress[j];
         boardInprogress.innerHTML += generateBoardHTML(status);
     }
+
 }
 
 function renderBoardTesting() {
@@ -196,6 +200,7 @@ function renderBoardDone() {
     for (let m = 0; m < filterStatusdone.length; m++) {
         let status = filterStatusdone[m];
         boardDone.innerHTML += generateBoardHTML(status);
+
     }
 }
 
@@ -219,27 +224,41 @@ function getProfilePic(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
+
         }
     }
+
+}
+
+function colorCard() {
+    document.getElementById('singleCard').style = 'border-color: blue';
+    // let currentUserTest = status['assignedTo'];
+    // let profilePicID = getProfilePic(currentUserTest);
+    // document.getElementsByClassName('singleCard')[profilePicID].style.border-color = `var(${status['urgencyColor']})`;
+    // document.getElementsByClassName('imgAvatar3')[profilePicID].style.border-color = `var(${usersInArray[profilePicID]['color']})`;
+    // document.getElementsByClassName('singleCardCategory')[profilePicID].style.backgroundColor = `var(${usersInArray[profilePicID]['color']})`;
+
+
 }
 
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-    /*document.getElementsByClassName('singleCard')[profilePicID].style.borderColor = `var(${status['urgencyColor']})`;
-    document.getElementsByClassName('imgAvatar3')[profilePicID].style.borderColor = `var(${usersInArray[profilePicID]['color']})`;
-    document.getElementsByClassName('singleCardCategory')[profilePicID].style.backgroundColor = `var(${usersInArray[profilePicID]['color']})`;*/
-    return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
-                        
+
+    return `  <div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         <span class="singleCardDate">${status['duedate']}</span> 
                         <h3>${status['title']}</h3> 
                         <span class="singleCardDescription">${status['description']}</span>
                     <div class="categoryAndImg">
-                        <span class="singleCardCategory">${status['category']}</span>
-                        <img class="imgAvatar3" src="./img/${usersInArray[profilePicID]['img']}"></img>
+                        <span class="singleCardCategory" style="background-color: var(${usersInArray[profilePicID]['color']})">${status['category']}</span>
+                        <img class="imgAvatar3" src="./img/${usersInArray[profilePicID]['img']}" style="border-color: var(${usersInArray[profilePicID]['color']})"></img>
                     </div>
                 </div>
         `;
+    document.getElementById('singleCard').style.style = 'border-color: blue';
+
+
+
 
 }
 
@@ -486,4 +505,3 @@ function addMembersImg(userIDArrayimg) {
     `;
     document.getElementById('userContainerHide').classList.add('d-none');
 }
-
