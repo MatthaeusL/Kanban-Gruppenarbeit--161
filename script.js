@@ -468,6 +468,7 @@ function clearInput() {
 function addMembers() {
     let members = document.getElementById('userContainerHide');
     members.classList.remove('d-none');
+    members.innerHTML = '';
     for (let i = 0; i < usersInArray.length; i++) {
         let userIDArray = usersInArray[i];
         members.innerHTML += `
