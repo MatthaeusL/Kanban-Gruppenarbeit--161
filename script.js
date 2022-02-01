@@ -134,7 +134,7 @@ async function init() {
     // await downloadFromServer();
     // users = JSON.parse(backend.getItem('users')) || [];
     click_nav_board()
-    await renderBoard();
+    renderBoard();
     backlogTasks()
 }
 
@@ -350,6 +350,7 @@ async function backlogTasks() {
         let currentUserID = await getUserID(currentUser);
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[currentUserID]['color']})`;
+        document.getElementById('backlogOpenTaskMenu' + i).style = 'display: none';
     }
 }
 
@@ -374,8 +375,9 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
             </div>
             
         </div>
-        <div class="backlogOpenTaskMenu" id = "backlogOpenTaskMenu${i}" style="display: none;">
-            <div class=" backlogMenuItems backlogShiftToBoard "  onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
+        
+        <div class="backlogOpenTaskMenu" id = "backlogOpenTaskMenu${i}" >
+            <div class=" backlogMenuItems backlogShiftToBoard "  onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']},${i})">
                 shift to BOARD
             </div>
             <div class="backlogMenuItems">
@@ -386,21 +388,29 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
             </div>
          </div>
     </div>`;
+
 }
 
 
 function backlogOpenTaskMenu(M) {
+
     let taskmenu = document.getElementById('backlogOpenTaskMenu' + M);
 
     if (taskmenu.style.display == 'none') {
         taskmenu.style = '';
     } else {
-        // taskmenu.style.display = 'none';
+        taskmenu.style.display = 'none';
     }
 }
 
-function shiftToBoard(M) {
-    tasksInArray[M]['status'] = 'todo';
+function shiftToBoard(m, i) {
+    // document.getElementById('backlogOpenTaskMenu' + 1).style.display = 'none';
+    tasksInArray[m]['status'] = 'todo';
+    backlogTasks()
+    console.log('m', m, 'i', i, 'backlogOpenTaskMenu' + i)
+
+    renderBoard()
+
 
 
 }
