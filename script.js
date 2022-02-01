@@ -1,6 +1,6 @@
 let kanbanArray = [{
     'tasks': [{
-            'taskid': '0',
+            'taskid': 0,
             'title': 'Code some',
             'category': 'Development',
             'description': 'A Task for Inav: Code 10000 Rows',
@@ -10,7 +10,7 @@ let kanbanArray = [{
             'status': 'todo',
         },
         {
-            'taskid': '1',
+            'taskid': 1,
             'title': 'Check Data',
             'category': 'Management',
             'description': 'A task for Klaus. Check Business Data for next trades.',
@@ -20,38 +20,40 @@ let kanbanArray = [{
             'status': 'inprogress',
         },
         {
-            'taskid': '2',
+            'taskid': 2,
             'title': 'Party',
             'category': 'Inhouse',
             'description': 'A task for Laura: Organise a massive carnival Party',
             'duedate': 'tomorrow',
             'urgency': 'urgency',
             'assignedTo': 'Laura Trautmann',
-            'status': 'testing',
+            // 'status': 'testing',
+            'status': 'backlog'
         },
         {
-            'taskid': '3',
+            'taskid': 3,
             'title': 'Aquise',
             'category': 'Sales',
             'description': 'A Task for Tom: Get more clients by end of the day',
             'duedate': '+3d',
             'urgency': 'urgency',
             'assignedTo': 'Tom Müller',
-            'status': 'done',
+            // 'status': 'done',
+            'status': 'backlog'
         },
         {
-            'taskid': '4',
+            'taskid': 4,
             'title': 'Hire people',
             'category': 'Human ressources',
             'description': 'A task for Karin: Hire some rocket scientists',
             'duedate': '31th Feb. 22',
             'urgency': 'urgency',
             'assignedTo': 'Karin Schneider',
-            'status': 'todo',
+            'status': 'backlog',
         }
     ],
     'users': [{
-            'userid': '0',
+            'userid': 0,
             'username': 'Klaus Meier',
             'email': 'Klaus_Meier@web.de',
             'key': 'key',
@@ -61,7 +63,7 @@ let kanbanArray = [{
             'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
         },
         {
-            'userid': '1',
+            'userid': 1,
             'username': 'Inav Bolski',
             'email': 'InavBolski@Yahoo.de',
             'key': 'key',
@@ -71,7 +73,7 @@ let kanbanArray = [{
             'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
         },
         {
-            'userid': '2',
+            'userid': 2,
             'username': 'Laura Trautmann',
             'email': 'Laura-Trautmann@t-online.de',
             'key': 'key',
@@ -81,7 +83,7 @@ let kanbanArray = [{
             'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
         },
         {
-            'userid': '3',
+            'userid': 3,
             'username': 'Tom Müller',
             'email': 'MüllerTom@GMX.de',
             'key': 'key',
@@ -91,7 +93,7 @@ let kanbanArray = [{
             'detail': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora dolore culpa optio aut deleniti vitae quod.',
         },
         {
-            'userid': '4',
+            'userid': 4,
             'username': 'Karin Schneider',
             'email': 'Schneider@web.de',
             'key': 'key',
@@ -232,8 +234,8 @@ function generateBoardHTML(status) {
                     </div>
                 </div>
         `;
-    
-        
+
+
 }
 
 function getTaskID(currentUser) {
@@ -333,45 +335,71 @@ function click_help() {
 //     }
 // }
 
-
-/**
- * Render Backlog by Task
- * Usercontainer entspricht Taskcontainer. Function wurde von der ursprünglichen Anzeige der User in Anzeige der offenen Tasks umgewandelt.
- * Es werden offene Aufgaben aufgelistet, welche noch nicht ins Board übertragen wurden
-
-*/
 async function backlogTasks() {
+    let filterStatusBacklog = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'backlog');
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
-    for (let i = 0; i < tasksInArray.length; i++) {
-        console.log(i);
-        let currentUser = tasksInArray[i]['assignedTo'];
+    for (let i = 0; i < filterStatusBacklog.length; i++) {
+        console.log(filterStatusBacklog[i]['taskid']);
+        let currentUser = filterStatusBacklog[i]['assignedTo'];
         let currentUserID = await getUserID(currentUser);
-        userContainer.innerHTML += await generateBacklogHTML(i, currentUserID);
+        userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[currentUserID]['color']})`;
     }
 }
 
-async function generateBacklogHTML(i, currentUserID) {
+async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
     return `
-    <div id="backlog_user${i}" class="infoContainer">
-        <div class="imgContainer3">
-            <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
-            <div class="row">
-                <span>${usersInArray[currentUserID]['username']}</span>
-                <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
+    <div id="backlog_user${i}" onclick="backlogOpenTaskMenu(${i})" >
+        <div class="infoContainer">    
+            <div class="imgContainer3">
+                <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
+                <div class="row">
+                    <span>${usersInArray[currentUserID]['username']}</span>
+                    <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="department">
-            <span>${tasksInArray[i]['category']}</span>
-        </div>
+            
+            <div class="department">
+                <span>${filterStatusBacklog[i]['category']}</span>
+            </div>
 
-        <div class="details">
-            <span>${tasksInArray[i]['description']}</span>
+            <div class="details">
+                <span>${filterStatusBacklog[i]['description']}</span>
+            </div>
+            
         </div>
+        <div class="backlogOpenTaskMenu" id = "backlogOpenTaskMenu${i}" style="display: none;">
+            <div class=" backlogMenuItems backlogShiftToBoard "  onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
+                shift to BOARD
+            </div>
+            <div class="backlogMenuItems">
+                make changes
+            </div>
+            <div class="backlogMenuItems">
+                DELETE
+            </div>
+         </div>
     </div>`;
 }
+
+
+function backlogOpenTaskMenu(M) {
+    let taskmenu = document.getElementById('backlogOpenTaskMenu' + M);
+
+    if (taskmenu.style.display == 'none') {
+        taskmenu.style = '';
+    } else {
+        // taskmenu.style.display = 'none';
+    }
+}
+
+function shiftToBoard(M) {
+    tasksInArray[M]['status'] = 'todo';
+
+
+}
+
 
 async function getUserID(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
@@ -388,7 +416,7 @@ async function getUserID(currentUser) {
  */
 async function addNewTask() {
     // optional: check if all Information are made completely
-    let taskid = 'taskid' + tasksInArray.length + 1;
+    let taskid = tasksInArray.length;
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
@@ -407,8 +435,18 @@ async function addNewTask() {
         'status': status,
     }
     await tasksInArray.push(newTask);
+    clearInput()
+
     click_nav_backlog();
     await backlogTasks();
+}
+
+function clearInput() {
+    document.getElementById('title').value = '';
+    // document.getElementById('category').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('duedate').value = '';
+    // document.getElementById('urgency').value = '';
 }
 
 
@@ -421,7 +459,7 @@ function addMembers() {
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
             <input onclick="addMembersImg(${userIDArray})" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
-        </div>`; 
+        </div>`;
     }
 }
 

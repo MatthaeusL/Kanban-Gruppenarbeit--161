@@ -25,6 +25,7 @@ body {
     --bgWhite: white;
     --bgGray: #eeeeee;
     --bgLightBlue: #f4f3fb;
+    --bgLightBlueHover: #EAE9F1;
     --bgchevron: #aeaeae;
     --bgMarketing: aqua;
     --bgSale: #08ff00;
@@ -129,7 +130,7 @@ select {
     cursor: pointer;
 }
 
-.calendar{
+.calendar {
     -moz-appearance: none;
     width: -moz-available;
     height: 2.5rem;
@@ -284,6 +285,10 @@ select {
     margin-bottom: 0.75rem;
 }
 
+.infoContainer:hover {
+    background-color: var(--bgLightBlueHover);
+}
+
 .imgContainer3 {
     display: flex;
     align-items: center;
@@ -308,6 +313,18 @@ select {
     text-align: start;
     display: flex;
     align-items: center;
+}
+
+.backlogOpenTaskMenu {
+    display: flex;
+    justify-content: end;
+}
+
+.backlogShiftToBoard {}
+
+.backlogMenuItems {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 
@@ -341,7 +358,8 @@ select {
 
 .singleCard {
     width: 80%;
-    min-height: 10rem;;
+    min-height: 10rem;
+    ;
     background-color: var(--bgWhite);
     box-shadow: var(--bgchevron) 1px 2px 5px;
     margin: 1rem 0rem;
@@ -382,8 +400,8 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;;
-
+    margin-top: 1rem;
+    ;
 }
 
 .categoryAndImg img {
