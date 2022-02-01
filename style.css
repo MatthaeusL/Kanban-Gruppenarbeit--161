@@ -27,11 +27,19 @@ body {
     --bgLightBlue: #f4f3fb;
     --bgLightBlueHover: #EAE9F1;
     --bgchevron: #aeaeae;
+    /* Category Color */
     --bgMarketing: aqua;
     --bgSale: #08ff00;
-    --bgProduct: #fff300;
     --bgService: #ff0000;
     --bgDesign: #aa00ff;
+    --bgManagment: #676767;
+    --bgInhouse: #ff8300;
+    --bgDevelopment: #cbfc02;
+    --bgHumanRessources: #f502fc;
+    /* urgency Color */
+    --bgVeryImportant: red;
+    --bgIMportant: yellow;
+    --bgNotSoImportant: green;
 }
 
 .header {
@@ -361,7 +369,6 @@ select {
 .singleCard {
     width: 80%;
     min-height: 10rem;
-    ;
     background-color: var(--bgWhite);
     box-shadow: var(--bgchevron) 1px 2px 5px;
     margin: 1rem 0rem;
@@ -371,6 +378,9 @@ select {
     flex-direction: column;
     padding: 1rem;
     justify-content: space-evenly;
+    border-left-style: solid;
+    border-left-width: 0.75rem;
+    border-color: var(--bgVeryImportant);
 }
 
 .mainconntainer {

@@ -8,6 +8,7 @@ let kanbanArray = [{
             'urgency': 'urgency',
             'assignedTo': 'Inav Bolski',
             'status': 'todo',
+            'urgencyColor': '--bgVeryImportant',
         },
         {
             'taskid': 1,
@@ -18,6 +19,7 @@ let kanbanArray = [{
             'urgency': 'urgency',
             'assignedTo': 'Klaus Meier',
             'status': 'inprogress',
+            'urgencyColor': ' --bgNotSoImportant',
         },
         {
             'taskid': 2,
@@ -28,7 +30,8 @@ let kanbanArray = [{
             'urgency': 'urgency',
             'assignedTo': 'Laura Trautmann',
             // 'status': 'testing',
-            'status': 'backlog'
+            'status': 'backlog',
+            'urgencyColor': '--bgVeryImportant',
         },
         {
             'taskid': 3,
@@ -39,7 +42,8 @@ let kanbanArray = [{
             'urgency': 'urgency',
             'assignedTo': 'Tom Müller',
             // 'status': 'done',
-            'status': 'backlog'
+            'status': 'backlog',
+            'urgencyColor': '--bgIMportant: yellow',
         },
         {
             'taskid': 4,
@@ -50,6 +54,7 @@ let kanbanArray = [{
             'urgency': 'urgency',
             'assignedTo': 'Karin Schneider',
             'status': 'backlog',
+            'urgencyColor': ' --bgNotSoImportant',
         }
     ],
     'users': [{
@@ -221,7 +226,8 @@ function getProfilePic(currentUser) {
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-    /*document.getElementsByClassName('imgAvatar3')[profilePicID].style.borderColor = `var(${usersInArray[profilePicID]['color']})`;
+    /*document.getElementsByClassName('singleCard')[profilePicID].style.borderColor = `var(${status['urgencyColor']})`;
+    document.getElementsByClassName('imgAvatar3')[profilePicID].style.borderColor = `var(${usersInArray[profilePicID]['color']})`;
     document.getElementsByClassName('singleCardCategory')[profilePicID].style.backgroundColor = `var(${usersInArray[profilePicID]['color']})`;*/
     return `  <div class="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         
