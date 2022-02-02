@@ -306,6 +306,7 @@ select {
 
 .infoContainer:hover {
     background-color: var(--bgLightBlueHover);
+    cursor: pointer;
 }
 
 .imgContainer3 {
@@ -334,16 +335,6 @@ select {
     align-items: center;
 }
 
-.backlogOpenTaskMenu {
-    display: flex;
-    justify-content: end;
-}
-
-.backlogMenuItems {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
 
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
@@ -360,6 +351,10 @@ select {
     text-align: center;
     padding-left: 2rem;
     width: 100%;
+}
+
+.boardColumnHighlight {
+    background-color: var(--bgLightBlueHover) !important;
 }
 
 .boardColumn {
@@ -388,6 +383,10 @@ select {
     border-left-style: solid;
     border-left-width: 0.75rem;
     border-color: var(--bgVeryImportant);
+}
+
+.singleCard {
+    cursor: grab;
 }
 
 .mainconntainer {

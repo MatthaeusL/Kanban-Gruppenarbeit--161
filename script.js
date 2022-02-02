@@ -4,7 +4,7 @@ let kanbanArray = [{
             'title': 'Code some',
             'category': 'Development',
             'description': 'A Task for Inav: Code 10000 Rows',
-            'duedate': '30th Feb. 2022',
+            'duedate': '2022-02-24',
             'urgency': 'urgency',
             'assignedTo': 'Inav Bolski',
             'status': 'todo',
@@ -17,7 +17,7 @@ let kanbanArray = [{
             'title': 'Check Data',
             'category': 'Management',
             'description': 'A task for Klaus. Check Business Data for next trades.',
-            'duedate': 'yesterday',
+            'duedate': '2022-02-24',
             'urgency': 'urgency',
             'assignedTo': 'Klaus Meier',
             'status': 'inprogress',
@@ -29,10 +29,9 @@ let kanbanArray = [{
             'title': 'Party',
             'category': 'Inhouse',
             'description': 'A task for Laura: Organise a massive carnival Party',
-            'duedate': 'tomorrow',
+            'duedate': '2022-02-24',
             'urgency': 'urgency',
             'assignedTo': 'Laura Trautmann',
-            // 'status': 'testing',
             'status': 'backlog',
             'urgencyColor': '--bgVeryImportant',
             'categoryColor': '--bgInhouse',
@@ -42,10 +41,9 @@ let kanbanArray = [{
             'title': 'Aquise',
             'category': 'Sales',
             'description': 'A Task for Tom: Get more clients by end of the day',
-            'duedate': '+3d',
+            'duedate': '2022-02-24',
             'urgency': 'urgency',
             'assignedTo': 'Tom Müller',
-            // 'status': 'done',
             'status': 'backlog',
             'urgencyColor': '--bgIMportant: yellow',
             'categoryColor': '--bgSale',
@@ -55,7 +53,7 @@ let kanbanArray = [{
             'title': 'Hire people',
             'category': 'Human ressources',
             'description': 'A task for Karin: Hire some rocket scientists',
-            'duedate': '31th Feb. 22',
+            'duedate': '2022-02-25',
             'urgency': 'urgency',
             'assignedTo': 'Karin Schneider',
             'status': 'backlog',
@@ -240,15 +238,12 @@ function getProfilePic(currentUser) {
 
 }
 
-function colorCard() {
-    document.getElementById('singleCard').style = 'border-color: blue';
-    // let currentUserTest = status['assignedTo'];
-    // let profilePicID = getProfilePic(currentUserTest);
-    // document.getElementsByClassName('singleCard')[profilePicID].style.border-color = `var(${status['urgencyColor']})`;
-    // document.getElementsByClassName('imgAvatar3')[profilePicID].style.border-color = `var(${usersInArray[profilePicID]['color']})`;
-    // document.getElementsByClassName('singleCardCategory')[profilePicID].style.backgroundColor = `var(${usersInArray[profilePicID]['color']})`;
+function highlight(id) {
+    document.getElementById(id).classList.add('boardColumnHighlight');
+}
 
-
+function removehighlight(id) {
+    document.getElementById(id).classList.remove('boardColumnHighlight');
 }
 
 function generateBoardHTML(status) {
@@ -379,13 +374,12 @@ async function backlogTasks() {
         let currentUserID = await getUserID(currentUser);
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[currentUserID]['color']})`;
-        document.getElementById('backlogOpenTaskMenu' + i).style = 'display: none';
     }
 }
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
     return `
-    <div id="backlog_user${i}" onclick="backlogOpenTaskMenu(${i})" >
+    <div id="backlog_user${i}" ondblclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
         <div class="infoContainer">    
             <div class="imgContainer3">
                 <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
@@ -394,56 +388,21 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
                     <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
                 </div>
             </div>
-            
             <div class="department">
                 <span>${filterStatusBacklog[i]['category']}</span>
             </div>
-
             <div class="details">
                 <span>${filterStatusBacklog[i]['description']}</span>
             </div>
-            
         </div>
-        
-        <div class="backlogOpenTaskMenu" id = "backlogOpenTaskMenu${i}" >
-            <div class=" backlogMenuItems backlogShiftToBoard "  onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']},${i})">
-                shift to BOARD
-            </div>
-            <div class="backlogMenuItems">
-                make changes
-            </div>
-            <div class="backlogMenuItems">
-                DELETE
-            </div>
-         </div>
     </div>`;
-
 }
 
-
-function backlogOpenTaskMenu(M) {
-
-    let taskmenu = document.getElementById('backlogOpenTaskMenu' + M);
-
-    if (taskmenu.style.display == 'none') {
-        taskmenu.style = '';
-    } else {
-        taskmenu.style.display = 'none';
-    }
-}
-
-function shiftToBoard(m, i) {
-    // document.getElementById('backlogOpenTaskMenu' + 1).style.display = 'none';
+function shiftToBoard(m) {
     tasksInArray[m]['status'] = 'todo';
     backlogTasks()
-    console.log('m', m, 'i', i, 'backlogOpenTaskMenu' + i)
-
     renderBoard()
-
-
-
 }
-
 
 async function getUserID(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
@@ -455,11 +414,7 @@ async function getUserID(currentUser) {
 
 // -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
-/**
- * Adding a new Task. First: Get all input information, second: push in Kanbanarray
- */
 async function addNewTask() {
-    // optional: check if all Information are made completely
     let taskid = tasksInArray.length;
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
@@ -482,6 +437,7 @@ async function addNewTask() {
         document.getElementById('title').classList.add('placeholderColor');
         document.getElementById('duedate').classList.add('datePlaceholderColor');
         document.getElementById('description').classList.add('placeholderColor');
+        alert(' We need an infobox to fill the fields')
     } else {
         let newTask = {
             'taskid': taskid,
