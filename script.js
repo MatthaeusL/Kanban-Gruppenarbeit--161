@@ -128,35 +128,33 @@ let users = {
     'color': 'color',
 };
 
+// -----------------------------------------------communication SERVER--------------------------------------------------------------------------
 
-// function addUser() {
-//     users.push('John');
-//     backend.setItem('users', JSON.stringify(users));
-// }
-/*async function addUser(name) {
-    users.push(name);
-    await backend.setItem('users', JSON.stringify(users));
+function addUser() {
+    users.push('John');
+    backend.setItem('users', JSON.stringify(users));
+}
 
-}*/
+function sendToServer() {
+    backend.setItem('kanbanArray', JSON.stringify(kanbanArray));
+}
 async function init() {
-    // await downloadFromServer();
-    // users = JSON.parse(backend.getItem('users')) || [];
-    click_nav_board()
+    if (kanbanArray.length > 100) {
+        await downloadFromServer();
+        kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
+    } else {
+        sendToServer()
+    }
+
+    click_nav_board();
     renderBoard();
-    backlogTasks()
+    backlogTasks();
 }
 
-/*function deleteUser() {
-    backend.deleteItem(kanbanArray);
+function deleteServer() {
+    backend.deleteItem('kanbanArray');
 }
-*/
 
-let usersInArray = kanbanArray[0]["users"];
-let tasksInArray = kanbanArray[0]["tasks"];
-let findUser = usersInArray.find((usersInArray) => usersInArray.userid = 'userid_1');
-let filterUser = usersInArray.filter((usersInArray) => usersInArray.username == 'username');
-
-let currentDragged;
 
 // -----------------------------------------------Board Script--------------------------------------------------------------------------
 
@@ -168,31 +166,27 @@ function renderBoard() {
 }
 
 function renderBoardTodo() {
-    let filterStatusTodo = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'todo');
+    let filterStatusTodo = kanbanArray[0]["tasks"].filter((k) => k.status == 'todo');
     let boardTodo = document.getElementById('board_todo');
     boardTodo.innerHTML = "";
     for (let i = 0; i < filterStatusTodo.length; i++) {
         let status = filterStatusTodo[i];
         boardTodo.innerHTML += generateBoardHTML(status);
-
     }
-
-
 }
 
 function renderBoardInprogress() {
-    let filterStatusInProgress = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'inprogress');
+    let filterStatusInProgress = kanbanArray[0]["tasks"].filter((k) => k.status == 'inprogress');
     let boardInprogress = document.getElementById('board_inprogress');
     boardInprogress.innerHTML = "";
     for (let j = 0; j < filterStatusInProgress.length; j++) {
         let status = filterStatusInProgress[j];
         boardInprogress.innerHTML += generateBoardHTML(status);
     }
-
 }
 
 function renderBoardTesting() {
-    let filterStatusTesting = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'testing');
+    let filterStatusTesting = kanbanArray[0]["tasks"].filter((k) => k.status == 'testing');
     let boardTesting = document.getElementById('board_testing');
     boardTesting.innerHTML = '';
     for (let k = 0; k < filterStatusTesting.length; k++) {
@@ -202,18 +196,17 @@ function renderBoardTesting() {
 }
 
 function renderBoardDone() {
-    let filterStatusdone = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'done');
+    let filterStatusdone = kanbanArray[0]["tasks"].filter((k) => k.status == 'done');
     let boardDone = document.getElementById('board_done');
     boardDone.innerHTML = '';
     for (let m = 0; m < filterStatusdone.length; m++) {
         let status = filterStatusdone[m];
         boardDone.innerHTML += generateBoardHTML(status);
-
     }
 }
 
 // -----------------------------------------------Drag n´Drop functions--------------------------------------------------------------------------
-
+let currentDragged;
 
 function startDragging(id) {
     currentDragged = id;
@@ -224,7 +217,8 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-    tasksInArray[currentDragged]['status'] = status;
+    kanbanArray[0]["tasks"][currentDragged]['status'] = status;
+    sendToServer()
     renderBoard()
 }
 
@@ -256,11 +250,10 @@ function generateBoardHTML(status) {
                         <span class="singleCardDescription">${status['description']}</span>
                     <div class="categoryAndImg">
                         <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
-                        <img class="imgAvatar3" src="./img/${usersInArray[profilePicID]['img']}" style="border-color: var(${usersInArray[profilePicID]['color']})"></img>
+                        <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
                     </div>
                 </div>
         `;
-    document.getElementById('singleCard').style.style = 'border-color: blue';
 
 
 
@@ -365,7 +358,7 @@ function click_help() {
 // }
 
 async function backlogTasks() {
-    let filterStatusBacklog = tasksInArray.filter((tasksInArray) => tasksInArray.status == 'backlog');
+    let filterStatusBacklog = kanbanArray[0]["tasks"].filter((k) => k.status == 'backlog');
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
     for (let i = 0; i < filterStatusBacklog.length; i++) {
@@ -373,7 +366,7 @@ async function backlogTasks() {
         let currentUser = filterStatusBacklog[i]['assignedTo'];
         let currentUserID = await getUserID(currentUser);
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
-        document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[currentUserID]['color']})`;
+        document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${kanbanArray[0]["users"][currentUserID]['color']})`;
     }
 }
 
@@ -382,10 +375,10 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
     <div id="backlog_user${i}" ondblclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
         <div class="infoContainer">    
             <div class="imgContainer3">
-                <img class="imgAvatar2" src="./img/${usersInArray[currentUserID]['img']}">
+                <img class="imgAvatar2" src="./img/${kanbanArray[0]["users"][currentUserID]['img']}">
                 <div class="row">
-                    <span>${usersInArray[currentUserID]['username']}</span>
-                    <a href="mailto:${usersInArray[currentUserID]['email']}">${usersInArray[currentUserID]['email']}</a>
+                    <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
+                    <a href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
                 </div>
             </div>
             <div class="department">
@@ -399,7 +392,9 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
 }
 
 function shiftToBoard(m) {
-    tasksInArray[m]['status'] = 'todo';
+    kanbanArray[0]["tasks"][m]['status'] = 'todo';
+    sendToServer()
+    click_nav_board()
     backlogTasks()
     renderBoard()
 }
@@ -415,7 +410,7 @@ async function getUserID(currentUser) {
 // -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
 async function addNewTask() {
-    let taskid = tasksInArray.length;
+    let taskid = kanbanArray[0]["tasks"].length;
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
@@ -450,12 +445,14 @@ async function addNewTask() {
             'status': status,
             'urgencyColor': urgencyColor,
         }
-        tasksInArray.push(newTask);
+        kanbanArray[0]["tasks"].push(newTask);
+
         clearInput()
 
         click_nav_backlog();
         backlogTasks();
     }
+    await sendToServer()
 
 
 }
@@ -504,18 +501,18 @@ function clearInput() {
  * @param {*} userIDArray 
  * @param {*} userIDArrayuserid 
  */
-function handleChoise(input,userIDArrayimg,userIDArrayuserid) {
-    if(input.checked) {
+function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
+    if (input.checked) {
         assignedUser.push(userIDArrayuserid);
         addMembersImg(userIDArrayimg);
         console.log('addMemberImg hinzufügen');
-    }else {
+    } else {
         let imgX = document.getElementById(userIDArrayimg);
         imgX.parentNode.removeChild(imgX);
         document.getElementById('userContainerHide').classList.add('d-none');
         console.log('addMemberImg löschen');
-    }    
-} 
+    }
+}
 
 /**
  * remove the hidding Class 
@@ -533,8 +530,8 @@ function loadUser() {
     let members = document.getElementById('userContainerHide');
     // members.classList.remove('d-none');
     members.innerHTML = '';
-    for (let i = 0; i < usersInArray.length; i++) {
-        let userIDArray = usersInArray[i];
+    for (let i = 0; i < kanbanArray[0]["users"].length; i++) {
+        let userIDArray = kanbanArray[0]["users"][i];
         members.innerHTML += `
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
@@ -552,7 +549,7 @@ function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
     img.innerHTML += `
     <img id="${userIDArrayimg}" class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
-    `;  
+    `;
     document.getElementById('userContainerHide').classList.add('d-none');
 }
 
