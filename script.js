@@ -537,14 +537,37 @@ function clearInput() {
 //     document.getElementById('userContainerHide').classList.add('d-none');
 // }
 
-function choosedUser(userIDArrayuserid) {
-    assignedUser.push(userIDArrayuserid);
+
+
+
+
+/**
+ * Check the checkboxes from LoadUsers() and push the id to the assignedUser Array. Insert the User img.
+ * 
+ * @param {*} input 
+ * @param {*} userIDArray 
+ * @param {*} userIDArrayuserid 
+ */
+function handleChoise(input,userIDArray,userIDArrayuserid) {
+    if(input.checked) {
+        assignedUser.push(userIDArrayuserid);
+    }else {
+        addMembersImg(userIDArray['img']);
+    }    
 } 
 
+/**
+ * remove the hidding Class 
+ * 
+ */
 function showUser() {
     document.getElementById('userContainerHide').classList.remove('d-none');
 }
 
+/**
+ *  loads the List hided in the Browser 
+ * 
+ */
 function loadUser() {
     let members = document.getElementById('userContainerHide');
     // members.classList.remove('d-none');
@@ -554,15 +577,25 @@ function loadUser() {
         members.innerHTML += `
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
-            <input onchange="addMembersImg('${userIDArray['img']}'); choosedUser('${userIDArray['userid']}')" id="${ userIDArray['userid']}" class="checkbox" type="checkbox">
+            <input onclick="handleChoise(this,${userIDArray},'${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
         </div>`;
     }
 }
 
+/**
+ * insert the User img in the Browser
+ * 
+ * @param {*} userIDArrayimg 
+ */
 function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
     img.innerHTML += `
     <img class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
     `;
-    // document.getElementById('userContainerHide').classList.add('d-none');
+    document.getElementById('userContainerHide').classList.add('d-none');
 }
+
+// showSelectedUser() {
+//     for (let i = 0; i < assignedUser.length; i++) {
+//     }
+// }
