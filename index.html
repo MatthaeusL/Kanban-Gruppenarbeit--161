@@ -57,32 +57,32 @@
 
             <div id="board_container" class="boardContainer">
 
-                <div class="mainBoardContainer " ondrop="moveTo('todo')" ondragover="allowDrop(event)">
-                    <div class="boardColumn">
+                <div class="mainBoardContainer" ondrop="moveTo('todo')" ondragover="allowDrop(event); highlight('boardColumnTodo')" ondragleave="removehighlight('boardColumnTodo')">
+                    <div class="boardColumn" id="boardColumnTodo">
                         <h2 class="marginBottom ptSansBold h2todo">TO DO</h2>
                         <div class="singleCardWrapper" id="board_todo">
                         </div>
                     </div>
                 </div>
 
-                <div class="mainBoardContainer " ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
-                    <div class="boardColumn">
+                <div class="mainBoardContainer" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); highlight('boardColumnInprogress')" ondragleave="removehighlight('boardColumnInprogress')">
+                    <div class="boardColumn" id="boardColumnInprogress">
                         <h2 class="marginBottom ptSansBold ">IN PROGRESS</h2>
                         <div class="singleCardWrapper" id="board_inprogress">
                         </div>
                     </div>
                 </div>
 
-                <div class="mainBoardContainer " ondrop="moveTo('testing')" ondragover="allowDrop(event)">
-                    <div class="boardColumn">
+                <div class="mainBoardContainer" ondrop="moveTo('testing')" ondragover="allowDrop(event); highlight('boardColumnTesting')" ondragleave="removehighlight('boardColumnTesting')">
+                    <div class="boardColumn" id="boardColumnTesting">
                         <h2 class="marginBottom ptSansBold ">TESTING</h2>
                         <div class="singleCardWrapper" id="board_testing">
                         </div>
                     </div>
                 </div>
 
-                <div class="mainBoardContainer " ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                    <div class="boardColumn">
+                <div class="mainBoardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event); highlight('boardColumDone')" ondragleave="removehighlight('boardColumDone')">
+                    <div class="boardColumn" id="boardColumDone">
                         <h2 class="marginBottom ptSansBold ">DONE</h2>
                         <div class="singleCardWrapper" id="board_done">
                         </div>
