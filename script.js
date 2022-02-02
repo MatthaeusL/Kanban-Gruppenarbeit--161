@@ -114,6 +114,10 @@ let kanbanArray = [{
     ]
 }]
 
+
+assignedUser = [];
+
+
 let users = {
     'userid_1': 'userid_12',
     'username': 'username',
@@ -467,16 +471,46 @@ function clearInput() {
 }
 
 
-function addMembers() {
+// function addMembers() {
+//     let members = document.getElementById('userContainerHide');
+//     members.classList.remove('d-none');
+//     members.innerHTML = '';
+//     for (let i = 0; i < usersInArray.length; i++) {
+//         let userIDArray = usersInArray[i];
+//         members.innerHTML += `
+//         <div class="userContainer">
+//             <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
+//             <input onclick="addMembersImg('${userIDArray['img']}'); choosedUser('${userIDArray['userid']}')" id="${ userIDArray['userid']}" class="checkbox" type="checkbox">
+//         </div>`;
+//     }
+// }
+
+// function addMembersImg(userIDArrayimg) {
+//     let img = document.getElementById('imgMembers');
+//     img.innerHTML += `
+//     <img class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
+//     `;
+//     document.getElementById('userContainerHide').classList.add('d-none');
+// }
+
+function choosedUser(userIDArrayuserid) {
+    assignedUser.push(userIDArrayuserid);
+} 
+
+function showUser() {
+    document.getElementById('userContainerHide').classList.remove('d-none');
+}
+
+function loadUser() {
     let members = document.getElementById('userContainerHide');
-    members.classList.remove('d-none');
+    // members.classList.remove('d-none');
     members.innerHTML = '';
     for (let i = 0; i < usersInArray.length; i++) {
         let userIDArray = usersInArray[i];
         members.innerHTML += `
         <div class="userContainer">
-            <label for="${userIDArray['userid']}">${usersInArray[i]['username']}</label>
-            <input onclick="addMembersImg('${userIDArray['img']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+            <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
+            <input onchange="addMembersImg('${userIDArray['img']}'); choosedUser('${userIDArray['userid']}')" id="${ userIDArray['userid']}" class="checkbox" type="checkbox">
         </div>`;
     }
 }
@@ -484,7 +518,7 @@ function addMembers() {
 function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
     img.innerHTML += `
-    <img class="imgAvatar2" src="./img/${userIDArrayimg}">
+    <img class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
     `;
-    document.getElementById('userContainerHide').classList.add('d-none');
+    // document.getElementById('userContainerHide').classList.add('d-none');
 }
