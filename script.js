@@ -504,11 +504,16 @@ function clearInput() {
  * @param {*} userIDArray 
  * @param {*} userIDArrayuserid 
  */
-function handleChoise(input,userIDArray,userIDArrayuserid) {
+function handleChoise(input,userIDArrayimg,userIDArrayuserid) {
     if(input.checked) {
         assignedUser.push(userIDArrayuserid);
+        addMembersImg(userIDArrayimg);
+        console.log('addMemberImg hinzufügen');
     }else {
-        addMembersImg(userIDArray['img']);
+        let imgX = document.getElementById(userIDArrayimg);
+        imgX.parentNode.removeChild(imgX);
+        document.getElementById('userContainerHide').classList.add('d-none');
+        console.log('addMemberImg löschen');
     }    
 } 
 
@@ -533,7 +538,7 @@ function loadUser() {
         members.innerHTML += `
         <div class="userContainer">
             <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
-            <input onclick="handleChoise(this,${userIDArray},'${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+            <input onclick="handleChoise(this,'${userIDArray['img']}','${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
         </div>`;
     }
 }
@@ -546,8 +551,8 @@ function loadUser() {
 function addMembersImg(userIDArrayimg) {
     let img = document.getElementById('imgMembers');
     img.innerHTML += `
-    <img class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
-    `;
+    <img id="${userIDArrayimg}" class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
+    `;  
     document.getElementById('userContainerHide').classList.add('d-none');
 }
 
