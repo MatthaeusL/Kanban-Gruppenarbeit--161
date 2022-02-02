@@ -139,7 +139,7 @@ function sendToServer() {
     backend.setItem('kanbanArray', JSON.stringify(kanbanArray));
 }
 async function init() {
-    if (kanbanArray.length > 100) {
+    if (kanbanArray.length < 100) {
         await downloadFromServer();
         kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
     } else {
@@ -372,7 +372,7 @@ async function backlogTasks() {
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
     return `
-    <div id="backlog_user${i}" ondblclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
+    <div id="backlog_user${i}" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
         <div class="infoContainer">    
             <div class="imgContainer3">
                 <img class="imgAvatar2" src="./img/${kanbanArray[0]["users"][currentUserID]['img']}">
