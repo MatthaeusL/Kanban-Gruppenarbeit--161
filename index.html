@@ -183,8 +183,8 @@
                             <div>
                                 <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">ASSIGNED TO
                                 </h4>
-                                <div id="imgContainer2" class="imgContainer2 ">
-                                    <img onclick="addMembers()" class="logo" src="./logo/icon plus.png ">
+                                <div id="imgContainer2" class="imgContainer2">
+                                    <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
                                     <div id="imgMembers">
 
                                     </div>
@@ -193,7 +193,7 @@
 
                             <div class="memberBtnContainer">
                                 <div class="chooseMember">
-                                    <div id="userContainerHide" class=""></div>
+                                    <div id="userContainerHide" class="d-none"></div>
                                 </div>
                                 <div class="btnContainer ">
                                     <button class="btn ">CANCEL</button>
