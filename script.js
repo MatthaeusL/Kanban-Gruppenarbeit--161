@@ -474,14 +474,10 @@ async function addNewTask() {
         urgencyColor = '--bgNotSoImportant'
     }
 
-    if ((title.length == 0 && duedate.length == 0 && description.length == 0) == true) {
+    if (title.length == 0 || duedate.length == 0 || description.length == 0) {
         document.getElementById('title').classList.add('placeholderColor');
         document.getElementById('duedate').classList.add('datePlaceholderColor');
         document.getElementById('description').classList.add('placeholderColor');
-
-        // if (title.length == 0) {
-        //     document.getElementById('title').classList.add('placeholderColor');
-
     } else {
         let newTask = {
             'taskid': taskid,
@@ -494,11 +490,11 @@ async function addNewTask() {
             'status': status,
             'urgencyColor': urgencyColor,
         }
-        await tasksInArray.push(newTask);
+        tasksInArray.push(newTask);
         clearInput()
 
         click_nav_backlog();
-        await backlogTasks();
+        backlogTasks();
     }
 
 
