@@ -415,10 +415,8 @@ async function getUserID(currentUser) {
 function checkIfEmptyBacklog() {
     if (backlogEmpty.length === 0) {
         document.getElementById('emptyBacklog').style.display = '';
-        console.log('trith')
     } else {
-        document.getElementById('emptyBacklog').style.display = 'none';
-        console.log('false')
+        // document.getElementById('emptyBacklog').style.display = 'none';
     }
 }
 
