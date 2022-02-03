@@ -335,6 +335,22 @@ select {
     align-items: center;
 }
 
+.emptyBacklog {
+    color: rgba(255, 0, 0, 0.698);
+    width: 60rem;
+    height: 40rem;
+    background-color: var(--bgLightBlue);
+    text-align: center;
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: 2rem;
+    left: 8rem;
+}
+
 
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 

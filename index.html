@@ -105,6 +105,14 @@
                     <span>CATEGORY</span>
                     <span>DETAILS</span>
                 </div>
+                <div class="emptyBacklog" id="emptyBacklog" style="display: none;">
+                    <div>
+                        <h1>Empty</h1>
+                    </div> <br>
+                    <div>
+                        <h3>Please add a new task</h3>
+                    </div>
+                </div>
 
                 <div id="backlog_users">
                     <div id="backlog_user" class="infoContainer">
@@ -196,7 +204,7 @@
                                     <div id="userContainerHide" class="d-none"></div>
                                 </div>
                                 <div class="btnContainer ">
-                                    <button class="btn ">CANCEL</button>
+                                    <button class="btn" onclick="clearInput()">CANCEL</button>
                                     <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
 
                                 </div>

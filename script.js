@@ -139,12 +139,9 @@ function sendToServer() {
     backend.setItem('kanbanArray', JSON.stringify(kanbanArray));
 }
 async function init() {
-    if (kanbanArray.length < 100) {
-        await downloadFromServer();
-        kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
-    } else {
-        sendToServer()
-    }
+    await downloadFromServer();
+    kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
+
 
     click_nav_board();
     renderBoard();
@@ -273,6 +270,8 @@ function getTaskID(currentUser) {
  */
 
 async function click_nav_board() {
+    checkIfEmptyBacklog()
+
     document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;';
     document.getElementById('nav_backlog').style = '';
     document.getElementById('nav_addtask').style = '';
@@ -356,9 +355,11 @@ function click_help() {
 //         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${usersInArray[i]['color']})`;
 //     }
 // }
+let backlogEmpty = [];
 
 async function backlogTasks() {
     let filterStatusBacklog = kanbanArray[0]["tasks"].filter((k) => k.status == 'backlog');
+    backlogEmpty = filterStatusBacklog;
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
     for (let i = 0; i < filterStatusBacklog.length; i++) {
@@ -396,7 +397,11 @@ function shiftToBoard(m) {
     sendToServer()
     click_nav_board()
     backlogTasks()
+    checkIfEmptyBacklog()
     renderBoard()
+
+
+
 }
 
 async function getUserID(currentUser) {
@@ -404,6 +409,16 @@ async function getUserID(currentUser) {
         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
         }
+    }
+}
+
+function checkIfEmptyBacklog() {
+    if (backlogEmpty.length === 0) {
+        document.getElementById('emptyBacklog').style.display = '';
+        console.log('trith')
+    } else {
+        document.getElementById('emptyBacklog').style.display = 'none';
+        console.log('false')
     }
 }
 
@@ -446,11 +461,13 @@ async function addNewTask() {
             'urgencyColor': urgencyColor,
         }
         kanbanArray[0]["tasks"].push(newTask);
+        document.getElementById('emptyBacklog').style.display = 'none';
 
         clearInput()
-
         click_nav_backlog();
         backlogTasks();
+
+
     }
     await sendToServer()
 
