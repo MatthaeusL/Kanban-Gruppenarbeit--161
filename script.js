@@ -237,24 +237,33 @@ function removehighlight(id) {
     document.getElementById(id).classList.remove('boardColumnHighlight');
 }
 
+/* ---------------------------------------------------------Board single Card------------------------------------- */
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-
-    return `  <div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard" draggable="true" ondragstart="startDragging(${status['taskid']})">
-                        <span class="singleCardDate">${status['duedate']}</span> 
-                        <h3>${status['title']}</h3> 
-                        <span class="singleCardDescription">${status['description']}</span>
-                    <div class="categoryAndImg">
-                        <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
-                        <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
-                    </div>
+    for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
+        return  `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${i}" draggable="true" ondragstart="startDragging(${status['taskid']})">
+                        <div>
+                            <div class="dateAndTrash">
+                                <span class="singleCardDate">${status['duedate']}</span> 
+                                <img onclick="deleteCrad()" class="trashImg" src="./logo/bin.png"
+                            <div>    
+                        </div>   
+                        <div> 
+                            <h3>${status['title']}</h3> 
+                            <span class="singleCardDescription">${status['description']}</span>
+                            <div class="categoryAndImg">
+                                <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
+                                <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+                            </div>
+                        </div>    
                 </div>
         `;
+    }
+}
 
-
-
-
+function deleteCrad() {
+    singleCard1.remove();
 }
 
 function getTaskID(currentUser) {

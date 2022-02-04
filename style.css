@@ -405,6 +405,17 @@ select {
     cursor: grab;
 }
 
+.dateAndTrash {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trashImg {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
 .mainconntainer {
     width: 100wh;
     height: 100vh;
@@ -453,7 +464,7 @@ select {
 
 h3 {
     text-align: start;
-    margin: .3rem 0 0 0;
+    margin: 0;
     /* padding-top: 1.7rem; */
 }
 
