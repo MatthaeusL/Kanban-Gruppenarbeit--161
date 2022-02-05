@@ -23,6 +23,7 @@ body {
 :root {
     --bgStandard: #1e3190;
     --bgWhite: white;
+    --clorNAVfont: #d8d8d8;
     --bgGray: #eeeeee;
     --bgLightBlue: #f4f3fb;
     --bgLightBlueHover: #EAE9F1;
@@ -58,7 +59,7 @@ body {
 
 .navBar {
     background-color: var(--bgStandard);
-    color: var(--bgWhite);
+    color: var(--clorNAVfont);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,10 +70,12 @@ body {
 }
 
 .hover {
-    padding-left: 2.5rem;
+    padding-left: 2rem;
     border-left-width: 0.4rem;
     border-left-style: solid;
     border-color: var(--bgStandard);
+    font-size: 400;
+    margin-bottom: .8rem;
 }
 
 .hover:hover {
@@ -81,6 +84,7 @@ body {
     border-width: 0.4rem;
     transition: all 225ms ease-in-out;
     border-color: var(--bgWhite);
+    color: var(--bgWhite);
 }
 
 .logoContainer {
@@ -355,6 +359,28 @@ select {
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
 .boardContainer {
+    display: flex;
+}
+
+.mainBoardContainer {
+    padding-left: 2rem;
+    width: 100%;
+}
+
+.boardColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    background-color: var(--bgLightBlue);
+}
+
+.boardColumnHighlight {
+    background-color: var(--bgLightBlueHover) !important;
+}
+
+
+/* .boardContainer {
     height: 60rem;
     display: flex;
     justify-content: center;
@@ -382,7 +408,7 @@ select {
     min-height: 80vh;
     width: 100%;
     background-color: var(--bgLightBlue);
-}
+} */
 
 .singleCard {
     width: 80%;

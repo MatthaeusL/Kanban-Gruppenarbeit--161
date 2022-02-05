@@ -280,7 +280,7 @@ function getTaskID(currentUser) {
 async function click_nav_board() {
     checkIfEmptyBacklog()
 
-    document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;  color: var(--bgWhite);';
     document.getElementById('nav_backlog').style = '';
     document.getElementById('nav_addtask').style = '';
     document.getElementById('nav_help').style = '';
@@ -294,7 +294,7 @@ async function click_nav_board() {
 
 async function click_nav_backlog() {
     document.getElementById('nav_board').style = '';
-    document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem; color: var(--bgWhite);';
     document.getElementById('nav_addtask').style = '';
     document.getElementById('nav_help').style = '';
 
@@ -308,7 +308,7 @@ async function click_nav_backlog() {
 function click_nav_addtask() {
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = '';
-    document.getElementById('nav_addtask').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_addtask').style = 'border-left : solid var(--bgWhite) .4rem; color: var(--bgWhite);';
     document.getElementById('nav_help').style = '';
 
     document.getElementById('board_container').style.display = 'none';
@@ -321,7 +321,7 @@ function click_help() {
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = '';
     document.getElementById('nav_addtask').style = '';
-    document.getElementById('nav_help').style = 'border-left : solid var(--bgWhite) .4rem;';
+    document.getElementById('nav_help').style = 'border-left : solid var(--bgWhite) .4rem; color: var(--bgWhite);';
 
     document.getElementById('board_container').style.display = 'none';
     document.getElementById('backlog_container').style.display = 'none';
