@@ -139,8 +139,8 @@ function sendToServer() {
     backend.setItem('kanbanArray', JSON.stringify(kanbanArray));
 }
 async function init() {
-    await downloadFromServer();
-    kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
+    // await downloadFromServer();
+    // kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
 
 
     click_nav_board();
@@ -278,7 +278,6 @@ function getTaskID(currentUser) {
  */
 
 async function click_nav_board() {
-    checkIfEmptyBacklog()
 
     document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;  color: var(--bgWhite);';
     document.getElementById('nav_backlog').style = '';
@@ -405,7 +404,7 @@ function shiftToBoard(m) {
     sendToServer()
     click_nav_board()
     backlogTasks()
-    checkIfEmptyBacklog()
+
     renderBoard()
 }
 
@@ -417,19 +416,20 @@ async function getUserID(currentUser) {
     }
 }
 
-function checkIfEmptyBacklog() {
-    if (backlogEmpty.length === 0) {
-        document.getElementById('emptyBacklog').style.display = '';
-    } else {
-        // document.getElementById('emptyBacklog').style.display = 'none';
-    }
-}
+// function checkIfEmptyBacklog() {
+//     if (!backlogEmpty.length) {
+//         document.getElementById('emptyBacklog').style.display = 'none';
+//     } else {
+//         // document.getElementById('emptyBacklog').style.display = '';
+//     }
+// }
 
 // -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
 async function addNewTask() {
     let arraylength = kanbanArray[0]["tasks"].length;
-    let taskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid']
+    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid']
+    let taskid = arrayTasksTaskid + 1;
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
