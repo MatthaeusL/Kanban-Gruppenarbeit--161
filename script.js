@@ -242,11 +242,11 @@ function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
     for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
-        return  `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${i}" draggable="true" ondragstart="startDragging(${status['taskid']})">
+        return `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${i}" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         <div>
                             <div class="dateAndTrash">
                                 <span class="singleCardDate">${status['duedate']}</span> 
-                                <img onclick="deleteCrad()" class="trashImg" src="./logo/bin.png"
+                                <img onclick="deleteCrad(${kanbanArray[0]["tasks"]})" class="trashImg" src="./logo/bin.png"
                             <div>    
                         </div>   
                         <div> 
@@ -432,7 +432,8 @@ function checkIfEmptyBacklog() {
 // -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
 async function addNewTask() {
-    let taskid = kanbanArray[0]["tasks"].length;
+    let arraylength = kanbanArray[0]["tasks"].length;
+    let taskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid']
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
