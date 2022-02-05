@@ -241,29 +241,28 @@ function removehighlight(id) {
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-    for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
-        return `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${i}" draggable="true" ondragstart="startDragging(${status['taskid']})">
+    return `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
                         <div>
                             <div class="dateAndTrash">
                                 <span class="singleCardDate">${status['duedate']}</span> 
-                                <img onclick="deleteCrad(${kanbanArray[0]["tasks"]})" class="trashImg" src="./logo/bin.png"
-                            <div>    
+                             <div>    
                         </div>   
                         <div> 
                             <h3>${status['title']}</h3> 
                             <span class="singleCardDescription">${status['description']}</span>
-                            <div class="categoryAndImg">
+                                <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./logo/bin.png"
+                           <div class="categoryAndImg">
                                 <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
                                 <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
                             </div>
                         </div>    
                 </div>
         `;
-    }
 }
 
-function deleteCrad() {
-    singleCard1.remove();
+function deleteCard(statusTaskid) {
+    kanbanArray[0]["tasks"].filter((d) => d.taskid == statusTaskid).splice; /* filtern 1 array, muss gelöscht werden an stelle 0?? */
+    sendToServer()
 }
 
 function getTaskID(currentUser) {
@@ -408,9 +407,6 @@ function shiftToBoard(m) {
     backlogTasks()
     checkIfEmptyBacklog()
     renderBoard()
-
-
-
 }
 
 async function getUserID(currentUser) {
