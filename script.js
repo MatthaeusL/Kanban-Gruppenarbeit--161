@@ -139,8 +139,8 @@ function sendToServer() {
     backend.setItem('kanbanArray', JSON.stringify(kanbanArray));
 }
 async function init() {
-    // await downloadFromServer();
-    // kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
+    await downloadFromServer();
+    kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
 
 
     click_nav_board();
@@ -417,8 +417,8 @@ async function getUserID(currentUser) {
 }
 
 function checkBacklogEmpty() {
-
-    if (backlogEmpty === 1) {
+    backlogTasks()
+    if (backlogEmpty == 0) {
         document.getElementById('emptyBacklog').style.display = '';
     } else {
         document.getElementById('emptyBacklog').style.display = 'none';
