@@ -278,6 +278,7 @@ function getTaskID(currentUser) {
  */
 
 async function click_nav_board() {
+    checkBacklogEmpty()
 
     document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;  color: var(--bgWhite);';
     document.getElementById('nav_backlog').style = '';
@@ -366,11 +367,10 @@ let backlogEmpty = [];
 
 async function backlogTasks() {
     let filterStatusBacklog = kanbanArray[0]["tasks"].filter((k) => k.status == 'backlog');
-    backlogEmpty = filterStatusBacklog;
+    backlogEmpty = filterStatusBacklog.length;
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
     for (let i = 0; i < filterStatusBacklog.length; i++) {
-        console.log(filterStatusBacklog[i]['taskid']);
         let currentUser = filterStatusBacklog[i]['assignedTo'];
         let currentUserID = await getUserID(currentUser);
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
@@ -416,13 +416,17 @@ async function getUserID(currentUser) {
     }
 }
 
-// function checkIfEmptyBacklog() {
-//     if (!backlogEmpty.length) {
-//         document.getElementById('emptyBacklog').style.display = 'none';
-//     } else {
-//         // document.getElementById('emptyBacklog').style.display = '';
-//     }
-// }
+function checkBacklogEmpty() {
+    console.log(backlogEmpty);
+    if (backlogEmpty === 1) {
+        document.getElementById('emptyBacklog').style.display = '';
+
+    } else {
+        console.log('something in array');
+        document.getElementById('emptyBacklog').style.display = 'none';
+
+    }
+}
 
 // -----------------------------------------------Add Task Script--------------------------------------------------------------------------
 
