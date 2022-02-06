@@ -48,7 +48,7 @@
         </div>
 
         <!-- Copy of Navbar for responsive Menu Band -->
-        <div class="overlayerMenuBand d-none" id="overlayerMenuBand"></div>
+        <div class="overlayerMenuBand d-none" id="overlayerMenuBand" onclick="closeMenu()"></div>
         <img class="menuStripes" id="menuStripes" onclick="showMenu()" src="img/menu-stripes.svg">
         <div class="menuBand" id="menuBand">
             <div>
@@ -136,7 +136,7 @@
 
         <!-- -----------------------------------------------------Backlog Container-------------------------------------------- -->
         <div id="backlog_container">
-            <div>
+            <div class="pageContainerHeader">
                 <h2 class="ptSansBold " style="margin-bottom: 0.5rem; width: 100vw;">Backlog</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
             </div>
@@ -181,7 +181,7 @@
         </div>
         <!-- ------------------------------------------------------Add Task Container------------------------------------------- -->
         <div id="addTask_container">
-            <div>
+            <div class="pageContainerHeader">
                 <h2 class="ptSansBold " style="margin-bottom: 0.5rem; width: 100vw;">Add Task</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
             </div>
@@ -196,7 +196,7 @@
 
                     <div>
                         <h4 class="span ptSansBold ">CATEGORY</h4>
-                        <select class="drpDown borderRadius borderGrey " id="category">
+                        <select class="drpDown borderRadius borderGrey inputDimensions" id="category">
                             <option value="development">development</option>
                             <option value="marketing">marketing</option>
                             <option value="management">management</option>
