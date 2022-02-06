@@ -108,31 +108,38 @@ function removehighlight(id) {
 }
 
 /* ---------------------------------------------------------Board single Card------------------------------------- */
+
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
-    return `<div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
-                        <div>
-                            <div class="dateAndTrash">
-                                <span class="singleCardDate">${status['duedate']}</span> 
-                             <div>    
-                        </div>   
-                        <div> 
-                            <h3>${status['title']}</h3> 
-                            <span class="singleCardDescription">${status['description']}</span>
-                                <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./logo/bin.png"
-                           <div class="categoryAndImg">
-                                <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
-                                <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
-                            </div>
-                        </div>    
-                </div>
-        `;
+    return `
+    <div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
+        <div>
+            <div class="dateAndTrash">
+                <span class="singleCardDate">${status['duedate']}</span> 
+                <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./logo/bin.png"
+            </div>    
+        </div>
+        <div>
+            <h3>${status['title']}</h3> 
+            <span class="singleCardDescription">${status['description']}</span> 
+        </div>    
+        <div class="categoryAndImg">
+            <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
+            <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+        </div>      
+    </div>`;
 }
 
+/**
+ * Löscht ausgewählte Karte per Klick auf Mülleimer
+ * 
+ * @param {*} statusTaskid 
+ */
 function deleteCard(statusTaskid) {
-    kanbanArray[0]["tasks"].filter((d) => d.taskid == statusTaskid).splice; /* filtern 1 array, muss gelöscht werden an stelle 0?? */
+    kanbanArray[0]['tasks'].splice(statusTaskid, 1);
     sendToServer()
+    renderBoard()
 }
 
 function getTaskID(currentUser) {
