@@ -69,6 +69,22 @@ body {
     height: 100vh;
 }
 
+.menuBand{
+    display: none;
+}
+
+@media(max-width: 1150px){
+    .navBar{
+        display: none;
+    }
+
+    .menuBand{
+        display: block;
+        position: fixed;
+
+    }
+    }
+
 .hover {
     padding-left: 2rem;
     border-left-width: 0.4rem;
@@ -125,6 +141,12 @@ body {
     display: flex;
     border-radius: .8rem;
     width: fit-content;
+}
+
+@media(max-width: 1150px){
+.content{
+    flex-direction: column;
+}
 }
 
 .span {
