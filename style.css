@@ -176,7 +176,7 @@ body {
 .mainContent {
     height: 100vh;
     padding-left: 1rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
     width: 100%;
@@ -276,6 +276,7 @@ select {
     border-style: solid;
     border-width: revert;
     border-color: var(--bgDesign);
+    cursor: pointer;
 }
 
 @media(max-width: 600px) {
