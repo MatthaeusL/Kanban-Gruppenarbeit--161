@@ -73,8 +73,10 @@ function renderBoardDone() {
 // -----------------------------------------------Drag n´Drop functions--------------------------------------------------------------------------
 let currentDragged;
 
-function startDragging(id) {
-    currentDragged = id;
+function startDragging(taskid) {
+    let currentID = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == taskid); // Filter to find the index of current Taskid
+
+    currentDragged = currentID;
 }
 
 function allowDrop(ev) {
@@ -135,7 +137,8 @@ function generateBoardHTML(status) {
  * @param {*} statusTaskid 
  */
 function deleteCard(statusTaskid) {
-    kanbanArray[0]['tasks'].splice(statusTaskid, 1);
+    findIndex = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == statusTaskid)
+    kanbanArray[0]['tasks'].splice(findIndex, 1);
     sendToServer()
     renderBoard()
 }
@@ -250,11 +253,11 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
 }
 
 function shiftToBoard(m) {
-    kanbanArray[0]["tasks"][m]['status'] = 'todo';
+    let arrayIndex = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == m); // Filter to find the index of current Taskid
+    kanbanArray[0]["tasks"][arrayIndex]['status'] = 'todo';
     sendToServer()
     click_nav_board()
     backlogTasks()
-
     renderBoard()
 }
 
