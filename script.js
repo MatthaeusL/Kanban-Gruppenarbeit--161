@@ -417,14 +417,11 @@ async function getUserID(currentUser) {
 }
 
 function checkBacklogEmpty() {
-    console.log(backlogEmpty);
+
     if (backlogEmpty === 1) {
         document.getElementById('emptyBacklog').style.display = '';
-
     } else {
-        console.log('something in array');
         document.getElementById('emptyBacklog').style.display = 'none';
-
     }
 }
 
