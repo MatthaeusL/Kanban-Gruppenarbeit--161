@@ -178,6 +178,7 @@ select {
     border-style: solid;
     border-width: revert;
     border-color: var(--bgDesign);
+    cursor: pointer;
 }
 
 .logo {
