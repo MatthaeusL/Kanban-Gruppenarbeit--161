@@ -11,8 +11,6 @@ function sendToServer() {
 async function init() {
     await downloadFromServer();
     kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
-
-
     click_nav_board();
     renderBoard();
     backlogTasks();

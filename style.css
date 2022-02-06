@@ -69,8 +69,11 @@ body {
     height: 100vh;
 }
 
-.menuBand{
-    display: none;
+.menuStripes{
+    display: block;
+    position: fixed;
+    left:0;
+    top:0;
 }
 
 @media(max-width: 1150px){
