@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
     <script src="JSONs.js"></script>
@@ -17,10 +18,39 @@
 <body onload="init()">
     <!-- ----------------------------------------------------------------Navbar----------------------------------------------------- -->
     <div class="mainContainer">
-        <div class="menuStripes" onclick="showMenu()" src="img/menu-stripes.svg">
 
-        </div>
         <div class="navBar">
+            <div>
+                <div class="logoContainer">
+                    <img src="./logo/logo.png">
+                </div>
+                <div style="width: 10rem;">
+                    <div class="hover" id="nav_board" onclick="click_nav_board()">
+                        <h3>Board</h3>
+                    </div>
+
+                    <div class="hover " id="nav_backlog" onclick="click_nav_backlog()">
+                        <h3>Backlog</h3>
+                    </div>
+
+                    <div class="hover " id="nav_addtask" onclick="click_nav_addtask()">
+                        <h3>Add Task</h3>
+                    </div>
+
+                    <div class="hover " id="nav_help" onclick="click_help()">
+                        <h3>Help</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="imgContainer ">
+                <img class="imgAvatar " src="./img/avatar.jpg ">
+            </div>
+        </div>
+
+        <!-- Copy of Navbar for responsive Menu Band -->
+        <div class="overlayerMenuBand d-none" id="overlayerMenuBand"></div>
+        <img class="menuStripes" id="menuStripes" onclick="showMenu()" src="img/menu-stripes.svg">
+        <div class="menuBand" id="menuBand">
             <div>
                 <div class="logoContainer">
                     <img src="./logo/logo.png">
@@ -61,7 +91,9 @@
 
             <div id="board_container" class="boardContainer">
 
-                <div class="mainBoardContainer" ondrop="moveTo('todo')" ondragover="allowDrop(event); highlight('boardColumnTodo')" ondragleave="removehighlight('boardColumnTodo')">
+                <div class="mainBoardContainer" ondrop="moveTo('todo')"
+                    ondragover="allowDrop(event); highlight('boardColumnTodo')"
+                    ondragleave="removehighlight('boardColumnTodo')">
                     <div class="boardColumn" id="boardColumnTodo">
                         <h2 class="marginBottom ptSansBold h2todo">TO DO</h2>
                         <div class="singleCardWrapper" id="board_todo">
@@ -69,7 +101,9 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); highlight('boardColumnInprogress')" ondragleave="removehighlight('boardColumnInprogress')">
+                <div class="mainBoardContainer" ondrop="moveTo('inprogress')"
+                    ondragover="allowDrop(event); highlight('boardColumnInprogress')"
+                    ondragleave="removehighlight('boardColumnInprogress')">
                     <div class="boardColumn" id="boardColumnInprogress">
                         <h2 class="marginBottom ptSansBold ">IN PROGRESS</h2>
                         <div class="singleCardWrapper" id="board_inprogress">
@@ -77,7 +111,9 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('testing')" ondragover="allowDrop(event); highlight('boardColumnTesting')" ondragleave="removehighlight('boardColumnTesting')">
+                <div class="mainBoardContainer" ondrop="moveTo('testing')"
+                    ondragover="allowDrop(event); highlight('boardColumnTesting')"
+                    ondragleave="removehighlight('boardColumnTesting')">
                     <div class="boardColumn" id="boardColumnTesting">
                         <h2 class="marginBottom ptSansBold ">TESTING</h2>
                         <div class="singleCardWrapper" id="board_testing">
@@ -85,7 +121,9 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event); highlight('boardColumDone')" ondragleave="removehighlight('boardColumDone')">
+                <div class="mainBoardContainer" ondrop="moveTo('done')"
+                    ondragover="allowDrop(event); highlight('boardColumDone')"
+                    ondragleave="removehighlight('boardColumDone')">
                     <div class="boardColumn" id="boardColumDone">
                         <h2 class="marginBottom ptSansBold ">DONE</h2>
                         <div class="singleCardWrapper" id="board_done">
@@ -134,8 +172,8 @@
 
                         <div class="details">
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-                                    cupiditate
-                                    numqua</span>
+                                cupiditate
+                                numqua</span>
                         </div>
                     </div>
                 </div>
@@ -152,26 +190,28 @@
                 <div class="left " style="margin-right: 3rem; ">
                     <div>
                         <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
+                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text "
+                            id="title">
                     </div>
 
                     <div>
                         <h4 class="span ptSansBold ">CATEGORY</h4>
                         <select class="drpDown borderRadius borderGrey " id="category">
-                                <option value="development">development</option>
-                                <option value="marketing">marketing</option>
-                                <option value="management">management</option>
-                                <option value="inhouse">inhouse</option>
-                                <option value="sales">sales</option>
-                                <option value="design">design</option>
-                                <option value="human_res">human ressources</option>
-                                <option value="service">service</option>
-                            </select>
+                            <option value="development">development</option>
+                            <option value="marketing">marketing</option>
+                            <option value="management">management</option>
+                            <option value="inhouse">inhouse</option>
+                            <option value="sales">sales</option>
+                            <option value="design">design</option>
+                            <option value="human_res">human ressources</option>
+                            <option value="service">service</option>
+                        </select>
                     </div>
 
                     <div>
                         <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
+                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description"
+                            id="description" id="" cols="42" rows="8"></textarea>
 
                     </div>
 
@@ -181,22 +221,25 @@
                     <div>
                         <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                         <div style="display: flex; ">
-                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
+                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar"
+                                style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
                         </div>
 
                         <div>
                             <h4 class="span ptSansBold ">URGENCY</h4>
                             <select class="drpDown borderRadius borderGrey " id="urgency">
-                                    <option value="high">high</option>
-                                    <option value="medium">medium</option>
-                                    <option value="low">low</option>
-                                </select>
+                                <option value="high">high</option>
+                                <option value="medium">medium</option>
+                                <option value="low">low</option>
+                            </select>
 
                             <div>
-                                <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">ASSIGNED TO
+                                <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">
+                                    ASSIGNED TO
                                 </h4>
                                 <div id="imgContainer2" class="imgContainer2">
-                                    <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
+                                    <img onload="loadUser()" onclick="showUser()" class="logo"
+                                        src="./logo/icon plus.png ">
                                     <div id="imgMembers">
 
                                     </div>

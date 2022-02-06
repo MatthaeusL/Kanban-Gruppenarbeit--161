@@ -164,7 +164,8 @@ async function click_nav_board() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
-    // await renderBoard();
+    document.getElementById('menuBand').classList.remove('showMenuBand');
+    document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
 
 async function click_nav_backlog() {
@@ -178,7 +179,8 @@ async function click_nav_backlog() {
     document.getElementById('backlog_container').style.display = '';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = 'none';
-    // await backlogTasks();
+    document.getElementById('menuBand').classList.remove('showMenuBand');
+    document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
 
 function click_nav_addtask() {
@@ -191,6 +193,8 @@ function click_nav_addtask() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = '';
     document.getElementById('help_container').style.display = 'none';
+    document.getElementById('menuBand').classList.remove('showMenuBand');
+    document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
 
 function click_help() {
@@ -203,6 +207,8 @@ function click_help() {
     document.getElementById('backlog_container').style.display = 'none';
     document.getElementById('addTask_container').style.display = 'none';
     document.getElementById('help_container').style.display = '';
+    document.getElementById('menuBand').classList.remove('showMenuBand');
+    document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
 
 
@@ -432,3 +438,12 @@ function addMembersImg(userIDArrayimg) {
 //     for (let i = 0; i < assignedUser.length; i++) {
 //     }
 // }
+
+/**
+ * *******************************************************responsive script ******************************************
+ */
+
+ function showMenu(){
+    document.getElementById('menuBand').classList.add('showMenuBand');
+    document.getElementById('overlayerMenuBand').classList.remove('d-none');
+}
