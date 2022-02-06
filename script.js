@@ -11,8 +11,6 @@ function sendToServer() {
 async function init() {
     await downloadFromServer();
     kanbanArray = JSON.parse(backend.getItem('kanbanArray')) || [];
-
-
     click_nav_board();
     renderBoard();
     backlogTasks();
@@ -155,7 +153,7 @@ function getTaskID(currentUser) {
  */
 
 async function click_nav_board() {
-    checkBacklogEmpty()
+
 
     document.getElementById('nav_board').style = 'border-left : solid var(--bgWhite) .4rem;  color: var(--bgWhite);';
     document.getElementById('nav_backlog').style = '';
@@ -170,6 +168,7 @@ async function click_nav_board() {
 }
 
 async function click_nav_backlog() {
+    checkBacklogEmpty();
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = 'border-left : solid var(--bgWhite) .4rem; color: var(--bgWhite);';
     document.getElementById('nav_addtask').style = '';
@@ -214,7 +213,7 @@ function click_help() {
 
 /**----------------------------------------------------Backlog Script--------------------------------------------------------- */
 
-let backlogEmpty = [];
+let backlogEmpty;
 
 async function backlogTasks() {
     let filterStatusBacklog = kanbanArray[0]["tasks"].filter((k) => k.status == 'backlog');
@@ -268,11 +267,14 @@ async function getUserID(currentUser) {
 }
 
 function checkBacklogEmpty() {
-    backlogTasks()
+    backlogTasks();
     if (backlogEmpty == 0) {
         document.getElementById('emptyBacklog').style.display = '';
+        document.getElementById('backlogTableHeader').style.display = 'none';
+
     } else {
         document.getElementById('emptyBacklog').style.display = 'none';
+        document.getElementById('backlogTableHeader').style.display = '';
     }
 }
 
