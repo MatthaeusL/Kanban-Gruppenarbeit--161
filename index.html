@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
     <script src="JSONs.js"></script>
+    <script src="board.js"></script>
+    <script src="backlog.js"></script>
+    <script src="addtask.js"></script>
+    <script src="help.js"></script>
+
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/gif" href="./logo/logo.png">
 </head>
@@ -97,9 +102,7 @@
 
             <div id="board_container" class="boardContainer">
 
-                <div class="mainBoardContainer" ondrop="moveTo('todo')"
-                    ondragover="allowDrop(event); highlight('boardColumnTodo')"
-                    ondragleave="removehighlight('boardColumnTodo')">
+                <div class="mainBoardContainer" ondrop="moveTo('todo')" ondragover="allowDrop(event); highlight('boardColumnTodo')" ondragleave="removehighlight('boardColumnTodo')">
                     <div class="boardColumn" id="boardColumnTodo">
                         <h2 class="marginBottom ptSansBold h2todo">TO DO</h2>
                         <div class="singleCardWrapper" id="board_todo">
@@ -107,9 +110,7 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('inprogress')"
-                    ondragover="allowDrop(event); highlight('boardColumnInprogress')"
-                    ondragleave="removehighlight('boardColumnInprogress')">
+                <div class="mainBoardContainer" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); highlight('boardColumnInprogress')" ondragleave="removehighlight('boardColumnInprogress')">
                     <div class="boardColumn" id="boardColumnInprogress">
                         <h2 class="marginBottom ptSansBold ">IN PROGRESS</h2>
                         <div class="singleCardWrapper" id="board_inprogress">
@@ -117,9 +118,7 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('testing')"
-                    ondragover="allowDrop(event); highlight('boardColumnTesting')"
-                    ondragleave="removehighlight('boardColumnTesting')">
+                <div class="mainBoardContainer" ondrop="moveTo('testing')" ondragover="allowDrop(event); highlight('boardColumnTesting')" ondragleave="removehighlight('boardColumnTesting')">
                     <div class="boardColumn" id="boardColumnTesting">
                         <h2 class="marginBottom ptSansBold ">TESTING</h2>
                         <div class="singleCardWrapper" id="board_testing">
@@ -127,9 +126,7 @@
                     </div>
                 </div>
 
-                <div class="mainBoardContainer" ondrop="moveTo('done')"
-                    ondragover="allowDrop(event); highlight('boardColumDone')"
-                    ondragleave="removehighlight('boardColumDone')">
+                <div class="mainBoardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event); highlight('boardColumDone')" ondragleave="removehighlight('boardColumDone')">
                     <div class="boardColumn" id="boardColumDone">
                         <h2 class="marginBottom ptSansBold ">DONE</h2>
                         <div class="singleCardWrapper" id="board_done">
@@ -153,7 +150,7 @@
                     <span>CATEGORY</span>
                     <span>DETAILS</span>
                 </div>
-                <div class="emptyBacklog" id="emptyBacklog" style="display: none;">
+                <div class="emptyBacklog" onclick="click_nav_addtask()" id="emptyBacklog" style="display: none;">
                     <div>
                         <h1>Empty</h1>
                     </div> <br>
@@ -196,8 +193,7 @@
                 <div class="left " style="margin-right: 3rem; ">
                     <div>
                         <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text "
-                            id="title">
+                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
                     </div>
 
                     <div>
@@ -216,8 +212,7 @@
 
                     <div>
                         <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description"
-                            id="description" id="" cols="42" rows="8"></textarea>
+                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
 
                     </div>
 
@@ -227,8 +222,7 @@
                     <div>
                         <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                         <div style="display: flex; ">
-                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar"
-                                style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
+                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
                         </div>
 
                         <div>
@@ -244,8 +238,7 @@
                                     ASSIGNED TO
                                 </h4>
                                 <div id="imgContainer2" class="imgContainer2">
-                                    <img onload="loadUser()" onclick="showUser()" class="logo"
-                                        src="./logo/icon plus.png ">
+                                    <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
                                     <div id="imgMembers">
 
                                     </div>
@@ -279,13 +272,13 @@
                     <div class="openContent">
                         <h2>Board</h2>
                         <img src="./logo/chevron .png" onclick="openHelp()" id="chevron1" class="rotate">
-                    </div>   
+                    </div>
                     <div class="contentHelp d-none">
                         <span>On the left Site from the Card, you can see a Colorfull Stripe. This will show you the Emargency of the Task. Red means very Important, Yellow means Important and Green means not so Important. Whit Drag and Drop can you place the Task in the State of Work. The Picture show the Leader of the Project and The Circle arround them the Category of his Work Place.</span><br>
                         <img class="helpImg" src="./img/board.png">
                     </div>
                 </div>
-                
+
 
                 <div class="helpCard">
                     <div class="openContent">
@@ -303,11 +296,11 @@
                     <div class="openContent">
                         <h2>Add Task</h2>
                         <img src="./logo/chevron .png" onclick="openHelp()" id="chevron3" class="rotate">
-                    </div>  
+                    </div>
                     <div id="content3" class="contentHelp d-none">
                         <span>Here you can create a new Task, you can make a Deadline when the Project has to be finisched and add some Notes. For Example a Titel and the Discription from the Task</span><br>
                         <img class="helpImg" src="./img/add task.png">
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
