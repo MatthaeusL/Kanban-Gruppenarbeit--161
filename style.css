@@ -145,8 +145,16 @@ body {
     justify-content: center;
 }
 
-.imgContainer {
+.footerImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-bottom: 2rem;
+}
+
+.imgContainer {
+    margin-bottom: 1rem;
 }
 
 .imgAvatar {
@@ -155,6 +163,22 @@ body {
     border-radius: 180px;
     border-color: white;
     border-style: solid;
+}
+
+.linkContainer {
+    height: 2.833rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding-bottom: 0.5rem;
+}
+
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: larger;
 }
 
 
@@ -233,9 +257,15 @@ select {
     background-repeat: no-repeat;
     background-size: 1rem;
     cursor: pointer;
-}
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+}    
 
 .calendar {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
     -moz-appearance: none;
     width: -moz-available;
     height: 2.5rem;
@@ -360,7 +390,6 @@ select {
     appearance: none;
     padding-left: 1rem;
     border-radius: .2rem;
-    width: 13rem;
 }
 
 .textarea {
