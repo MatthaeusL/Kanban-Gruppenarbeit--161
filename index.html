@@ -55,7 +55,10 @@
 
         <!-- Copy of Navbar for responsive Menu Band -->
         <div class="overlayerMenuBand d-none" id="overlayerMenuBand" onclick="closeMenu()"></div>
-        <img class="menuStripes" id="menuStripes" onclick="showMenu()" src="img/menu-stripes.svg">
+        <div class="menuStripesWrapper" id="menuStripes">
+            <img class="menuStripes"  onclick="showMenu()" src="img/menu-stripes.svg">
+            <img src="logo/logo.png" alt="">
+        </div>
         <div class="menuBand" id="menuBand">
             <div>
                 <div class="logoContainer">
@@ -141,7 +144,7 @@
         </div>
 
         <!-- -----------------------------------------------------Backlog Container-------------------------------------------- -->
-        <div id="backlog_container">
+        <div id="backlog_container" class="backlog_container">
             <div class="pageContainerHeader">
                 <h2 class="ptSansBold " style="margin-bottom: 0.5rem;">Backlog</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
@@ -186,7 +189,7 @@
             </div>
         </div>
         <!-- ------------------------------------------------------Add Task Container------------------------------------------- -->
-        <div id="addTask_container">
+        <div id="addTask_container" class="addTask_container">
             <div class="pageContainerHeader">
                 <h2 class="ptSansBold " style="margin-bottom: 0.5rem">Add Task</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
