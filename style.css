@@ -9,7 +9,7 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none!important;
 }
 
 .marginTop {
@@ -206,7 +206,6 @@ a:hover {
     padding-right: 2rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
-    /* width: 100%; */
 }
 
 .content {
@@ -698,6 +697,55 @@ h3 {
 .singleCardDescription {
     color: var(--bgchevron);
     text-align: start;
+}
+/* ---------------------------------------------------------------Help Container---------------------------------------------------- */
+.content2 {
+    padding: 2rem;
+    margin-top: 2.5rem;
+    border-radius: .8rem;
+    width: 55rem;
+}
+
+.helpCard {
+    background-color: var(--bgLightBlue);
+    height: 4rem;
+    border-radius: .8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.openContent {
+    justify-content: space-between;
+    display: flex;
+    width: -moz-available;
+    align-items: center;
+}
+
+.contentHelp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all ease-in-out 255ms;
+}
+
+.rotate {
+    cursor: pointer;
+}
+
+.helpImg {
+    height: 8rem;
+    padding-top: 1rem;
+    cursor: pointer;
+}
+
+.helpImg:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(4.0);
 }
 
 /* ---------------------------------------------------------------Impressum--------------------------------------------------------- */
