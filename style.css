@@ -166,7 +166,10 @@ body {
 }
 
 .linkContainer {
+    display: flex;
+    flex-direction: column;
     height: 2.833rem;
+    margin-bottom: 2rem;
 }
 
 a {
@@ -203,7 +206,7 @@ a:hover {
     padding-right: 2rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .content {
@@ -695,4 +698,24 @@ h3 {
 .singleCardDescription {
     color: var(--bgchevron);
     text-align: start;
+}
+
+/* ---------------------------------------------------------------Impressum--------------------------------------------------------- */
+.impressumContainer {
+    width: 100%;
+}
+
+.impressum {
+    width: 100%;
+    height: 67rem;
+}
+
+/* -------------------------------------------------------------Datenschutz--------------------------------------------------------- */
+.datenschutzContainer {
+    width: 100%;
+}
+
+.datenschutz {
+    width: 100%;
+    height: 287rem;
 }
