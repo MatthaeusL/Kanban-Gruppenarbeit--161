@@ -203,7 +203,7 @@ a:hover {
     padding-right: 2rem;
     padding-top: 2.5rem;
     margin-left: 10rem;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .content {
@@ -217,19 +217,20 @@ a:hover {
 
 @media(max-width: 1150px) {
     .content {
-        position: absolute;
         flex-direction: column;
-        right: 0;
-        left: 0;
-        width: calc(100vw - 3rem);
-        border-radius: 1rem;
-        overflow-y: hidden;
+        justify-content: center;
+    }
+
+    .contentWrapper {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
     }
 
     .mainContent {
         margin-left: 0;
         padding: 0;
-        overflow-y: hidden;
+        /* overflow-y: hidden; */
     }
 }
 
@@ -237,8 +238,16 @@ a:hover {
     .mainContent {
         margin-left: 0rem;
     }
-    .content{
+
+    .content {
         padding: 1.5rem;
+        position: absolute;
+        flex-direction: column;
+        right: 0;
+        left: 0;
+        width: calc(100vw - 3rem);
+        border-radius: 1rem;
+        overflow-y: hidden;
     }
 }
 
@@ -260,7 +269,7 @@ select {
     -webkit-appearance: none;
     appearance: none;
     border: none;
-}    
+}
 
 .calendar {
     -webkit-appearance: none;
@@ -277,6 +286,7 @@ select {
     cursor: pointer;
 
 }
+
 @media(max-width: 600px) {
     .calendar {
         width: calc(80vw - 1rem) !important;
@@ -310,12 +320,12 @@ select {
 }
 
 @media(max-width: 600px) {
-    .imgAvatar2{
+    .imgAvatar2 {
         width: 3rem;
         height: 3rem;
     }
 
-    .imgAvatar3{
+    .imgAvatar3 {
         width: 3rem;
         height: 3rem;
     }
@@ -390,6 +400,7 @@ select {
     appearance: none;
     padding-left: 1rem;
     border-radius: .2rem;
+    min-width: 13rem;
 }
 
 .textarea {
@@ -401,9 +412,14 @@ select {
     .textarea {
         width: calc(80vw - 2rem);
     }
+
+    .drpDown {
+        width: 80vw;
+    }
+
 }
 
-media .borderRadius {
+.borderRadius {
     border-radius: .2rem;
 }
 
@@ -483,17 +499,6 @@ media .borderRadius {
     margin-bottom: 0.75rem;
 }
 
-@media(max-width: 1150px) {
-    .infoContainer {
-        margin-left: .5rem;
-        margin-right: .5rem;
-    }
-
-    .row {
-        display: none;
-    }
-}
-
 .infoContainer:hover {
     background-color: var(--bgLightBlueHover);
     cursor: pointer;
@@ -518,11 +523,34 @@ media .borderRadius {
     align-items: center;
 }
 
+@media(max-width: 1150px) {
+    .infoContainer {
+        margin-left: calc(7.5vw - 1.5rem);
+        width: 85vw;
+        justify-content: flex-start;
+    }
+
+    .row, .contentBacklog, .department {
+        display: none;
+    }
+
+    .imgContainer3 {
+        width: 5rem;
+        margin-right: 1rem;
+    }
+}
+
 .details {
     width: 24.3rem;
     text-align: start;
     display: flex;
     align-items: center;
+}
+
+@media(max-width: 400px) {
+    .details span {
+        font-size: 80%;
+    }
 }
 
 .emptyBacklog {
@@ -542,34 +570,64 @@ media .borderRadius {
 }
 
 @media(max-width: 1150px) {
-.emptyBacklog {
-    position: absolute;
-    flex-direction: column;
-    right: 0;
-    left: 0;
-top: 4rem;
-    width: calc(100vw);
-    border-radius: 1rem;
-    overflow-y: hidden;
-}
+    .emptyBacklog {
+        position: absolute;
+        flex-direction: column;
+        right: 2rem;
+        left: 2rem;
+        top: 6rem;
+        width: calc(100vw - 4rem);
+        border-radius: 1rem;
+        overflow-y: hidden;
+        height: 30rem;
+    }
 }
 
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
 .boardContainer {
     display: flex;
+    width: 100%;
 }
 
 .mainBoardContainer {
     padding-left: 2rem;
     width: 100%;
+    display: flex;
+}
+
+@media(max-width: 1150px) {
+    .boardContainer {
+        margin-top: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .mainBoardContainer {
+        width: calc(100vw - 2rem);
+        display: flex;
+    
+    }
+
+}
+
+@media(max-width: 600px) {
+    .boardContainer {
+        flex-wrap: wrap;
+    }
+
+    .mainBoardContainer {
+        padding-left: 0rem;
+        margin: 1rem;
+    }
 }
 
 .boardColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100%;
+    min-height: 80%;
+    /* background-color: #aa00ff; */
+    width: 100%;
     background-color: var(--bgLightBlue);
 }
 

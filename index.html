@@ -143,7 +143,7 @@
         <!-- -----------------------------------------------------Backlog Container-------------------------------------------- -->
         <div id="backlog_container">
             <div class="pageContainerHeader">
-                <h2 class="ptSansBold " style="margin-bottom: 0.5rem; width: 100vw;">Backlog</h2>
+                <h2 class="ptSansBold " style="margin-bottom: 0.5rem;">Backlog</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
             </div>
 
@@ -188,78 +188,81 @@
         <!-- ------------------------------------------------------Add Task Container------------------------------------------- -->
         <div id="addTask_container">
             <div class="pageContainerHeader">
-                <h2 class="ptSansBold " style="margin-bottom: 0.5rem; width: 100vw;">Add Task</h2>
+                <h2 class="ptSansBold " style="margin-bottom: 0.5rem">Add Task</h2>
                 <span style="color: var(--bgStandard); ">Learning Management System Project</span>
             </div>
 
-            <div class="content ">
-                <div class="left " style="margin-right: 3rem; ">
-                    <div>
-                        <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                        <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text "
-                            id="title">
-                    </div>
-
-                    <div>
-                        <h4 class="span ptSansBold ">CATEGORY</h4>
-                        <select class="drpDown borderRadius borderGrey inputDimensions" id="category">
-                            <option value="development">development</option>
-                            <option value="marketing">marketing</option>
-                            <option value="management">management</option>
-                            <option value="inhouse">inhouse</option>
-                            <option value="sales">sales</option>
-                            <option value="design">design</option>
-                            <option value="human_res">human ressources</option>
-                            <option value="service">service</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                        <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description"
-                            id="description" id="" cols="42" rows="8"></textarea>
-
-                    </div>
-
-                </div>
-
-                <div class="right ">
-                    <div>
-                        <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
-                        <div style="display: flex; ">
-                            <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar"
-                                style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
+            <div class="contentWrapper">
+                <div class="content ">
+                    <div class="left " style="margin-right: 3rem; ">
+                        <div>
+                            <h4 class="span marginTop ptSansBold ">TITLE</h4>
+                            <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel"
+                                type="text " id="title">
                         </div>
 
                         <div>
-                            <h4 class="span ptSansBold ">URGENCY</h4>
-                            <select class="drpDown borderRadius borderGrey " id="urgency">
-                                <option value="high">high</option>
-                                <option value="medium">medium</option>
-                                <option value="low">low</option>
+                            <h4 class="span ptSansBold ">CATEGORY</h4>
+                            <select class="drpDown borderRadius borderGrey inputDimensions" id="category">
+                                <option value="development">development</option>
+                                <option value="marketing">marketing</option>
+                                <option value="management">management</option>
+                                <option value="inhouse">inhouse</option>
+                                <option value="sales">sales</option>
+                                <option value="design">design</option>
+                                <option value="human_res">human ressources</option>
+                                <option value="service">service</option>
                             </select>
+                        </div>
 
-                            <div>
-                                <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">
-                                    ASSIGNED TO
-                                </h4>
-                                <div id="imgContainer2" class="imgContainer2">
-                                    <img onload="loadUser()" onclick="showUser()" class="logo"
-                                        src="./logo/icon plus.png ">
-                                    <div id="imgMembers">
+                        <div>
+                            <h4 class="span ptSansBold ">DESCRIPTION</h4>
+                            <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description"
+                                id="description" id="" cols="42" rows="8"></textarea>
 
-                                    </div>
-                                </div>
+                        </div>
+
+                    </div>
+
+                    <div class="right ">
+                        <div>
+                            <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
+                            <div style="display: flex; ">
+                                <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar"
+                                    style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
                             </div>
 
-                            <div class="memberBtnContainer">
-                                <div class="chooseMember">
-                                    <div id="userContainerHide" class="d-none"></div>
-                                </div>
-                                <div class="btnContainer ">
-                                    <button class="btn" onclick="clearInput()">CANCEL</button>
-                                    <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
+                            <div>
+                                <h4 class="span ptSansBold ">URGENCY</h4>
+                                <select class="drpDown borderRadius borderGrey " id="urgency">
+                                    <option value="high">high</option>
+                                    <option value="medium">medium</option>
+                                    <option value="low">low</option>
+                                </select>
 
+                                <div>
+                                    <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;"
+                                        class="span ptSansBold">
+                                        ASSIGNED TO
+                                    </h4>
+                                    <div id="imgContainer2" class="imgContainer2">
+                                        <img onload="loadUser()" onclick="showUser()" class="logo"
+                                            src="./logo/icon plus.png ">
+                                        <div id="imgMembers">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="memberBtnContainer">
+                                    <div class="chooseMember">
+                                        <div id="userContainerHide" class="d-none"></div>
+                                    </div>
+                                    <div class="btnContainer ">
+                                        <button class="btn" onclick="clearInput()">CANCEL</button>
+                                        <button onclick="addNewTask()" class="btn ">CREATE TASK</button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
