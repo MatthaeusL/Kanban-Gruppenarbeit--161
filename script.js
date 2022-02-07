@@ -127,7 +127,15 @@ function generateBoardHTML(status) {
         <div class="categoryAndImg">
             <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
             <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
-        </div>      
+            <img src="img/arrowRight.png" onclick="showOptionsMoveTo('${status['status']}', ${status['taskid']})">
+        </div>
+            <div class="moveToOverlay d-none" id="overlay${status['taskid']}">
+                 <div class="moveToOverlayClose" onclick="closeOptionsMoveTo(${status['taskid']})">X</div>
+                 <span>Move To..</span>
+                  <span id="moveTo0-${status['taskid']}">Container 0</span>
+                  <span id="moveTo1-${status['taskid']}">Container 1</span>
+                   <span id="moveTo2-${status['taskid']}">Container 2</span>
+            </div>
     </div>`;
 }
 
@@ -446,12 +454,59 @@ function addMembersImg(userIDArrayimg) {
  * *******************************************************responsive script ******************************************
  */
 
- function showMenu(){
+function showMenu() {
     document.getElementById('menuBand').classList.add('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.remove('d-none');
 }
 
-function closeMenu(){
+function closeMenu() {
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
+}
+
+function moveTo(status) {
+    kanbanArray[0]["tasks"][currentDragged]['status'] = status;
+    sendToServer()
+    renderBoard()
+}
+
+function moveToByClick(status, id) {
+    kanbanArray[0]["tasks"][id]['status'] = status;
+    sendToServer()
+    renderBoard()
+}
+
+function showOptionsMoveTo(status, id) {
+    document.getElementById('overlay' + id).classList.remove('d-none');
+
+    if (status == 'todo') {
+        document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('inprogress', ${id})"><b>IN PROGRESS</b><span>`;
+        document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})"><b>TESTING</b><span>`;
+        document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
+    }
+    else {
+        if (status == 'inprogress') {
+            document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})"><b>TO DO</b><span>`;
+            document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})"><b>TESTING</b><span>`;
+            document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
+        }
+        else {
+            if (status == 'testing') {
+                document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})"><b>TO DO</b><span>`;
+                document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('inprogress', ${id})"><b>IN PROGRESS</b><span>`;
+                document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
+            }
+            else {
+                if (status == 'done') {
+                    document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})">TO DO<span>`;
+                    document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})">TESTING<span>`;
+                    document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('inprogress', ${id})">IN PROGRESS<span>`;
+                }
+            }
+        }
+    }
+}
+
+function closeOptionsMoveTo(id) {
+    document.getElementById('overlay' + id).classList.add('d-none');
 }
