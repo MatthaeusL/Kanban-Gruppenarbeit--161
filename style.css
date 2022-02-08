@@ -624,7 +624,7 @@ select {
         flex-direction: column;
         right: 2rem;
         left: 2rem;
-        top: 6rem;
+        top: 10rem;
         width: calc(100vw - 4rem);
         border-radius: 1rem;
         overflow-y: hidden;
