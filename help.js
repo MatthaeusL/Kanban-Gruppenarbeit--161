@@ -28,16 +28,3 @@ function closeHelp() {
 function notOpen(section) {
     return section.classList.contains('dNone');
 }
-/**
- * *******************************************************responsive script ******************************************
- */
-
-function showMenu() {
-    document.getElementById('menuBand').classList.add('showMenuBand');
-    document.getElementById('overlayerMenuBand').classList.remove('d-none');
-}
-
-function closeMenu() {
-    document.getElementById('menuBand').classList.remove('showMenuBand');
-    document.getElementById('overlayerMenuBand').classList.add('d-none');
-}

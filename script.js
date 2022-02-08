@@ -99,16 +99,17 @@ function closeMenu() {
     document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
 
-function moveTo(status) {
-    kanbanArray[0]["tasks"][currentDragged]['status'] = status;
-    sendToServer()
-    renderBoard()
-}
-
+// function moveTo(status) {
+//     kanbanArray[0]["tasks"][currentDragged]['status'] = status;
+//     sendToServer();
+//     renderBoard();
+// }
+// Get task Index by ID
 function moveToByClick(status, id) {
-    kanbanArray[0]["tasks"][id]['status'] = status;
-    sendToServer()
-    renderBoard()
+    let index = getTaskID(id);
+    kanbanArray[0]["tasks"][index]['status'] = status;
+    sendToServer();
+    renderBoard();
 }
 
 function showOptionsMoveTo(status, id) {
