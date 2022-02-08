@@ -24,7 +24,7 @@ function addNewTask() {
         document.getElementById('title').classList.add('placeholderColor');
         document.getElementById('duedate').classList.add('datePlaceholderColor');
         document.getElementById('description').classList.add('placeholderColor');
-        alert(' We need an infobox to fill the fields')
+        alert('We need an infobox to fill the fields')
     } else {
         let newTask = {
             'taskid': taskid,

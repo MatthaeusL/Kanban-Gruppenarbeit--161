@@ -70,10 +70,8 @@ function getProfilePic(currentUser) {
     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
             return i;
-
         }
     }
-
 }
 
 function highlight(id) {
@@ -103,7 +101,15 @@ function generateBoardHTML(status) {
         <div class="categoryAndImg">
             <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
             <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
-        </div>      
+            <img class="arrowRight" src="img/arrowRight.png" onclick="showOptionsMoveTo('${status['status']}', ${status['taskid']})">
+        </div>
+            <div class="moveToOverlay d-none" id="overlay${status['taskid']}">
+                 <div class="moveToOverlayClose" onclick="closeOptionsMoveTo(${status['taskid']})">X</div>
+                 <span>Move To..</span>
+                  <span id="moveTo0-${status['taskid']}">Container 0</span>
+                  <span id="moveTo1-${status['taskid']}">Container 1</span>
+                   <span id="moveTo2-${status['taskid']}">Container 2</span>
+            </div>
     </div>`;
 }
 
