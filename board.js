@@ -100,7 +100,11 @@ function generateBoardHTML(status) {
         </div>    
         <div class="categoryAndImg">
             <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
-            <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+            <div class="avatarContainer">
+                <img class="imgAvatarStack1" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+                <img class="imgAvatarStack2" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+                <img class="imgAvatarStack3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>
+            </div>      
             <img class="arrowRight" src="img/arrowRight.png" onclick="showOptionsMoveTo('${status['status']}', ${status['taskid']})">
         </div>
             <div class="moveToOverlay d-none" id="overlay${status['taskid']}">

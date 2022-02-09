@@ -353,7 +353,83 @@ select {
     border-style: solid;
     border-width: revert;
     border-color: var(--bgDesign);
+}    
+
+.avatarContainer {
+    display: flex;
+    width: 5rem;
+}
+
+.imgAvatarStack1 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
     cursor: pointer;
+    position: absolute;
+    z-index: 5;
+}
+
+.imgAvatarStack2 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
+    cursor: pointer;
+    position: absolute;
+    z-index: 4;
+    margin-left: 1rem;
+}
+
+.imgAvatarStack3 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    margin-left: 2rem;
+}
+
+.imgAvatarStack4 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    margin-left: 3rem;
+}
+.imgAvatarStack5 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 180px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: revert;
+    border-color: var(--bgDesign);
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    margin-left: 4rem;
+}
+
+.imgAvatar3:hover {
+
 }
 
 @media(max-width: 600px) {
@@ -775,7 +851,6 @@ select {
 .categoryAndImg {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 1rem;
     ;
 }
