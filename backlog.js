@@ -16,6 +16,9 @@ async function backlogTasks() {
     for (let i = 0; i < filterStatusBacklog.length; i++) {
         let currentUser = filterStatusBacklog[i]['assignedTo'][0];
         let currentUserID = currentUser;
+        console.log('currentUser :', currentUser)
+        console.log('currentUserID :', currentUserID)
+
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${kanbanArray[0]["users"][currentUserID]['color']})`;
         generateUserImgs(i, filterStatusBacklog);
@@ -47,7 +50,7 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
 
                 </div>
                 <div class="row">
-                    <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
+                <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
                     <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
                 </div>
             </div>
@@ -60,6 +63,10 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
         </div>
     </div>`;
 }
+
+
+//Das wurde oberhalb der EMail entfernt                     
+
 
 function shiftToBoard(m) {
     let arrayIndex = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == m); // Filter to find the index of current Taskid

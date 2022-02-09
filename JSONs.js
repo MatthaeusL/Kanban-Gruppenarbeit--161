@@ -9,7 +9,7 @@ let kanbanArray = [{
             'status': 'todo',
             'urgencyColor': '--bgVeryImportant',
             'categoryColor': '--bgDevelopment',
-            'assignedTo': ['Inav Bolski']
+            'assignedTo': [0]
         },
         {
             'taskid': 1,
@@ -21,7 +21,7 @@ let kanbanArray = [{
             'status': 'inprogress',
             'urgencyColor': ' --bgNotSoImportant',
             'categoryColor': '--bgManagment',
-            'assignedTo': ['Klaus Meier']
+            'assignedTo': [1]
 
         },
         {
@@ -34,7 +34,7 @@ let kanbanArray = [{
             'status': 'backlog',
             'urgencyColor': '--bgVeryImportant',
             'categoryColor': '--bgInhouse',
-            'assignedTo': ['Laura Trautmann']
+            'assignedTo': [2]
         },
         {
             'taskid': 3,
@@ -46,7 +46,7 @@ let kanbanArray = [{
             'status': 'backlog',
             'urgencyColor': '--bgIMportant: yellow',
             'categoryColor': '--bgSale',
-            'assignedTo': ['Tom Müller']
+            'assignedTo': [3]
         },
         {
             'taskid': 4,
@@ -58,7 +58,7 @@ let kanbanArray = [{
             'status': 'backlog',
             'urgencyColor': ' --bgNotSoImportant',
             'categoryColor': '--bgHumanRessources',
-            'assignedTo': ['Karin Schneider']
+            'assignedTo': [4]
         }
     ],
     'users': [{
