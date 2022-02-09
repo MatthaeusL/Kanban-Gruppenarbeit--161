@@ -189,6 +189,8 @@ function editTask(taskid) {
     console.log(taskid);
     let currentID = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == taskid); // Filter to find the index of current Taskid
     console.log('taskid', currentID);
+    filterSelectCathegory(currentID);
+    filterSelecturgency(currentID);
 
     document.getElementById('editwindow').innerHTML = `
     <div class="contentWrapper">
@@ -196,7 +198,7 @@ function editTask(taskid) {
                     <div class="left " style="margin-right: 3rem; ">
                         <div>
                             <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                            <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="titleEdit" value="${kanbanArray[0]["tasks"][currentID]['title']}">
+                            <input class="borderRadius borderGrey inputDimensions" autocomplete="off"  placeholder="Add a Titel" type="text " id="titleEdit" value="${kanbanArray[0]["tasks"][currentID]['title']}">
                         </div>
 
                         <div>
@@ -263,18 +265,21 @@ function editTask(taskid) {
                     </div>
                 </div>
             </div>`;
-    document.getElementById('category').selectedIndex = "2";
+    document.getElementById('categoryEdit').selectedIndex = selectIndexCathegory;
+    document.getElementById('urgencyEdit').selectedIndex = selectIndexUrgency;
+
 }
 
 function saveEditTask(currentID) {
+    checkUrgencyEdit()
 
     kanbanArray[0]["tasks"][currentID]['title'] = document.getElementById('titleEdit').value;
     kanbanArray[0]["tasks"][currentID]['category'] = document.getElementById('categoryEdit').value;
     kanbanArray[0]["tasks"][currentID]['description'] = document.getElementById('descriptionEdit').value;
     kanbanArray[0]["tasks"][currentID]['duedate'] = document.getElementById('duedateEdit').value;
     kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
-    // kanbanArray[0]["tasks"][currentID]['duedate'] = getUsername();
-    // kanbanArray[0]["tasks"][currentID]['duedate'] = urgencyColor;
+    kanbanArray[0]["tasks"][currentID]['urgencyColor'] = urgencyColors;
+    // kanbanArray[0]["tasks"][currentID]['categoryColor'] = urgencyColor;
     document.getElementById('editwindow').classList.add('d-none');
     renderBoard();
     sendToServer();
@@ -283,4 +288,43 @@ function saveEditTask(currentID) {
 function cancelEdit() {
     document.getElementById('editwindow').classList.add('d-none');
 
+}
+let selectIndexCathegory;
+let cathegoryArr = ['development', 'marketing', 'management', 'inhouse', 'sales', 'design', 'human_res', 'service']
+
+function filterSelectCathegory(currentID) {
+
+    for (let index = 0; index < cathegoryArr.length; index++) {
+        let cathegoryindex = cathegoryArr[index];
+        if (kanbanArray[0]["tasks"][currentID]['category'] == cathegoryindex) {
+            selectIndexCathegory = index;
+        }
+    }
+}
+
+let selectIndexUrgency;
+let urgencyArr = ['high', 'medium', 'low']
+
+function filterSelecturgency(currentID) {
+
+    for (let index = 0; index < urgencyArr.length; index++) {
+        let urgencyindex = urgencyArr[index];
+        if (kanbanArray[0]["tasks"][currentID]['urgency'] == urgencyindex) {
+            selectIndexUrgency = index;
+        }
+    }
+}
+let urgencyColors;
+
+function checkUrgencyEdit() {
+    let urgency = document.getElementById('urgencyEdit').value;
+    if (urgency == 'high') {
+        urgencyColors = '--bgVeryImportant';
+    }
+    if (urgency == 'medium') {
+        urgencyColors = '--bgIMportant';
+    }
+    if (urgency == 'low') {
+        urgencyColors = '--bgNotSoImportant';
+    }
 }
