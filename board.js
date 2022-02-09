@@ -122,10 +122,11 @@ function generateBoardHTML(status) {
 
 function renderUserImgsInCard(status) {
     let Id = status['taskid'];
+    console.log('renderUserImgsInCard ', Id);
     document.getElementById(`singleCardImgs${Id}`).innerHTML = "";
     let amountUser = kanbanArray[0]["tasks"][Id]['assignedTo'].length;
-
-    for (let i = 0; i < amountUser.length; i++) {
+    console.log('amountUser ', amountUser);
+    for (let i = 0; i < amountUser; i++) {
         let profilePicID = kanbanArray[0]["tasks"][Id]['assignedTo'][i];
         document.getElementById(`singleCardImgs${Id}`).innerHTML += `
     <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})">
