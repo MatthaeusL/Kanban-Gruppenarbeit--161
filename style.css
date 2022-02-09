@@ -888,6 +888,7 @@ h3 {
 
 .rotate {
     cursor: pointer;
+    margin-left: 1rem;
 }
 
 .helpImg {
