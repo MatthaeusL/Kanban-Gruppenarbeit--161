@@ -1,49 +1,63 @@
-// -----------------------------------------------Add Task Script--------------------------------------------------------------------------
+/**
+ * 
+ */
 function addNewTask() {
-    let arraylength = kanbanArray[0]["tasks"].length;
-    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid']
-    let taskid = arrayTasksTaskid + 1;
     let title = document.getElementById('title').value;
-    let category = document.getElementById('category').value;
-    let description = document.getElementById('description').value;
     let duedate = document.getElementById('duedate').value;
+    let description = document.getElementById('description').value;
+    if (title.length == 0 || duedate.length == 0 || description.length == 0) {
+        highlightUnfilled();
+    }
+    else {
+        setNewTask();
+    }
+}
+
+function setNewTask() {
+    checkUrgency();
+    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid'];
+    let arraylength = kanbanArray[0]["tasks"].length;
+    let newTask = {
+        'taskid': arrayTasksTaskid + 1,
+        'title': document.getElementById('title').value,
+        'category': document.getElementById('category').value,
+        'description': document.getElementById('description').value,
+        'duedate': document.getElementById('duedate').value,
+        'urgency': document.getElementById('urgency').value,
+        'assignedTo': "Laura Trautmann",
+        'status': 'backlog',
+        'urgencyColor': urgencyColor,
+    }
+    finishAddingNewTask(newTask);
+}
+
+function finishAddingNewTask(newTask) {
+    kanbanArray[0]["tasks"].push(newTask);
+    document.getElementById('emptyBacklog').style.display = 'none';
+    clearInput();
+    click_nav_backlog();
+    backlogTasks();
+    sendToServer();
+}
+
+function checkUrgency() {
     let urgency = document.getElementById('urgency').value;
-    let assignedTo = "Laura Trautmann";
-    let status = 'backlog';
     if (urgency == 'high') {
-        urgencyColor = '--bgVeryImportant'
+        return urgencyColor = '--bgVeryImportant'
     }
     if (urgency == 'medium') {
-        urgencyColor = '--bgIMportant'
+        return urgencyColor = '--bgIMportant'
     }
     if (urgency == 'low') {
-        urgencyColor = '--bgNotSoImportant'
+        return urgencyColor = '--bgNotSoImportant'
     }
+}
 
-    if (title.length == 0 || duedate.length == 0 || description.length == 0) {
-        document.getElementById('title').classList.add('placeholderColor');
-        document.getElementById('duedate').classList.add('datePlaceholderColor');
-        document.getElementById('description').classList.add('placeholderColor');
-        alert('We need an infobox to fill the fields')
-    } else {
-        let newTask = {
-            'taskid': taskid,
-            'title': title,
-            'category': category,
-            'description': description,
-            'duedate': duedate,
-            'urgency': urgency,
-            'assignedTo': assignedTo,
-            'status': status,
-            'urgencyColor': urgencyColor,
-        }
-        kanbanArray[0]["tasks"].push(newTask);
-        document.getElementById('emptyBacklog').style.display = 'none';
-        clearInput()
-        click_nav_backlog();
-        backlogTasks();
-    }
-    sendToServer()
+function highlightUnfilled() {
+    document.getElementById('title').classList.add('placeholderColor');
+    document.getElementById('duedate').classList.add('datePlaceholderColor');
+    document.getElementById('description').classList.add('placeholderColor');
+    alert('We need an infobox to fill the fields')
 }
 
 function clearInput() {
@@ -114,8 +128,3 @@ function addMembersImg(userIDArrayimg) {
     `;
     document.getElementById('userContainerHide').classList.add('d-none');
 }
-
-// showSelectedUser() {
-//     for (let i = 0; i < assignedUser.length; i++) {
-//     }
-// }
