@@ -6,11 +6,10 @@ let kanbanArray = [{
             'description': 'A Task for Inav: Code 10000 Rows',
             'duedate': '2022-02-24',
             'urgency': 'urgency',
-            'assignedTo': 'Inav Bolski',
             'status': 'todo',
             'urgencyColor': '--bgVeryImportant',
             'categoryColor': '--bgDevelopment',
-
+            'assignedTo': ['Inav Bolski']
         },
         {
             'taskid': 1,
@@ -19,10 +18,11 @@ let kanbanArray = [{
             'description': 'A task for Klaus. Check Business Data for next trades.',
             'duedate': '2022-02-24',
             'urgency': 'urgency',
-            'assignedTo': 'Klaus Meier',
             'status': 'inprogress',
             'urgencyColor': ' --bgNotSoImportant',
             'categoryColor': '--bgManagment',
+            'assignedTo': ['Klaus Meier']
+
         },
         {
             'taskid': 2,
@@ -31,10 +31,10 @@ let kanbanArray = [{
             'description': 'A task for Laura: Organise a massive carnival Party',
             'duedate': '2022-02-24',
             'urgency': 'urgency',
-            'assignedTo': 'Laura Trautmann',
             'status': 'backlog',
             'urgencyColor': '--bgVeryImportant',
             'categoryColor': '--bgInhouse',
+            'assignedTo': ['Laura Trautmann']
         },
         {
             'taskid': 3,
@@ -43,10 +43,10 @@ let kanbanArray = [{
             'description': 'A Task for Tom: Get more clients by end of the day',
             'duedate': '2022-02-24',
             'urgency': 'urgency',
-            'assignedTo': 'Tom Müller',
             'status': 'backlog',
             'urgencyColor': '--bgIMportant: yellow',
             'categoryColor': '--bgSale',
+            'assignedTo': ['Tom Müller']
         },
         {
             'taskid': 4,
@@ -55,10 +55,10 @@ let kanbanArray = [{
             'description': 'A task for Karin: Hire some rocket scientists',
             'duedate': '2022-02-25',
             'urgency': 'urgency',
-            'assignedTo': 'Karin Schneider',
             'status': 'backlog',
             'urgencyColor': ' --bgNotSoImportant',
             'categoryColor': '--bgHumanRessources',
+            'assignedTo': ['Karin Schneider']
         }
     ],
     'users': [{

@@ -12,12 +12,30 @@ async function backlogTasks() {
     backlogEmpty = filterStatusBacklog.length;
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
+    console.table(filterStatusBacklog);
     for (let i = 0; i < filterStatusBacklog.length; i++) {
-        let currentUser = filterStatusBacklog[i]['assignedTo'];
-        let currentUserID = await getUserID(currentUser);
+        let currentUser = filterStatusBacklog[i]['assignedTo'][0];
+        let currentUserID = currentUser;
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${kanbanArray[0]["users"][currentUserID]['color']})`;
+        generateUserImgs(i, filterStatusBacklog);
     }
+}
+
+function generateUserImgs(i, filterStatusBacklog) {
+    let img = document.getElementById(`stackedImgBL${i}`);
+    let amountUser = filterStatusBacklog[i]['assignedTo'].length;
+    for (let j = 0; j < amountUser; j++) {
+        let assignedUserIndex = filterStatusBacklog[i]['assignedTo'][j];
+        
+   img.innerHTML += `
+    <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
+    `;
+    // document.getElementById('userContainerHide').classList.add('d-none');
+}}
+
+function showBLusers(id){
+    document.getElementById(`stackedImgBL${i}`)
 }
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
@@ -25,7 +43,9 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
     <div id="backlog_user${i}" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
         <div class="infoContainer">    
             <div class="imgContainer3">
-                <img class="imgAvatar2" src="./img/${kanbanArray[0]["users"][currentUserID]['img']}">
+                <div id="stackedImgBL${i}"  class="stackedImgBL">
+
+                </div>
                 <div class="row">
                     <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
                     <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>

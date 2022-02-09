@@ -100,6 +100,7 @@ function generateBoardHTML(status) {
         </div>    
         <div class="categoryAndImg">
             <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
+            <div>
             <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})"></img>     
             <img class="arrowRight" src="img/arrowRight.png" onclick="showOptionsMoveTo('${status['status']}', ${status['taskid']})">
         </div>

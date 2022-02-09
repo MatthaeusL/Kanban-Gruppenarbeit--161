@@ -23,21 +23,22 @@ function setNewTask() {
         'description': document.getElementById('description').value,
         'duedate': document.getElementById('duedate').value,
         'urgency': document.getElementById('urgency').value,
-        'assignedTo': getUsername(),
         'status': 'backlog',
         'urgencyColor': urgencyColor,
+        'assignedTo': assignedUser,
+
     }
     finishAddingNewTask(newTask);
 }
 
-function getUsername() {
-    let currentUser = assignedUser[0];
-    for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
-        if (kanbanArray[0]['users'][i]['userid'] == currentUser) {
-            return kanbanArray[0]['users'][i]['username'];
-        }
-    }
-}
+// function getUsername() {
+//     let currentUser = assignedUser[0];
+//     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
+//         if (kanbanArray[0]['users'][i]['userid'] == currentUser) {
+//             return kanbanArray[0]['users'][i]['username'];
+//         }
+//     }
+// } Das ist die vorherige Def:         'assignedTo': getUsername(),
 
 function finishAddingNewTask(newTask) {
     kanbanArray[0]["tasks"].push(newTask);
@@ -75,6 +76,10 @@ function clearInput() {
     document.getElementById('title').classList.remove('placeholderColor');
     document.getElementById('duedate').classList.remove('datePlaceholderColor');
     document.getElementById('description').classList.remove('placeholderColor');
+    document.getElementById('userContainerHide').innerHTML = '';
+    document.getElementById('imgMembers').innerHTML = '';
+    document.getElementById('userContainerHide').classList.add('d-none');
+    loadUser();
 }
 
 
@@ -89,13 +94,13 @@ function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
     if (input.checked) {
         assignedUser.push(userIDArrayuserid);
         addMembersImg(userIDArrayimg);
-        console.log('addMemberImg hinzufügen');
     } else {
         let imgX = document.getElementById(userIDArrayimg);
         imgX.parentNode.removeChild(imgX);
         // document.getElementById('userContainerHide').classList.add('d-none');
         console.log('addMemberImg löschen');
     }
+console.log(assignedUser);
 }
 
 /**

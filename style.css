@@ -611,6 +611,43 @@ select {
     }
 }
 
+/* .stackedImgBL{
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+.stackedImgBL0{
+    position: relative;
+    z-index: 5;
+    padding-left: 1rem;
+}
+
+.stackedImgBL1{
+    position: absolute;
+    z-index: 4;
+    left: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;;
+}
+
+.stackedImgBL1:hover{
+    left: 5rem;
+}
+
+
+.stackedImgBL2{
+    position: absolute;
+    z-index: 3;
+    left: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+
+.stackedImgBL2:hover{
+    left: 10rem;
+} */
+
 .emptyBacklog {
     color: rgba(255, 0, 0, 0.698);
     width: 60rem;
