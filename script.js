@@ -47,6 +47,7 @@ async function click_nav_board() {
     document.getElementById('datenschutz_container').style.display = 'none';
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
+    cancelEdit()
 }
 
 /**
@@ -66,6 +67,7 @@ async function click_nav_backlog() {
     document.getElementById('datenschutz_container').style.display = 'none';
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
+    cancelEdit()
 }
 
 /**
@@ -84,6 +86,7 @@ function click_nav_addtask() {
     document.getElementById('datenschutz_container').style.display = 'none';
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
+    cancelEdit()
 }
 
 /**
@@ -102,10 +105,11 @@ function click_help() {
     document.getElementById('datenschutz_container').style.display = 'none';
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
+    cancelEdit()
 }
 
 
-/********************************************************Impressum*******************************************************/ 
+/********************************************************Impressum*******************************************************/
 function click_impressum() {
     document.getElementById('nav_board').style = '';
     document.getElementById('nav_backlog').style = '';
@@ -121,7 +125,8 @@ function click_impressum() {
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
 
-    document.getElementById("impressumContent").innerHTML='<object class="impressum" type="text/html" data="impressum.html" ></object>';
+    document.getElementById("impressumContent").innerHTML = '<object class="impressum" type="text/html" data="impressum.html" ></object>';
+    cancelEdit()
 }
 
 
@@ -142,7 +147,7 @@ function click_datenschutz() {
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
 
-    document.getElementById("datenschutzContent").innerHTML='<object class="datenschutz" type="text/html" data="datenschutz.html" ></object>';
+    document.getElementById("datenschutzContent").innerHTML = '<object class="datenschutz" type="text/html" data="datenschutz.html" ></object>';
 }
 
 
@@ -166,4 +171,3 @@ function closeMenu() {
     document.getElementById('menuBand').classList.remove('showMenuBand');
     document.getElementById('overlayerMenuBand').classList.add('d-none');
 }
-
