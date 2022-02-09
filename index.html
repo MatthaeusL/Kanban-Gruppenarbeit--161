@@ -61,7 +61,7 @@
         <!-- Copy of Navbar for responsive Menu Band -->
         <div class="overlayerMenuBand d-none" id="overlayerMenuBand" onclick="closeMenu()"></div>
         <div class="menuStripesWrapper" id="menuStripes">
-            <img class="menuStripes"  onclick="showMenu()" src="img/menu-stripes.svg">
+            <img class="menuStripes" onclick="showMenu()" src="img/menu-stripes.svg">
             <img src="logo/logo.png" alt="">
         </div>
         <div class="menuBand" id="menuBand">
@@ -102,6 +102,7 @@
                 category = ${status['category']}
                 <img class="imgAvatar2" src="./img/${usersInArray[profilePicID]['img']}"></img>
             </div> -->
+            <div class="editWindow d-none" id="editwindow"></div>
 
             <div id="board_container" class="boardContainer">
 
@@ -197,8 +198,7 @@
                     <div class="left " style="margin-right: 3rem; ">
                         <div>
                             <h4 class="span marginTop ptSansBold ">TITLE</h4>
-                            <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel"
-                                type="text " id="title">
+                            <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="title">
                         </div>
 
                         <div>
@@ -217,8 +217,7 @@
 
                         <div>
                             <h4 class="span ptSansBold ">DESCRIPTION</h4>
-                            <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description"
-                                id="description" id="" cols="42" rows="8"></textarea>
+                            <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="description" id="" cols="42" rows="8"></textarea>
 
                         </div>
 
@@ -228,8 +227,7 @@
                         <div>
                             <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
                             <div style="display: flex; ">
-                                <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar"
-                                    style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
+                                <input type="date" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedate" tValue="2022-01-24">
                             </div>
 
                             <div>
@@ -241,13 +239,11 @@
                                 </select>
 
                                 <div>
-                                    <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;"
-                                        class="span ptSansBold">
+                                    <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">
                                         ASSIGNED TO
                                     </h4>
                                     <div id="imgContainer2" class="imgContainer2">
-                                        <img onload="loadUser()" onclick="showUser()" class="logo"
-                                            src="./logo/icon plus.png ">
+                                        <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
                                         <div id="imgMembers">
 
                                         </div>

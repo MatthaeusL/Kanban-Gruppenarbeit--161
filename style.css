@@ -353,7 +353,7 @@ select {
     border-style: solid;
     border-width: revert;
     border-color: var(--bgDesign);
-}    
+}
 
 .avatarContainer {
     display: flex;
@@ -414,6 +414,7 @@ select {
     z-index: 2;
     margin-left: 3rem;
 }
+
 .imgAvatarStack5 {
     width: 4rem;
     height: 4rem;
@@ -428,9 +429,8 @@ select {
     margin-left: 4rem;
 }
 
-.imgAvatar3:hover {
 
-}
+/* .imgAvatar3:hover {} */
 
 @media(max-width: 600px) {
     .imgAvatar2 {
@@ -630,7 +630,7 @@ select {
     width: 24.3rem;
 }
 
-.email{
+.email {
     color: var(--bgStandard);
 }
 
@@ -720,6 +720,17 @@ select {
     padding-right: 1rem;
     width: 100%;
     display: flex;
+}
+
+.editWindow {
+    background-color: rgba(30, 49, 144, 0.5);
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 

@@ -87,7 +87,7 @@ function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
     let profilePicID = getProfilePic(currentUserTest);
     return `
-    <div class="singleCard" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
+    <div class="singleCard" ondblclick = "editTask(${status['taskid']})" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
         <div>
             <div class="dateAndTrash">
                 <span class="singleCardDate">${status['duedate']}</span> 
@@ -158,20 +158,17 @@ function showOptionsMoveTo(status, id) {
         document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('inprogress', ${id})"><b>IN PROGRESS</b><span>`;
         document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})"><b>TESTING</b><span>`;
         document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
-    }
-    else {
+    } else {
         if (status == 'inprogress') {
             document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})"><b>TO DO</b><span>`;
             document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})"><b>TESTING</b><span>`;
             document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
-        }
-        else {
+        } else {
             if (status == 'testing') {
                 document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})"><b>TO DO</b><span>`;
                 document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('inprogress', ${id})"><b>IN PROGRESS</b><span>`;
                 document.getElementById(`moveTo2-${id}`).innerHTML = `<span onclick="moveToByClick('done', ${id})"><b>DONE</b><span>`;
-            }
-            else {
+            } else {
                 if (status == 'done') {
                     document.getElementById(`moveTo0-${id}`).innerHTML = `<span onclick="moveToByClick('todo', ${id})">TO DO<span>`;
                     document.getElementById(`moveTo1-${id}`).innerHTML = `<span onclick="moveToByClick('testing', ${id})">TESTING<span>`;
@@ -184,4 +181,106 @@ function showOptionsMoveTo(status, id) {
 
 function closeOptionsMoveTo(id) {
     document.getElementById('overlay' + id).classList.add('d-none');
+}
+
+
+function editTask(taskid) {
+    document.getElementById('editwindow').classList.remove('d-none');
+    console.log(taskid);
+    let currentID = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == taskid); // Filter to find the index of current Taskid
+    console.log('taskid', currentID);
+
+    document.getElementById('editwindow').innerHTML = `
+    <div class="contentWrapper">
+                <div class="content ">
+                    <div class="left " style="margin-right: 3rem; ">
+                        <div>
+                            <h4 class="span marginTop ptSansBold ">TITLE</h4>
+                            <input class="borderRadius borderGrey inputDimensions" placeholder="Add a Titel" type="text " id="titleEdit" value="${kanbanArray[0]["tasks"][currentID]['title']}">
+                        </div>
+
+                        <div>
+                            <h4 class="span ptSansBold ">CATEGORY</h4>
+                            <select class="drpDown borderRadius borderGrey inputDimensions" id="categoryEdit" selectedindex="2">
+                                <option value="development">development</option>
+                                <option value="marketing">marketing</option>
+                                <option value="management">management</option>
+                                <option value="inhouse">inhouse</option>
+                                <option value="sales">sales</option>
+                                <option value="design">design</option>
+                                <option value="human_res">human ressources</option>
+                                <option value="service">service</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <h4 class="span ptSansBold ">DESCRIPTION</h4>
+                            <textarea name="" class="textarea borderRadius borderGrey" placeholder="Add a Description" id="descriptionEdit"  cols="42" rows="8">${kanbanArray[0]["tasks"][currentID]['description']}</textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="right ">
+                        <div>
+                            <h4 class="span marginTop ptSansBold ">DUE DATE</h4>
+                            <div style="display: flex; ">
+                                <input type="date" value="${kanbanArray[0]["tasks"][currentID]['duedate']}" class="hideDateIcon borderRadius borderGrey inputDimensions calendar" style="padding-left: 1rem;" id="duedateEdit" tValue="2022-01-24">
+                            </div>
+
+                            <div>
+                                <h4 class="span ptSansBold ">URGENCY</h4>
+                                <select class="drpDown borderRadius borderGrey " id="urgencyEdit">
+                                    <option value="high">high</option>
+                                    <option value="medium">medium</option>
+                                    <option value="low">low</option>
+                                </select>
+
+                                <div>
+                                    <h4 style="margin-bottom: 2.5rem; " style="border-color: blue;" class="span ptSansBold">
+                                        ASSIGNED TO
+                                    </h4>
+                                    <div id="imgContainer2" class="imgContainer2">
+                                        <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
+                                        <div id="imgMembers">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="memberBtnContainer">
+                                    <div class="chooseMember">
+                                        <div id="userContainerHide" class="d-none"></div>
+                                    </div>
+                                    <div class="btnContainer ">
+                                        <button class="btn" onclick="cancelEdit()">CANCEL</button>
+                                        <button onclick="saveEditTask(${currentID})" class="btn ">SAVE CHANGES</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    document.getElementById('category').selectedIndex = "2";
+}
+
+function saveEditTask(currentID) {
+
+    kanbanArray[0]["tasks"][currentID]['title'] = document.getElementById('titleEdit').value;
+    kanbanArray[0]["tasks"][currentID]['category'] = document.getElementById('categoryEdit').value;
+    kanbanArray[0]["tasks"][currentID]['description'] = document.getElementById('descriptionEdit').value;
+    kanbanArray[0]["tasks"][currentID]['duedate'] = document.getElementById('duedateEdit').value;
+    kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
+    // kanbanArray[0]["tasks"][currentID]['duedate'] = getUsername();
+    // kanbanArray[0]["tasks"][currentID]['duedate'] = urgencyColor;
+    document.getElementById('editwindow').classList.add('d-none');
+    renderBoard();
+    sendToServer();
+}
+
+function cancelEdit() {
+    document.getElementById('editwindow').classList.add('d-none');
+
 }
