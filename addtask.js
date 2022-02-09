@@ -47,6 +47,7 @@ function finishAddingNewTask(newTask) {
     click_nav_backlog();
     backlogTasks();
     sendToServer();
+    assignedUser = [];
 }
 
 function checkUrgency() {
