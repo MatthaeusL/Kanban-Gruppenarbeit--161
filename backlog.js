@@ -42,6 +42,7 @@ function showBLusers(id){
 }
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
+
     return `
     <div id="backlog_user${i}" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
         <div class="infoContainer">    

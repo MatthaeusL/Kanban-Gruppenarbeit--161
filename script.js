@@ -21,6 +21,7 @@ async function init() {
     click_nav_board();
     renderBoard();
     backlogTasks();
+
 }
 
 function deleteServer() {

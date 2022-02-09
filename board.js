@@ -89,8 +89,7 @@ function removehighlight(id) {
 
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
-    let profilePicID = getProfilePic(currentUserTest);
-    return `
+   return `
     <div class="singleCard" ondblclick = "editTask(${status['taskid']})" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
         <div>
             <div class="dateAndTrash">
