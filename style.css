@@ -96,22 +96,18 @@ body {
     top: 1rem;
     cursor: pointer;
     height: 1.5rem !important;
-
 }
 
 @media(max-width: 1150px) {
     .navBar {
         display: none;
     }
-
     .marginTop {
         margin-top: 1rem;
     }
-
     .menuStripesWrapper {
         height: 3.4rem;
     }
-
     .menuStripesWrapper img {
         height: 2.5rem;
     }
@@ -213,6 +209,7 @@ a:hover {
 
 
 /* -----------------------------------------------------------Content Container Add Task-------------------------------- */
+
 .addTask_container {
     margin-left: 0;
 }
@@ -222,7 +219,6 @@ a:hover {
         margin-top: 3.5rem;
     }
 }
-
 
 .pageContainerHeader {
     margin-left: 6rem;
@@ -257,13 +253,11 @@ a:hover {
         flex-direction: column;
         justify-content: center;
     }
-
     .contentWrapper {
         display: flex;
         justify-content: center;
         width: 100vw;
     }
-
     .mainContent {
         margin-left: 0rem;
         padding: 0;
@@ -276,7 +270,6 @@ a:hover {
     .mainContent {
         margin-left: 0rem;
     }
-
     .content {
         padding: 1.5rem;
         position: absolute;
@@ -295,6 +288,7 @@ a:hover {
 }
 
 select {
+    width: -webkit-fill-available;
     -moz-appearance: none;
     width: -moz-available;
     height: 2.5rem;
@@ -307,6 +301,12 @@ select {
     -webkit-appearance: none;
     appearance: none;
     border: none;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.calendar::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }
 
 .calendar {
@@ -322,7 +322,7 @@ select {
     background-repeat: no-repeat;
     background-size: 1rem;
     cursor: pointer;
-
+    font-family: 'PT Sans', sans-serif;
 }
 
 @media(max-width: 600px) {
@@ -345,7 +345,6 @@ select {
     object-fit: cover;
 }
 
-
 .imgAvatar3 {
     width: 4rem;
     height: 4rem;
@@ -362,7 +361,6 @@ select {
         width: 3rem;
         height: 3rem;
     }
-
     .imgAvatar3 {
         width: 3rem;
         height: 3rem;
@@ -385,7 +383,6 @@ select {
     .memberBtnContainer {
         flex-direction: column;
         align-items: flex-start;
-
     }
 }
 
@@ -414,7 +411,6 @@ select {
     .btnContainer {
         justify-content: start;
         margin-left: 0;
-
     }
 }
 
@@ -450,11 +446,9 @@ select {
     .textarea {
         width: calc(80vw - 2rem);
     }
-
     .drpDown {
         width: 80vw;
     }
-
 }
 
 .borderRadius {
@@ -481,8 +475,11 @@ select {
 }
 
 .inputDimensions {
-    width: 100%;
+    width: -webkit-fill-available;
     height: 2.5rem;
+    padding-left: 1rem;
+    width: -moz-available;
+    font-family: 'PT Sans', sans-serif;
 }
 
 @media(max-width: 600px) {
@@ -514,7 +511,6 @@ select {
 
 /* -------------------------------------------------------Content Container Backlog------------------------------------- */
 
-
 .contentBacklog {
     margin-top: 3rem;
     display: flex;
@@ -524,12 +520,10 @@ select {
     width: 70vw;
 }
 
-
 @media(max-width: 1150px) {
     .backlog_container {
         margin-top: 3.4rem;
     }
-
     .contentBacklog {
         width: 80vw;
     }
@@ -579,11 +573,11 @@ select {
         width: 85vw;
         justify-content: flex-start;
     }
-
-    .row, .contentBacklog, .department {
+    .row,
+    .contentBacklog,
+    .department {
         display: none;
     }
-
     .imgContainer3 {
         width: 5rem;
         margin-right: 1rem;
@@ -633,6 +627,7 @@ select {
     }
 }
 
+
 /* -------------------------------------------------------Content Container Board------------------------------------- */
 
 .boardContainer {
@@ -646,6 +641,7 @@ select {
     width: 100%;
     display: flex;
 }
+
 
 /* @media(max-width: 1150px) {
     .boardContainer {
@@ -664,7 +660,6 @@ select {
         flex-wrap: wrap;
         margin-top: 4rem;
     }
-
     .mainBoardContainer {
         padding-left: 0rem;
         padding-right: 0rem;
@@ -851,7 +846,10 @@ h3 {
         display: block;
     }
 }
+
+
 /* -------------------------------------------------Content Container Help----------------------------------------------------------------- */
+
 .content2 {
     padding: 2rem;
     margin-top: 2.5rem;
@@ -901,7 +899,9 @@ h3 {
     transform: scale(4.5);
 }
 
+
 /* ---------------------------------------------------------------Impressum--------------------------------------------------------- */
+
 .impressumContainer {
     width: 100%;
 }
@@ -911,7 +911,9 @@ h3 {
     height: 67rem;
 }
 
+
 /* -------------------------------------------------------------Datenschutz--------------------------------------------------------- */
+
 .datenschutzContainer {
     width: 100%;
 }

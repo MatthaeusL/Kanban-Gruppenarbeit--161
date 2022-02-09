@@ -7,8 +7,7 @@ function addNewTask() {
     let description = document.getElementById('description').value;
     if (title.length == 0 || duedate.length == 0 || description.length == 0) {
         highlightUnfilled();
-    }
-    else {
+    } else {
         setNewTask();
     }
 }
@@ -24,7 +23,7 @@ function setNewTask() {
         'description': document.getElementById('description').value,
         'duedate': document.getElementById('duedate').value,
         'urgency': document.getElementById('urgency').value,
-        'assignedTo': "Laura Trautmann",
+        'assignedTo': assignedUser[0],
         'status': 'backlog',
         'urgencyColor': urgencyColor,
     }
