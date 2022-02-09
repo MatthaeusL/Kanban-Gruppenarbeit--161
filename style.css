@@ -9,7 +9,7 @@ body {
 }
 
 .d-none {
-    display: none!important;
+    display: none !important;
 }
 
 .marginTop {
@@ -102,12 +102,15 @@ body {
     .navBar {
         display: none;
     }
+
     .marginTop {
         margin-top: 1rem;
     }
+
     .menuStripesWrapper {
         height: 3.4rem;
     }
+
     .menuStripesWrapper img {
         height: 2.5rem;
     }
@@ -253,11 +256,13 @@ a:hover {
         flex-direction: column;
         justify-content: center;
     }
+
     .contentWrapper {
         display: flex;
         justify-content: center;
         width: 100vw;
     }
+
     .mainContent {
         margin-left: 0rem;
         padding: 0;
@@ -270,6 +275,7 @@ a:hover {
     .mainContent {
         margin-left: 0rem;
     }
+
     .content {
         padding: 1.5rem;
         position: absolute;
@@ -353,13 +359,14 @@ select {
     border-style: solid;
     border-width: revert;
     border-color: var(--bgDesign);
-}   
+}
 
 @media(max-width: 600px) {
     .imgAvatar2 {
         width: 3rem;
         height: 3rem;
     }
+
     .imgAvatar3 {
         width: 3rem;
         height: 3rem;
@@ -445,6 +452,7 @@ select {
     .textarea {
         width: calc(80vw - 2rem);
     }
+
     .drpDown {
         width: 80vw;
     }
@@ -523,6 +531,7 @@ select {
     .backlog_container {
         margin-top: 3.4rem;
     }
+
     .contentBacklog {
         width: 80vw;
     }
@@ -553,7 +562,7 @@ select {
     width: 24.3rem;
 }
 
-.email{
+.email {
     color: var(--bgStandard);
 }
 
@@ -576,11 +585,13 @@ select {
         width: 85vw;
         justify-content: flex-start;
     }
+
     .row,
     .contentBacklog,
     .department {
         display: none;
     }
+
     .imgContainer3 {
         width: 5rem;
         margin-right: 1rem;
@@ -663,6 +674,7 @@ select {
         flex-wrap: wrap;
         margin-top: 4rem;
     }
+
     .mainBoardContainer {
         padding-left: 0rem;
         padding-right: 0rem;
@@ -851,6 +863,12 @@ h3 {
 
 
 /* -------------------------------------------------Content Container Help----------------------------------------------------------------- */
+
+@media(max-width: 1150px) {
+    .help_container {
+        margin-top: 3.4rem;
+    }
+}
 
 .content2 {
     padding: 2rem;
