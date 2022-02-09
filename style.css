@@ -304,13 +304,25 @@ select {
     font-family: 'PT Sans', sans-serif;
 }
 
-.calendar::-webkit-calendar-picker-indicator {
+
+/* .calendar::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
+} */
+
+.hideDateIcon::-webkit-calendar-picker-indicator {
+    position: relative;
+    top: .6rem;
+    right: .2rem;
+    background: url(logo/icons8-calendar-150.png) no-repeat;
+    background-size: 18px 18px;
+    width: 20px;
+    height: 35px;
+    cursor: pointer;
 }
 
 .calendar {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none;
     appearance: none;
     border: none;
     -moz-appearance: none;
@@ -320,8 +332,8 @@ select {
     background-image: url(logo/icons8-calendar-150.png);
     background-position: calc(100% - .7rem);
     background-repeat: no-repeat;
-    background-size: 1rem;
-    cursor: pointer;
+    background-size: 1rem; */
+    /* cursor: pointer; */
     font-family: 'PT Sans', sans-serif;
 }
 
@@ -463,16 +475,6 @@ select {
     border: solid .12rem #d8d8d8;
 }
 
-.hideDateIcon::-webkit-calendar-picker-indicator {
-    position: relative;
-    top: .6rem;
-    right: .2rem;
-    background: url(logo/icons8-calendar-150.png) no-repeat;
-    background-size: 18px 18px;
-    width: 20px;
-    height: 35px;
-}
-
 .inputDimensions {
     width: -webkit-fill-available;
     height: 2.5rem;
@@ -599,6 +601,7 @@ select {
         font-size: 80%;
     }
 }
+
 
 /* .stackedImgBL{
     display: flex;

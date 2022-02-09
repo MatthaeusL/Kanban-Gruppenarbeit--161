@@ -185,6 +185,10 @@ function closeOptionsMoveTo(id) {
 }
 
 
+/* --------------------------------------------------------- edit task in board------------------------------------- */
+
+
+
 function editTask(taskid) {
     document.getElementById('editwindow').classList.remove('d-none');
     console.log(taskid);
@@ -272,7 +276,8 @@ function editTask(taskid) {
 }
 
 function saveEditTask(currentID) {
-    checkUrgencyEdit()
+    colorUrgencyEdit()
+    colorCathegoryEdit()
 
     kanbanArray[0]["tasks"][currentID]['title'] = document.getElementById('titleEdit').value;
     kanbanArray[0]["tasks"][currentID]['category'] = document.getElementById('categoryEdit').value;
@@ -280,7 +285,7 @@ function saveEditTask(currentID) {
     kanbanArray[0]["tasks"][currentID]['duedate'] = document.getElementById('duedateEdit').value;
     kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
     kanbanArray[0]["tasks"][currentID]['urgencyColor'] = urgencyColors;
-    // kanbanArray[0]["tasks"][currentID]['categoryColor'] = urgencyColor;
+    kanbanArray[0]["tasks"][currentID]['categoryColor'] = cathegoryColors;
     document.getElementById('editwindow').classList.add('d-none');
     renderBoard();
     sendToServer();
@@ -288,7 +293,6 @@ function saveEditTask(currentID) {
 
 function cancelEdit() {
     document.getElementById('editwindow').classList.add('d-none');
-
 }
 let selectIndexCathegory;
 let cathegoryArr = ['development', 'marketing', 'management', 'inhouse', 'sales', 'design', 'human_res', 'service']
@@ -317,7 +321,7 @@ function filterSelecturgency(currentID) {
 }
 let urgencyColors;
 
-function checkUrgencyEdit() {
+function colorUrgencyEdit() {
     let urgency = document.getElementById('urgencyEdit').value;
     if (urgency == 'high') {
         urgencyColors = '--bgVeryImportant';
@@ -329,3 +333,35 @@ function checkUrgencyEdit() {
         urgencyColors = '--bgNotSoImportant';
     }
 }
+let cathegoryColors;
+
+function colorCathegoryEdit() {
+    let cathegory = document.getElementById('categoryEdit').value;
+    if (cathegory == 'marketing') {
+        cathegoryColors = '--bgMarketing';
+    }
+    if (cathegory == 'sales') {
+        cathegoryColors = '--bgSale';
+    }
+    if (cathegory == 'service') {
+        cathegoryColors = '--bgService';
+    }
+    if (cathegory == 'design') {
+        cathegoryColors = '--bgDesign';
+    }
+    if (cathegory == 'management') {
+        cathegoryColors = '--bgManagment';
+    }
+    if (cathegory == 'inhouse') {
+        cathegoryColors = '--bgInhouse';
+    }
+    if (cathegory == 'development') {
+        cathegoryColors = '--bgDevelopment';
+    }
+    if (cathegory == 'human_res') {
+        cathegoryColors = '--bgHumanRessources';
+    }
+}
+
+
+cathegory
