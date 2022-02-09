@@ -37,9 +37,9 @@ function generateUserImgs(i, filterStatusBacklog) {
     // document.getElementById('userContainerHide').classList.add('d-none');
 }}
 
-function showBLusers(id){
-    document.getElementById(`stackedImgBL${i}`)
-}
+// function showBLusers(id){
+//     document.getElementById(`stackedImgBL${i}`)
+// }
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
 

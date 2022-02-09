@@ -37,6 +37,8 @@ function setNewTask() {
     finishAddingNewTask(newTask);
 }
 
+
+
 // function getUsername() {
 //     let currentUser = assignedUser[0];
 //     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
