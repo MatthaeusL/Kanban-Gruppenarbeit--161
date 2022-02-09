@@ -28,7 +28,7 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
                 <img class="imgAvatar2" src="./img/${kanbanArray[0]["users"][currentUserID]['img']}">
                 <div class="row">
                     <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
-                    <a href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
+                    <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
                 </div>
             </div>
             <div class="department">
