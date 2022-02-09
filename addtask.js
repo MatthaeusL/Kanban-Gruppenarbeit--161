@@ -93,7 +93,7 @@ function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
     } else {
         let imgX = document.getElementById(userIDArrayimg);
         imgX.parentNode.removeChild(imgX);
-        document.getElementById('userContainerHide').classList.add('d-none');
+        // document.getElementById('userContainerHide').classList.add('d-none');
         console.log('addMemberImg löschen');
     }
 }
@@ -103,7 +103,13 @@ function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
  * 
  */
 function showUser() {
-    document.getElementById('userContainerHide').classList.remove('d-none');
+    let members = document.getElementById('userContainerHide');
+    if (members.classList.contains('d-none')) {
+        members.classList.remove('d-none');
+    }
+    else {
+        members.classList.add('d-none');
+    }
 }
 
 /**
@@ -112,18 +118,16 @@ function showUser() {
  */
 function loadUser() {
     let members = document.getElementById('userContainerHide');
-    // members.classList.remove('d-none');
     members.innerHTML = '';
     for (let i = 0; i < kanbanArray[0]["users"].length; i++) {
         let userIDArray = kanbanArray[0]["users"][i];
         members.innerHTML += `
-        <div class="userContainer">
-            <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
-            <input onclick="handleChoise(this,'${userIDArray['img']}','${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
-        </div>`;
+    <div class="userContainer">
+        <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
+        <input onclick="handleChoise(this,'${userIDArray['img']}','${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+    </div>`;
     }
 }
-
 /**
  * insert the User img in the Browser
  * 
@@ -134,5 +138,5 @@ function addMembersImg(userIDArrayimg) {
     img.innerHTML += `
     <img id="${userIDArrayimg}" class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
     `;
-    document.getElementById('userContainerHide').classList.add('d-none');
+    // document.getElementById('userContainerHide').classList.add('d-none');
 }
