@@ -15,7 +15,13 @@ function addNewTask() {
 function setNewTask() {
     checkUrgency();
     let arraylength = kanbanArray[0]["tasks"].length;
-    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid'];
+    let arrayTasksTaskid;
+    if (arraylength==0) {
+        arrayTasksTaskid = -1;
+    }
+    else {
+        arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid'];
+    }
     let newTask = {
         'taskid': arrayTasksTaskid + 1,
         'title': document.getElementById('title').value,
@@ -101,7 +107,7 @@ function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
         // document.getElementById('userContainerHide').classList.add('d-none');
         console.log('addMemberImg löschen');
     }
-console.log(assignedUser);
+    console.log(assignedUser);
 }
 
 /**
