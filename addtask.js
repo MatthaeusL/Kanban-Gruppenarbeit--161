@@ -15,8 +15,8 @@ function addNewTask() {
 
 function setNewTask() {
     checkUrgency();
-    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid'];
     let arraylength = kanbanArray[0]["tasks"].length;
+    let arrayTasksTaskid = kanbanArray[0]["tasks"][arraylength - 1]['taskid'];
     let newTask = {
         'taskid': arrayTasksTaskid + 1,
         'title': document.getElementById('title').value,
@@ -24,11 +24,20 @@ function setNewTask() {
         'description': document.getElementById('description').value,
         'duedate': document.getElementById('duedate').value,
         'urgency': document.getElementById('urgency').value,
-        'assignedTo': "Laura Trautmann",
+        'assignedTo': getUsername(),
         'status': 'backlog',
         'urgencyColor': urgencyColor,
     }
     finishAddingNewTask(newTask);
+}
+
+function getUsername() {
+    let currentUser = assignedUser[0];
+    for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
+        if (kanbanArray[0]['users'][i]['userid'] == currentUser) {
+            return kanbanArray[0]['users'][i]['username'];
+        }
+    }
 }
 
 function finishAddingNewTask(newTask) {
