@@ -7,8 +7,7 @@ function addNewTask() {
     let description = document.getElementById('description').value;
     if (title.length == 0 || duedate.length == 0 || description.length == 0) {
         highlightUnfilled();
-    }
-    else {
+    } else {
         setNewTask();
     }
 }
