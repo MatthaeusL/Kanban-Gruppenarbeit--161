@@ -103,11 +103,16 @@ function generateBoardHTML(status) {
         </div>    
         <div class="categoryAndImg">
             <span class="singleCardCategory" style="background-color: var(${status['categoryColor']})">${status['category']}</span>
-            <div id="singleCardImgs${status['taskid']}">
-            
-            </div>     
+            <div id="singleCardImgs${status['taskid']}" class="singleCardImgs">
+
+                <div id="BoardhiddenUserAssigned${status['taskid']}" class="BoardhiddenUserAssigned d-none ">   
+                    <div class="closeUsersBoard" onclick="closeUsersBoard(${status['taskid']})">X</div>
+                </div>
+            <div id="stackedImgBoard${status['taskid']}"  class=""> </div>
+           
+            </div>
             <img class="arrowRight" src="img/arrowRight.png" onclick="showOptionsMoveTo('${status['status']}', ${status['taskid']})">
-        </div>
+        
             <div class="moveToOverlay d-none" id="overlay${status['taskid']}">
                  <div class="moveToOverlayClose" onclick="closeOptionsMoveTo(${status['taskid']})">X</div>
                  <span>Move To..</span>
@@ -121,21 +126,30 @@ function generateBoardHTML(status) {
 
 function renderUserImgsInCard(status) {
     let Id = status['taskid'];
-    console.log('renderUserImgsInCard ', Id);
-    document.getElementById(`singleCardImgs${Id}`).innerHTML = "";
+    console.log('renderUserImgsInCard ID: ', Id);
+    // document.getElementById(`singleCardImgs${Id}`).innerHTML = "";
     let amountUser = kanbanArray[0]["tasks"][Id]['assignedTo'].length;
     console.log('assignedTo ', kanbanArray[0]["tasks"][Id]['assignedTo']);
-    if (!Id=='undefined'){
+    console.log('amountUser ', amountUser);
     for (let i = 0; i < amountUser; i++) {
-        console.log('profilePicID: ',profilePicID);
         let profilePicID = kanbanArray[0]["tasks"][Id]['assignedTo'][i];
-        
+        console.log('profilePicID: ',profilePicID);
+
         document.getElementById(`singleCardImgs${Id}`).innerHTML += `
-    <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})">
+    <img class="imgAvatar3 stackedImgBoard${i}" onclick="showBoardusers(${Id})"  src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})">
+    `;
+    document.getElementById(`BoardhiddenUserAssigned${Id}`).innerHTML += `
+    <img class="imgAvatar2 stackedImgBoard${Id}" onclick="showBoardusers(${Id})" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})">
     `;
     }
 }
 
+function showBoardusers(id) {
+    document.getElementById(`BoardhiddenUserAssigned${id}`).classList.remove('d-none');
+}
+
+function closeUsersBoard(id) {
+    document.getElementById(`BoardhiddenUserAssigned${id}`).classList.add('d-none');
 }
 
 function getTaskID(currentUser) {
