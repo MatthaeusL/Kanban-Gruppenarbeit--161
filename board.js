@@ -1,3 +1,6 @@
+/**
+ * Rendering each Column of Board
+ */
 function renderBoard() {
     renderBoardTodo();
     renderBoardInprogress();
@@ -5,6 +8,9 @@ function renderBoard() {
     renderBoardDone();
 }
 
+/**
+ * Rendering to do column 
+ */
 function renderBoardTodo() {
     let filterStatusTodo = kanbanArray[0]["tasks"].filter((k) => k.status == 'todo');
     let boardTodo = document.getElementById('board_todo');
@@ -16,6 +22,9 @@ function renderBoardTodo() {
     }
 }
 
+/**
+ * Rendering in progress column 
+ */
 function renderBoardInprogress() {
     let filterStatusInProgress = kanbanArray[0]["tasks"].filter((k) => k.status == 'inprogress');
     let boardInprogress = document.getElementById('board_inprogress');
@@ -27,6 +36,9 @@ function renderBoardInprogress() {
     }
 }
 
+/**
+ * Rendering testing column 
+ */
 function renderBoardTesting() {
     let filterStatusTesting = kanbanArray[0]["tasks"].filter((k) => k.status == 'testing');
     let boardTesting = document.getElementById('board_testing');
@@ -38,6 +50,9 @@ function renderBoardTesting() {
     }
 }
 
+/**
+ * Rendering done column 
+ */
 function renderBoardDone() {
     let filterStatusdone = kanbanArray[0]["tasks"].filter((k) => k.status == 'done');
     let boardDone = document.getElementById('board_done');
@@ -53,38 +68,64 @@ function renderBoardDone() {
 
 let currentDragged;
 
+/**
+ * Defining the Object to drag
+ * @param {number} taskid  
+ */
 function startDragging(taskid) {
     let currentID = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == taskid); // Filter to find the index of current Taskid
     currentDragged = currentID;
 }
 
+/**
+ * Allow to drop Element in the receiving container
+ * @param {*} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Changed the Status of the Dropped element to the destination Column
+ * @param {string} status of destination column
+ */
 function moveTo(status) {
     kanbanArray[0]["tasks"][currentDragged]['status'] = status;
     sendToServer()
     renderBoard()
 }
 
-function getProfilePic(currentUser) {
-    for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
-        if (kanbanArray[0]['users'][i]['username'] == currentUser) {
-            return i;
-        }
-    }
-}
+// Probably not used
+// function getProfilePic(currentUser) {
+//     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
+//         if (kanbanArray[0]['users'][i]['username'] == currentUser) {
+//             return i;
+//         }
+//     }
+// }
 
+/**
+ * Hover Effect the dragged Element above new column
+ * @param {*} id 
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('boardColumnHighlight');
 }
 
+/**
+ * End of above mentioned Hover Effect
+ * @param {*} id 
+ */
 function removehighlight(id) {
     document.getElementById(id).classList.remove('boardColumnHighlight');
 }
 /* ---------------------------------------------------------Board single Card------------------------------------- */
 
+/**
+ * Generate HTML of one Kanban Card
+ * @param {JSON} status JSON of one task
+ * @returns HTML one Kanban Card
+ */
 function generateBoardHTML(status) {
     return `
     <div class="singleCard" ondblclick = "editTask(${status['taskid']})" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
@@ -117,6 +158,10 @@ function generateBoardHTML(status) {
     </div>`;
 }
 
+/**
+ * Puts one or morge images of User in Kanban Card
+ * @param {JSON} status 
+ */
 function renderUserImgsInCard(status) {
     let Id = status['taskid'];
     let amountUser = kanbanArray[0]["tasks"][Id]['assignedTo'].length;
@@ -131,21 +176,23 @@ function renderUserImgsInCard(status) {
     }
 }
 
+/**
+ * Shows hidden Users
+ * @param {number} id  TaskID
+ */
 function showBoardusers(id) {
     document.getElementById(`BoardhiddenUserAssigned${id}`).classList.remove('d-none');
 }
 
+/**
+ * Removes hidden Users
+ * @param {number} id  TaskID
+ */
 function closeUsersBoard(id) {
     document.getElementById(`BoardhiddenUserAssigned${id}`).classList.add('d-none');
 }
 
-function getTaskID(currentUser) {
-    for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
-        if (kanbanArray[0]['tasks'][i]['taskid'] == currentUser) {
-            return i;
-        }
-    }
-}
+
 /**
  * Löscht ausgewählte Karte per Klick auf Mülleimer
  * 
@@ -158,6 +205,11 @@ function deleteCard(statusTaskid) {
     renderBoard()
 }
 
+/**
+ * Probably not used
+ * @param {*} currentUser 
+ * @returns 
+ */
 function getTaskID(currentUser) {
     for (let i = 0; i < kanbanArray[0]['tasks'].length; i++) {
         if (kanbanArray[0]['tasks'][i]['taskid'] == currentUser) {
@@ -166,6 +218,11 @@ function getTaskID(currentUser) {
     }
 }
 
+/**
+ * Changes Card status and renders board again
+ * @param {string} status  new status of card
+ * @param {number} id  TaskID
+ */
 function moveToByClick(status, id) {
     let index = getTaskID(id);
     kanbanArray[0]["tasks"][index]['status'] = status;
@@ -173,6 +230,11 @@ function moveToByClick(status, id) {
     renderBoard();
 }
 
+/**
+ * opens options for moving card
+ * @param {string} status actual status of card
+ * @param {number} id taskid
+ */
 function showOptionsMoveTo(status, id) {
     document.getElementById('overlay' + id).classList.remove('d-none');
 
@@ -201,6 +263,10 @@ function showOptionsMoveTo(status, id) {
     }
 }
 
+/**
+ * Closes above opened options
+ * @param {number} id TASKID 
+ */
 function closeOptionsMoveTo(id) {
     document.getElementById('overlay' + id).classList.add('d-none');
 }
