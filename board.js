@@ -124,14 +124,17 @@ function renderUserImgsInCard(status) {
     console.log('renderUserImgsInCard ', Id);
     document.getElementById(`singleCardImgs${Id}`).innerHTML = "";
     let amountUser = kanbanArray[0]["tasks"][Id]['assignedTo'].length;
-    console.log('amountUser ', amountUser);
+    console.log('assignedTo ', kanbanArray[0]["tasks"][Id]['assignedTo']);
+    if (!Id=='undefined'){
     for (let i = 0; i < amountUser; i++) {
+        console.log('profilePicID: ',profilePicID);
         let profilePicID = kanbanArray[0]["tasks"][Id]['assignedTo'][i];
+        
         document.getElementById(`singleCardImgs${Id}`).innerHTML += `
     <img class="imgAvatar3" src="./img/${kanbanArray[0]["users"][profilePicID]['img']}" style="border-color: var(${kanbanArray[0]["users"][profilePicID]['color']})">
     `;
-
     }
+}
 
 }
 

@@ -5,7 +5,7 @@ function addNewTask() {
     let title = document.getElementById('title').value;
     let duedate = document.getElementById('duedate').value;
     let description = document.getElementById('description').value;
-    if (title.length == 0 || duedate.length == 0 || description.length == 0) {
+    if (title.length == 0 || duedate.length == 0 || description.length == 0 || assignedUser.length == 0 ) {
         highlightUnfilled();
     } else {
         setNewTask();
@@ -75,6 +75,9 @@ function highlightUnfilled() {
     document.getElementById('title').classList.add('placeholderColor');
     document.getElementById('duedate').classList.add('datePlaceholderColor');
     document.getElementById('description').classList.add('placeholderColor');
+    document.getElementById('userContainerHide').classList.remove('d-none');
+    document.getElementById('userContainerHide').classList.add('colorRed');
+
     alert('We need an infobox to fill the fields')
 }
 

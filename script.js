@@ -21,7 +21,7 @@ async function init() {
     click_nav_board();
     renderBoard();
     backlogTasks();
-
+    // kanbanArray[0]['tasks']=[];
 }
 
 function deleteServer() {
