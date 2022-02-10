@@ -58,12 +58,12 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
         <div class="infoContainer">    
             <div class="imgContainer3">
 
-                <div id="BLhiddenUserAssigned${i}" class="BLhiddenUserAssigned "> 
+                <div id="BLhiddenUserAssigned${i}" class="BLhiddenUserAssigned d-none"> 
                     <div class="closeUsersBL" onclick="closeUsersBL(${i})">X</div>
                 </div>
                 <div id="stackedImgBL${i}"  class="stackedImgBL">
                 </div>
-                
+
                 <div class="row" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
                 <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
                     <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
