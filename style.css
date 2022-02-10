@@ -102,12 +102,15 @@ body {
     .navBar {
         display: none;
     }
+
     .marginTop {
         margin-top: 1rem;
     }
+
     .menuStripesWrapper {
         height: 3.4rem;
     }
+
     .menuStripesWrapper img {
         height: 2.5rem;
     }
@@ -253,11 +256,13 @@ a:hover {
         flex-direction: column;
         justify-content: center;
     }
+
     .contentWrapper {
         display: flex;
         justify-content: center;
         width: 100vw;
     }
+
     .mainContent {
         margin-left: 0rem;
         padding: 0;
@@ -270,6 +275,7 @@ a:hover {
     .mainContent {
         margin-left: 0rem;
     }
+
     .content {
         padding: 1.5rem;
         position: absolute;
@@ -372,6 +378,7 @@ select {
         width: 3rem;
         height: 3rem;
     }
+
     .imgAvatar3 {
         width: 3rem;
         height: 3rem;
@@ -404,6 +411,11 @@ select {
 .userContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.colorRed{
+    border: #f502fc 2px !important;
+    color: red !important;
 }
 
 .checkbox {
@@ -457,6 +469,7 @@ select {
     .textarea {
         width: calc(80vw - 2rem);
     }
+
     .drpDown {
         width: 80vw;
     }
@@ -525,6 +538,7 @@ select {
     .backlog_container {
         margin-top: 3.4rem;
     }
+
     .contentBacklog {
         width: 80vw;
     }
@@ -578,11 +592,13 @@ select {
         width: 85vw;
         justify-content: flex-start;
     }
+
     .row,
     .contentBacklog,
     .department {
         display: none;
     }
+
     .imgContainer3 {
         width: 5rem;
         margin-right: 1rem;
@@ -603,42 +619,76 @@ select {
 }
 
 
-/* .stackedImgBL{
-    display: flex;
-    justify-content: space-between;
-    width: fit-content;
+.stackedImgBL {
+    position: relative;
+    width: 6rem;
 }
 
-.stackedImgBL0{
+.stackedImgBL0 {
     position: relative;
     z-index: 5;
-    padding-left: 1rem;
+
 }
 
-.stackedImgBL1{
+.stackedImgBL1 {
     position: absolute;
     z-index: 4;
     left: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;;
 }
 
-.stackedImgBL1:hover{
-    left: 5rem;
-}
-
-
-.stackedImgBL2{
+.stackedImgBL2 {
     position: absolute;
     z-index: 3;
     left: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem
 }
 
-.stackedImgBL2:hover{
-    left: 10rem;
-} */
+.stackedImgBL3 {
+    position: absolute;
+    z-index: 2;
+    left: 1.5rem;
+}
+
+.stackedImgBL4 {
+    position: absolute;
+    z-index: 1;
+    left: 2rem;
+}
+
+
+.BLhiddenUserAssigned {
+    position: absolute;
+    border: #08ff00 3px solid;
+    display: flex;
+    justify-content: flex-start;
+    width: min-content;
+    z-index: 10;
+    background-color: rgb(238, 238, 238, 0.7);
+    padding-right: 2rem;
+}
+
+.BLhiddenUserAssigned img {
+    position: relative !important;
+    /* margin-left: 1rem; */
+    margin-right: 1rem;
+}
+
+.closeUsersBL {
+    position: absolute;
+    top: -.7rem;
+    right: -.7rem;
+    border: var(--bgStandard) 2px solid;
+    border-radius: 100%;
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
+    background-color: var(--bgWhite);
+    color: var(--bgStandard);
+    font-weight: bold;
+    z-index: 12;
+}
 
 .emptyBacklog {
     color: rgba(255, 0, 0, 0.698);
@@ -717,6 +767,7 @@ select {
         flex-wrap: wrap;
         margin-top: 4rem;
     }
+
     .mainBoardContainer {
         padding-left: 0rem;
         padding-right: 0rem;

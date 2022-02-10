@@ -28,37 +28,50 @@ async function backlogTasks() {
 function generateUserImgs(i, filterStatusBacklog) {
     let img = document.getElementById(`stackedImgBL${i}`);
     let amountUser = filterStatusBacklog[i]['assignedTo'].length;
+
     for (let j = 0; j < amountUser; j++) {
         let assignedUserIndex = filterStatusBacklog[i]['assignedTo'][j];
-        
-   img.innerHTML += `
+
+        img.innerHTML += `
     <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
     `;
-    // document.getElementById('userContainerHide').classList.add('d-none');
-}}
+        document.getElementById(`BLhiddenUserAssigned${i}`).innerHTML += `
+    <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
+    `;
 
-// function showBLusers(id){
-//     document.getElementById(`stackedImgBL${i}`)
-// }
+    }
+}
+
+function showBLusers(id) {
+    document.getElementById(`BLhiddenUserAssigned${id}`).classList.remove('d-none');
+}
+
+function closeUsersBL(id) {
+    document.getElementById(`BLhiddenUserAssigned${id}`).classList.add('d-none');
+}
+
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
 
     return `
-    <div id="backlog_user${i}" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})"" >
+    <div id="backlog_user${i}" >
         <div class="infoContainer">    
             <div class="imgContainer3">
+            <div id="BLhiddenUserAssigned${i}" class="BLhiddenUserAssigned "> 
+            <div class="closeUsersBL" onclick="closeUsersBL(${i})">X</div>
+            </div>
                 <div id="stackedImgBL${i}"  class="stackedImgBL">
 
                 </div>
-                <div class="row">
+                <div class="row" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
                 <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
                     <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
                 </div>
             </div>
-            <div class="department">
+            <div class="department" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
                 <span>${filterStatusBacklog[i]['category']}</span>
             </div>
-            <div class="details">
+            <div class="details" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
                 <span>${filterStatusBacklog[i]['description']}</span>
             </div>
         </div>
