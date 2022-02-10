@@ -1,10 +1,3 @@
-/**
- *  ***************User Einfügen*****************
- * Durch neue Funktion ersetzt
- */
-
-/**----------------------------------------------------Backlog Script--------------------------------------------------------- */
-
 let backlogEmpty;
 
 async function backlogTasks() {
@@ -12,13 +5,9 @@ async function backlogTasks() {
     backlogEmpty = filterStatusBacklog.length;
     let userContainer = document.getElementById('backlog_users');
     userContainer.innerHTML = '';
-    console.table(filterStatusBacklog);
     for (let i = 0; i < filterStatusBacklog.length; i++) {
         let currentUser = filterStatusBacklog[i]['assignedTo'][0];
         let currentUserID = currentUser;
-        console.log('currentUser :', currentUser)
-        console.log('currentUserID :', currentUserID)
-
         userContainer.innerHTML += await generateBacklogHTML(i, currentUserID, filterStatusBacklog);
         document.getElementsByClassName('infoContainer')[i].style.borderLeftColor = `var(${kanbanArray[0]["users"][currentUserID]['color']})`;
         generateUserImgs(i, filterStatusBacklog);
@@ -28,17 +17,15 @@ async function backlogTasks() {
 function generateUserImgs(i, filterStatusBacklog) {
     let img = document.getElementById(`stackedImgBL${i}`);
     let amountUser = filterStatusBacklog[i]['assignedTo'].length;
-
     for (let j = 0; j < amountUser; j++) {
         let assignedUserIndex = filterStatusBacklog[i]['assignedTo'][j];
 
         img.innerHTML += `
-    <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
-    `;
+            <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
+            `;
         document.getElementById(`BLhiddenUserAssigned${i}`).innerHTML += `
-    <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
-    `;
-
+            <img class="imgAvatar2 stackedImgBL${j}" onclick="showBLusers(${i})" src="./img/${kanbanArray[0]["users"][assignedUserIndex]['img']}">
+            `;
     }
 }
 
@@ -52,18 +39,15 @@ function closeUsersBL(id) {
 
 
 async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
-
     return `
     <div id="backlog_user${i}" >
         <div class="infoContainer">    
             <div class="imgContainer3">
-
                 <div id="BLhiddenUserAssigned${i}" class="BLhiddenUserAssigned d-none"> 
                     <div class="closeUsersBL" onclick="closeUsersBL(${i})">X</div>
                 </div>
                 <div id="stackedImgBL${i}"  class="stackedImgBL">
                 </div>
-
                 <div class="row" onclick="shiftToBoard(${filterStatusBacklog[i]['taskid']})">
                 <span>${kanbanArray[0]["users"][currentUserID]['username']}</span>
                     <a class="email" href="mailto:${kanbanArray[0]["users"][currentUserID]['email']}">${kanbanArray[0]["users"][currentUserID]['email']}</a>
@@ -78,10 +62,6 @@ async function generateBacklogHTML(i, currentUserID, filterStatusBacklog) {
         </div>
     </div>`;
 }
-
-
-//Das wurde oberhalb der EMail entfernt                     
-
 
 function shiftToBoard(m) {
     let arrayIndex = kanbanArray[0]["tasks"].findIndex((id) => id.taskid == m); // Filter to find the index of current Taskid
