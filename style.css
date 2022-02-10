@@ -102,15 +102,12 @@ body {
     .navBar {
         display: none;
     }
-
     .marginTop {
         margin-top: 1rem;
     }
-
     .menuStripesWrapper {
         height: 3.4rem;
     }
-
     .menuStripesWrapper img {
         height: 2.5rem;
     }
@@ -122,7 +119,7 @@ body {
     position: fixed;
     left: 0;
     top: 3.4rem;
-    z-index: 3;
+    z-index: 25;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,13 +253,11 @@ a:hover {
         flex-direction: column;
         justify-content: center;
     }
-
     .contentWrapper {
         display: flex;
         justify-content: center;
         width: 100vw;
     }
-
     .mainContent {
         margin-left: 0rem;
         padding: 0;
@@ -275,7 +270,6 @@ a:hover {
     .mainContent {
         margin-left: 0rem;
     }
-
     .content {
         padding: 1.5rem;
         position: absolute;
@@ -378,7 +372,6 @@ select {
         width: 3rem;
         height: 3rem;
     }
-
     .imgAvatar3 {
         width: 3rem;
         height: 3rem;
@@ -469,7 +462,6 @@ select {
     .textarea {
         width: calc(80vw - 2rem);
     }
-
     .drpDown {
         width: 80vw;
     }
@@ -538,7 +530,6 @@ select {
     .backlog_container {
         margin-top: 3.4rem;
     }
-
     .contentBacklog {
         width: 80vw;
     }
@@ -592,13 +583,11 @@ select {
         width: 85vw;
         justify-content: flex-start;
     }
-
     .row,
     .contentBacklog,
     .department {
         display: none;
     }
-
     .imgContainer3 {
         width: 5rem;
         margin-right: 1rem;
@@ -620,7 +609,7 @@ select {
 
 .singleCardImgs {
     position: relative;
-   padding-left: .8rem;
+    padding-left: .8rem;
 }
 
 .stackedImgBoard {
@@ -639,7 +628,6 @@ select {
     margin-right: 1rem;
     cursor: pointer;
 }
-
 
 .stackedImgBoard1 {
     position: absolute;
@@ -668,7 +656,6 @@ select {
 .stackedImgBL0 {
     position: relative;
     z-index: 5;
-
 }
 
 .stackedImgBL1 {
@@ -828,6 +815,34 @@ select {
     color: #1E3190;
 }
 
+@media(max-width: 1150px) {
+    .editWindow {
+        margin-top: 0rem;
+        position: absolute;
+        height: 100vh;
+        padding-bottom: 25rem;
+    }
+    .contentwrappeerEdit {
+        display: flex;
+        width: 100vw;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contentEdit {
+        margin-top: -.7rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .editWindow {
+        display: block;
+    }
+    .contentEdit {
+        top: 5rem;
+    }
+}
+
 
 /* @media(max-width: 1150px) {
     .boardContainer {
@@ -846,7 +861,6 @@ select {
         flex-wrap: wrap;
         margin-top: 4rem;
     }
-
     .mainBoardContainer {
         padding-left: 0rem;
         padding-right: 0rem;
@@ -936,7 +950,6 @@ select {
     .singleCard {
         width: 80%;
         max-width: 30rem;
-
     }
 }
 
@@ -995,8 +1008,6 @@ select {
     width: min-content;
 }
 
-
-
 h3 {
     text-align: start;
     margin: 0;
@@ -1048,7 +1059,7 @@ h3 {
     display: none;
 }
 
-.arrowRight:hover{
+.arrowRight:hover {
     opacity: .7;
     cursor: pointer !important;
 }

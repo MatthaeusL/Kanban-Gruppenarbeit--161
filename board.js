@@ -287,9 +287,9 @@ function editTask(taskid) {
 
 
     document.getElementById('editwindow').innerHTML = `
-    <div class="contentWrapper">
-                <h1> edit task </h1>
-                <div class="content ">
+    <div class="contentWrapper contentwrappeerEdit">
+                <h1 class="editheadder"> edit task </h1>
+                <div class="content contentEdit">
                     <div class="left " style="margin-right: 3rem; ">
                         <div>
                             <h4 class="span marginTop ptSansBold ">TITLE</h4>
