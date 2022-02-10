@@ -21,7 +21,7 @@ body {
 }
 
 :root {
-    --bgStandard: #1e3190;
+    --bgStandard: #1d3190;
     --bgWhite: white;
     --clorNAVfont: #d8d8d8;
     --bgGray: #eeeeee;
@@ -930,6 +930,7 @@ select {
     height: 1.5rem;
     cursor: pointer;
     opacity: 0.4;
+    padding-right: .5rem;
 }
 
 .trashImg:hover {
