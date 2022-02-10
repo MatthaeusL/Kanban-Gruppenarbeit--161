@@ -134,7 +134,7 @@ function generateBoardHTML(status) {
                 <span class="singleCardDate">${status['duedate']}</span> 
                 <div class="editAndTrash">
                     <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./logo/bin.png">
-                    <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./img/editPen.png">
+                    <img onclick="editTask(${status['taskid']})" class="trashImg" src="./img/editPen.png">
                 </div>    
             </div>    
         </div>
@@ -338,8 +338,8 @@ function editTask(taskid) {
                                         ASSIGNED TO
                                     </h4>
                                     <div id="imgContainer2" class="imgContainer2">
-                                        <img onload="loadUser(),  setcheckbox(${currentID})" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
-                                        <div id="imgMembers">
+                                        <img onload="loadUserEDIT(),  setcheckbox(${currentID})" onclick="showUserEDIT()" class="logo" src="./logo/icon plus.png ">
+                                        <div id="imgMembersEdit">
 
                                         </div>
                                     </div>
@@ -347,7 +347,7 @@ function editTask(taskid) {
 
                                 <div class="memberBtnContainer">
                                     <div class="chooseMember">
-                                        <div id="userContainerHide" class="d-none"></div>
+                                        <div id="userContainerHideEdit" class="d-none"></div>
                                     </div>
                                     <div class="btnContainer ">
                                         <button class="btn" onclick="cancelEdit()">CANCEL</button>
@@ -377,6 +377,8 @@ function saveEditTask(currentID) {
     kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
     kanbanArray[0]["tasks"][currentID]['urgencyColor'] = urgencyColors;
     kanbanArray[0]["tasks"][currentID]['categoryColor'] = cathegoryColors;
+    kanbanArray[0]["tasks"][currentID]['assignedTo'] = assignedUserEdit;
+    assignedUserEdit = [];
     document.getElementById('editwindow').classList.add('d-none');
     renderBoard();
     sendToServer();
@@ -384,6 +386,8 @@ function saveEditTask(currentID) {
 
 function cancelEdit() {
     document.getElementById('editwindow').classList.add('d-none');
+    assignedUserEdit = [];
+
 }
 let selectIndexCathegory;
 let cathegoryArr = ['development', 'marketing', 'management', 'inhouse', 'sales', 'design', 'human_res', 'service']
@@ -454,10 +458,8 @@ function colorCathegoryEdit() {
     }
 }
 
-
-
 function setcheckbox(currentID) {
-    showUser()
+    showUserEDIT()
 
     asignedToEdit = kanbanArray[0]["tasks"][currentID]['assignedTo'];
 
@@ -465,6 +467,70 @@ function setcheckbox(currentID) {
         let asignedToindex = asignedToEdit[i];
         document.getElementById(asignedToindex).click();
     }
-    showUser()
+    showUserEDIT()
 
+}
+/**
+ * Check the checkboxes from LoadUsers() and push the id to the assignedUser Array. Insert the User img.
+ * 
+ * @param {*} input 
+ * @param {*} userIDArray 
+ * @param {*} userIDArrayuserid 
+ */
+let assignedUserEdit = [];
+
+function handleChoiseEDIT(input, userIDArrayimg, userIDArrayuserid) {
+    if (input.checked) {
+        assignedUserEdit.push(userIDArrayuserid);
+        addMembersImgEDIT(userIDArrayimg);
+    } else {
+        let imgX = document.getElementById(userIDArrayimg);
+        imgX.parentNode.removeChild(imgX);
+        // document.getElementById('userContainerHideEdit').classList.add('d-none');
+        assignedUserEdit = assignedUserEdit.filter(function(f) { return f !== userIDArrayuserid })
+        console.log('addMemberImg löschen');
+    }
+    console.log('assignedUserEdit', assignedUserEdit);
+}
+
+/**
+ * remove the hidding Class 
+ * 
+ */
+function showUserEDIT() {
+    let members = document.getElementById('userContainerHideEdit');
+    if (members.classList.contains('d-none')) {
+        members.classList.remove('d-none');
+    } else {
+        members.classList.add('d-none');
+    }
+}
+
+/**
+ *  loads the List hided in the Browser 
+ * 
+ */
+function loadUserEDIT() {
+    let members = document.getElementById('userContainerHideEdit');
+    members.innerHTML = '';
+    for (let i = 0; i < kanbanArray[0]["users"].length; i++) {
+        let userIDArray = kanbanArray[0]["users"][i];
+        members.innerHTML += `
+    <div class="userContainer">
+        <label for="${userIDArray['userid']}">${userIDArray['username']}</label>
+        <input onclick="handleChoiseEDIT(this,'${userIDArray['img']}','${userIDArray['userid']}')" id="${userIDArray['userid']}" class="checkbox" type="checkbox">
+    </div>`;
+    }
+}
+/**
+ * insert the User img in the Browser
+ * 
+ * @param {*} userIDArrayimg 
+ */
+function addMembersImgEDIT(userIDArrayimg) {
+    let img = document.getElementById('imgMembersEdit');
+    img.innerHTML += `
+    <img id="${userIDArrayimg}" class="imgAvatar2" style="cursor: pointer;" src="./img/${userIDArrayimg}">
+    `;
+    // document.getElementById('userContainerHideEdit').classList.add('d-none');
 }
