@@ -636,9 +636,9 @@ select {
     position: relative;
     z-index: 5;
     margin-right: 1rem;
-    ;
-
+    cursor: pointer;
 }
+
 
 .stackedImgBoard1 {
     position: absolute;
@@ -929,6 +929,11 @@ select {
     width: 1.5rem;
     height: 1.5rem;
     cursor: pointer;
+    opacity: 0.4;
+}
+
+.trashImg:hover {
+    opacity: 1;
 }
 
 .mainconntainer {
@@ -1028,6 +1033,11 @@ h3 {
 
 .arrowRight {
     display: none;
+}
+
+.arrowRight:hover{
+    opacity: .7;
+    cursor: pointer !important;
 }
 
 @media(max-width: 1150px) {
