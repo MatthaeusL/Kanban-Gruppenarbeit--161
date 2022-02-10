@@ -89,7 +89,7 @@ function removehighlight(id) {
 
 function generateBoardHTML(status) {
     let currentUserTest = status['assignedTo'];
-   return `
+    return `
     <div class="singleCard" ondblclick = "editTask(${status['taskid']})" style="border-color: var(${status['urgencyColor']});" id="singleCard${status['taskid']}" draggable="true" ondragstart="startDragging(${status['taskid']})">
         <div>
             <div class="dateAndTrash">
@@ -216,6 +216,7 @@ function editTask(taskid) {
 
     document.getElementById('editwindow').innerHTML = `
     <div class="contentWrapper">
+                <h1> edit task </h1>
                 <div class="content ">
                     <div class="left " style="margin-right: 3rem; ">
                         <div>
