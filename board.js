@@ -282,6 +282,7 @@ function editTask(taskid) {
     filterSelectCathegory(currentID);
     filterSelecturgency(currentID);
 
+
     document.getElementById('editwindow').innerHTML = `
     <div class="contentWrapper">
                 <h1> edit task </h1>
@@ -334,7 +335,7 @@ function editTask(taskid) {
                                         ASSIGNED TO
                                     </h4>
                                     <div id="imgContainer2" class="imgContainer2">
-                                        <img onload="loadUser()" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
+                                        <img onload="loadUser(),  setcheckbox(${currentID})" onclick="showUser()" class="logo" src="./logo/icon plus.png ">
                                         <div id="imgMembers">
 
                                         </div>
@@ -358,6 +359,7 @@ function editTask(taskid) {
             </div>`;
     document.getElementById('categoryEdit').selectedIndex = selectIndexCathegory;
     document.getElementById('urgencyEdit').selectedIndex = selectIndexUrgency;
+
 
 }
 
@@ -449,3 +451,17 @@ function colorCathegoryEdit() {
     }
 }
 
+
+
+function setcheckbox(currentID) {
+    showUser()
+
+    asignedToEdit = kanbanArray[0]["tasks"][currentID]['assignedTo'];
+
+    for (let i = 0; i < asignedToEdit.length; i++) {
+        let asignedToindex = asignedToEdit[i];
+        document.getElementById(asignedToindex).click();
+    }
+    showUser()
+
+}
