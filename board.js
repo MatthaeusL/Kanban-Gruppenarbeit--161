@@ -134,7 +134,7 @@ function generateBoardHTML(status) {
                 <span class="singleCardDate">${status['duedate']}</span> 
                 <div class="editAndTrash">
                     <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./logo/bin.png">
-                    <img onclick="deleteCard('${status['taskid']}')" class="trashImg" src="./img/editPen.png">
+                    <img onclick="editTask(${status['taskid']})" class="trashImg" src="./img/editPen.png">
                 </div>    
             </div>    
         </div>
