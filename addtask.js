@@ -91,6 +91,7 @@ function clearInput() {
     document.getElementById('userContainerHide').innerHTML = '';
     document.getElementById('imgMembers').innerHTML = '';
     document.getElementById('userContainerHide').classList.add('d-none');
+    document.getElementById('userContainerHide').classList.remove('colorRed');
     loadUser();
 }
 
