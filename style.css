@@ -770,7 +770,7 @@ select {
     flex-direction: column;
     position: relative;
     top: 2rem;
-    left: 8rem;
+    left: 0rem;
 }
 
 @media(max-width: 1150px) {

@@ -38,9 +38,6 @@ function setNewTask() {
 }
 
 
-
-
-
 function finishAddingNewTask(newTask) {
     kanbanArray[0]["tasks"].push(newTask);
     document.getElementById('emptyBacklog').style.display = 'none';
