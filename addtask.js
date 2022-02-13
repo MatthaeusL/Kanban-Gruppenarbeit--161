@@ -38,16 +38,6 @@ function setNewTask() {
 }
 
 
-
-// function getUsername() {
-//     let currentUser = assignedUser[0];
-//     for (let i = 0; i < kanbanArray[0]['users'].length; i++) {
-//         if (kanbanArray[0]['users'][i]['userid'] == currentUser) {
-//             return kanbanArray[0]['users'][i]['username'];
-//         }
-//     }
-// } Das ist die vorherige Def:         'assignedTo': getUsername(),
-
 function finishAddingNewTask(newTask) {
     kanbanArray[0]["tasks"].push(newTask);
     document.getElementById('emptyBacklog').style.display = 'none';
@@ -91,6 +81,7 @@ function clearInput() {
     document.getElementById('userContainerHide').innerHTML = '';
     document.getElementById('imgMembers').innerHTML = '';
     document.getElementById('userContainerHide').classList.add('d-none');
+    document.getElementById('userContainerHide').classList.remove('colorRed');
     loadUser();
 }
 
