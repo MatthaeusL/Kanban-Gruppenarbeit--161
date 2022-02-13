@@ -286,7 +286,15 @@ function editTask(taskid) {
     filterSelecturgency(currentID);
 
 
-    document.getElementById('editwindow').innerHTML = `
+    document.getElementById('editwindow').innerHTML = generateEditHtml(currentID);
+    document.getElementById('categoryEdit').selectedIndex = selectIndexCathegory;
+    document.getElementById('urgencyEdit').selectedIndex = selectIndexUrgency;
+
+
+}
+
+function generateEditHtml(currentID) {
+    return `
     <div class="contentWrapper contentwrappeerEdit">
                 <h1 class="editheadder"> edit task </h1>
                 <div class="content contentEdit">
@@ -360,28 +368,31 @@ function editTask(taskid) {
                     </div>
                 </div>
             </div>`;
-    document.getElementById('categoryEdit').selectedIndex = selectIndexCathegory;
-    document.getElementById('urgencyEdit').selectedIndex = selectIndexUrgency;
-
-
 }
 
 function saveEditTask(currentID) {
-    colorUrgencyEdit()
-    colorCathegoryEdit()
+    if (assignedUserEdit.length == 0) {
+        document.getElementById('userContainerHideEdit').classList.remove('d-none');
+        document.getElementById('userContainerHideEdit').classList.add('colorRed');
+        console.log('checked');
+    } else {
+        colorUrgencyEdit()
+        colorCathegoryEdit()
 
-    kanbanArray[0]["tasks"][currentID]['title'] = document.getElementById('titleEdit').value;
-    kanbanArray[0]["tasks"][currentID]['category'] = document.getElementById('categoryEdit').value;
-    kanbanArray[0]["tasks"][currentID]['description'] = document.getElementById('descriptionEdit').value;
-    kanbanArray[0]["tasks"][currentID]['duedate'] = document.getElementById('duedateEdit').value;
-    kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
-    kanbanArray[0]["tasks"][currentID]['urgencyColor'] = urgencyColors;
-    kanbanArray[0]["tasks"][currentID]['categoryColor'] = cathegoryColors;
-    kanbanArray[0]["tasks"][currentID]['assignedTo'] = assignedUserEdit;
-    assignedUserEdit = [];
-    document.getElementById('editwindow').classList.add('d-none');
-    renderBoard();
-    sendToServer();
+
+        kanbanArray[0]["tasks"][currentID]['title'] = document.getElementById('titleEdit').value;
+        kanbanArray[0]["tasks"][currentID]['category'] = document.getElementById('categoryEdit').value;
+        kanbanArray[0]["tasks"][currentID]['description'] = document.getElementById('descriptionEdit').value;
+        kanbanArray[0]["tasks"][currentID]['duedate'] = document.getElementById('duedateEdit').value;
+        kanbanArray[0]["tasks"][currentID]['urgency'] = document.getElementById('urgencyEdit').value;
+        kanbanArray[0]["tasks"][currentID]['urgencyColor'] = urgencyColors;
+        kanbanArray[0]["tasks"][currentID]['categoryColor'] = cathegoryColors;
+        kanbanArray[0]["tasks"][currentID]['assignedTo'] = assignedUserEdit;
+        assignedUserEdit = [];
+        document.getElementById('editwindow').classList.add('d-none');
+        renderBoard();
+        sendToServer();
+    }
 }
 
 function cancelEdit() {
@@ -460,9 +471,7 @@ function colorCathegoryEdit() {
 
 function setcheckbox(currentID) {
     showUserEDIT()
-
     asignedToEdit = kanbanArray[0]["tasks"][currentID]['assignedTo'];
-
     for (let i = 0; i < asignedToEdit.length; i++) {
         let asignedToindex = asignedToEdit[i];
         document.getElementById(asignedToindex).click();
@@ -470,6 +479,7 @@ function setcheckbox(currentID) {
     showUserEDIT()
 
 }
+
 /**
  * Check the checkboxes from LoadUsers() and push the id to the assignedUser Array. Insert the User img.
  * 
