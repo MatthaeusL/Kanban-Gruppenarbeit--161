@@ -610,6 +610,7 @@ select {
 .singleCardImgs {
     position: relative;
     padding-left: .8rem;
+    width: 70px;
 }
 
 .stackedImgBoard {
