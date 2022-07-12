@@ -102,6 +102,8 @@ function handleChoise(input, userIDArrayimg, userIDArrayuserid) {
         imgX.parentNode.removeChild(imgX);
         // document.getElementById('userContainerHide').classList.add('d-none');
         console.log('addMemberImg löschen');
+        let assignedUserIndex = assignedUser.indexOf(userIDArrayuserid);
+        assignedUser.splice(assignedUserIndex, 1);
     }
     console.log(assignedUser);
 }
