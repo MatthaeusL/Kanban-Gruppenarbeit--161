@@ -502,7 +502,7 @@ select {
 
 .right,
 .left {
-    width: 26rem;
+    max-width: 26rem;
 }
 
 .placeholderColor::-webkit-input-placeholder {
